@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="Documents.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Documents"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:DesignWidth="2601">
+
+    <Grid>
+        <Grid>
+            <Button Content="ВОЙТИ" Margin="0,290,0,0" VerticalAlignment="Center" CornerRadius="30" HorizontalAlignment="Center" Height="50" Width="355" FontSize="25" FontFamily="Times New Roman"/>
+            <TextBox  HorizontalAlignment="Center" VerticalAlignment="Center"  CornerRadius="15" Text=""  HorizontalContentAlignment="Center" Height="59" Width="355" InputScope="Default" Header="Почта" Margin="0,0,0,0" Background="DarkGray"/>
+            <TextBox  HorizontalAlignment="Center" VerticalAlignment="Center"  CornerRadius="15" Text=""  HorizontalContentAlignment="Center" Height="60" Width="355" Header="Пароль" Margin="0,140,0,0" Background="DarkGray"/>
+            <Button Content="Суперпользователь" VerticalAlignment="Bottom" HorizontalAlignment="Right"  Margin="0,0,0,0" Height="40" Width="239" FontSize="25" FontFamily="Times New Roman" Click="Button_Click" Padding="0,0,0,0" />
+        </Grid>
+
+    </Grid>
+</Page>
