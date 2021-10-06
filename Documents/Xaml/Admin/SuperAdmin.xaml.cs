@@ -26,8 +26,6 @@ namespace Documents
         {
             this.InitializeComponent();
             UserList.Items.Add(new User("test@gmail.com", "test"));
-            UserList.Items.Add(new User("test@gmail.com", "test"));
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

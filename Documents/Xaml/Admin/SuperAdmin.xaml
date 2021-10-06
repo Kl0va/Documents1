@@ -9,7 +9,25 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:DesignWidth="2601">
 
         <Grid>
-            <Button Content="Документы" Margin="20,150,0,0" VerticalAlignment="Top" Height="51" Width="236" FontSize="30" FontFamily="Times New Roman" Click="Button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <!--<Button Content="Документы" Margin="20,150,0,0" VerticalAlignment="Top" Height="51" Width="236" FontSize="30" FontFamily="Times New Roman" Click="Button_Click"/>
             <Button Content="Типы документов" Margin="20,220,0,0" VerticalAlignment="Top" Height="51" Width="236" FontSize="25" FontFamily="Times New Roman" Click="Button_Click_1"/>
             <Button Content="Пользователи" Margin="20,285,0,0" VerticalAlignment="Top" Height="51" Width="236" FontSize="30" FontFamily="Times New Roman"/>
             <Button Content="Роли пользователей" Margin="20,350,0,0" VerticalAlignment="Top" Height="51" Width="236" FontSize="25" FontFamily="Times New Roman"/>
@@ -34,14 +52,8 @@
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            <!--<ListViewItem HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Horizontal">
-                        <ListViewHeaderItem Width="400">Пользователь</ListViewHeaderItem>
-                        <ListViewHeaderItem Width="400">Роль</ListViewHeaderItem>
-                    </StackPanel>
-                </ListViewItem>-->
         </ListView>
-        <TextBlock HorizontalAlignment="Center" Margin="0,41,0,0" Text="Пользователи" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="50" FontFamily="Times New Roman"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,41,0,0" Text="Пользователи" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="50" FontFamily="Times New Roman"/>-->
         </Grid>
 
 </Page>
