@@ -119,19 +119,31 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Xaml\Admin\AdminPage.xaml.cs">
+      <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Xaml\Admin\DocumentsPage.xaml.cs">
+      <DependentUpon>DocumentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Xaml\Admin\RolesPage.xaml.cs">
+      <DependentUpon>RolesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Xaml\Admin\TemplatesPage.xaml.cs">
+      <DependentUpon>TemplatesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Xaml\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Xaml\Admin\Users.xaml.cs">
-      <DependentUpon>Users.xaml</DependentUpon>
+    <Compile Include="Xaml\Admin\UsersPage.xaml.cs">
+      <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Xaml\Admin\TypeOfDocuments.xaml.cs">
-      <DependentUpon>TypeOfDocuments.xaml</DependentUpon>
+    <Compile Include="Xaml\Admin\TypeOfDocumentsPage.xaml.cs">
+      <DependentUpon>TypeOfDocumentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
-    <Compile Include="Xaml\Admin\UserSettings.xaml.cs">
-      <DependentUpon>UserSettings.xaml</DependentUpon>
+    <Compile Include="Xaml\Admin\UserSettingsPage.xaml.cs">
+      <DependentUpon>UserSettingsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -156,19 +168,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Xaml\Admin\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Xaml\Admin\DocumentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Xaml\Admin\RolesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Xaml\Admin\TemplatesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Xaml\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Xaml\Admin\Users.xaml">
+    <Page Include="Xaml\Admin\UsersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Xaml\Admin\TypeOfDocuments.xaml">
+    <Page Include="Xaml\Admin\TypeOfDocumentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Xaml\Admin\UserSettings.xaml">
+    <Page Include="Xaml\Admin\UserSettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Documents.SuperAdmin"
+    x:Class="Documents.UsersPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Documents"
@@ -23,7 +23,6 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.2*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
@@ -35,11 +34,6 @@
                     <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-
-                <Button Content="Документы" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" Width="300" FontSize="30" FontFamily="Times New Roman" Click="Button_Click"/>
-                <Button Content="Шаблоны документов" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" Width="300" FontSize="30" FontFamily="Times New Roman" Click="Button_Click_1"/>
-                <Button Content="Пользователи" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" Width="300" FontSize="30" FontFamily="Times New Roman"/>
-                <Button Content="Роли пользователей" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" Width="300" FontSize="30" FontFamily="Times New Roman"/>
 
             </Grid>
 
@@ -74,7 +68,6 @@
                 </ListView>
             </Grid>
         </Grid>
-        <TextBlock HorizontalAlignment="Center" Text="Пользователи" VerticalAlignment="Center" FontSize="50" FontFamily="Times New Roman"/>
     </Grid>
 
 </Page>

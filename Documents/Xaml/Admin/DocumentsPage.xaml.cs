@@ -15,14 +15,14 @@ using Windows.UI.Xaml.Navigation;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Documents
+namespace Documents.Xaml.Admin
 {
     /// <summary>
     /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
     /// </summary>
-    public sealed partial class TypeOfDocuments : Page
+    public sealed partial class DocumentsPage : Page
     {
-        public TypeOfDocuments()
+        public DocumentsPage()
         {
             this.InitializeComponent();
         }
