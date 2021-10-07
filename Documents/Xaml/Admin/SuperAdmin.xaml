@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:DesignWidth="2601">
 
-        <Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="*"/>
@@ -26,34 +26,55 @@
                 <ColumnDefinition Width="0.2*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button Content="Документы" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" Width="300" FontSize="30" FontFamily="Times New Roman" Click="Button_Click"/>
+                <Button Content="Шаблоны документов" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" Width="300" FontSize="30" FontFamily="Times New Roman" Click="Button_Click_1"/>
+                <Button Content="Пользователи" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" Width="300" FontSize="30" FontFamily="Times New Roman"/>
+                <Button Content="Роли пользователей" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" Width="300" FontSize="30" FontFamily="Times New Roman"/>
+
+            </Grid>
+
+            <Grid Grid.Column="1" Margin="100,0,100,100">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="columnEmail" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="Times New Roman" Text="Пользователь"  FontSize="40" Grid.Column="0"/>
+                    <TextBlock x:Name="columnRole" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="Times New Roman" Text="Роль"  FontSize="40" Grid.Column="1"/>
+                </Grid>
+
+                <ListView x:Name="UserList" ItemClick="UserList_ItemClick" Grid.Row="1" HorizontalAlignment="Stretch" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Email}" Grid.Column="0" FontSize="32" Width="{Binding ElementName=columnEmail,Path=Width}" />
+                                <TextBlock Text="{Binding Role}" Grid.Column="1" FontSize="32" Width="{Binding ElementName=columnRole,Path=Width}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </Grid>
-        <!--<Button Content="Документы" Margin="20,150,0,0" VerticalAlignment="Top" Height="51" Width="236" FontSize="30" FontFamily="Times New Roman" Click="Button_Click"/>
-            <Button Content="Типы документов" Margin="20,220,0,0" VerticalAlignment="Top" Height="51" Width="236" FontSize="25" FontFamily="Times New Roman" Click="Button_Click_1"/>
-            <Button Content="Пользователи" Margin="20,285,0,0" VerticalAlignment="Top" Height="51" Width="236" FontSize="30" FontFamily="Times New Roman"/>
-            <Button Content="Роли пользователей" Margin="20,350,0,0" VerticalAlignment="Top" Height="51" Width="236" FontSize="25" FontFamily="Times New Roman"/>
-        <Grid Width="2155,2" Margin="384,100,62,43" VerticalAlignment="Top">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="500"/>
-                <ColumnDefinition Width="500"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Text="Почта"  FontSize="40" Grid.Column="0"/>
-            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Text="Роль"  FontSize="40" Grid.Column="1"/>
-        </Grid>
-            <ListView x:Name="UserList" Margin="384,150,62,43" SelectionChanged="ListBox_SelectionChanged" Grid.Row="1">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="500" />
-                            <ColumnDefinition Width="500" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Email}" Grid.Column="0"/>
-                        <TextBlock Text="{Binding Role}" Grid.Column="1"/>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <TextBlock HorizontalAlignment="Center" Margin="0,41,0,0" Text="Пользователи" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="50" FontFamily="Times New Roman"/>-->
-        </Grid>
+        <TextBlock HorizontalAlignment="Center" Text="Пользователи" VerticalAlignment="Center" FontSize="50" FontFamily="Times New Roman"/>
+    </Grid>
 
 </Page>
