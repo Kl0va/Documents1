@@ -27,5 +27,11 @@ namespace Documents
         {
             this.InitializeComponent();
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            User user = e.Parameter as User;
+            headerEmail.Text = user.Email;
+        }
     }
 }
