@@ -54,20 +54,20 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="columnEmail" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="Times New Roman" Text="Пользователь"  FontSize="40" Grid.Column="0"/>
-                    <TextBlock x:Name="columnRole" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="Times New Roman" Text="Роль"  FontSize="40" Grid.Column="1"/>
+                    <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="Times New Roman" Text="Пользователь"  FontSize="40" Grid.Column="0"/>
+                    <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="Times New Roman" Text="Роль"  FontSize="40" Grid.Column="1"/>
                 </Grid>
 
-                <ListView x:Name="UserList" ItemClick="UserList_ItemClick" Grid.Row="1" HorizontalAlignment="Stretch" >
+                <ListView x:Name="UserList" Grid.Row="1" HorizontalAlignment="Stretch" SelectionChanged="UserList_SelectionChanged" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid HorizontalAlignment="Stretch">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding Email}" Grid.Column="0" FontSize="32" Width="{Binding ElementName=columnEmail,Path=Width}" />
-                                <TextBlock Text="{Binding Role}" Grid.Column="1" FontSize="32" Width="{Binding ElementName=columnRole,Path=Width}"/>
+                                <TextBlock Text="{Binding Email}" Grid.Column="0" FontSize="32" />
+                                <TextBlock Text="{Binding Role}" Grid.Column="1" FontSize="32" />
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>

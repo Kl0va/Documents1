@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml;
+﻿using Windows.UI.Core;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
@@ -27,9 +28,9 @@ namespace Documents
             
         }
 
-        private void UserList_ItemClick(object sender, ItemClickEventArgs e)
+        private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Frame.Navigate(typeof(UserSettings));
+            Frame.Navigate(typeof(UserSettings), new User("test", "Test"));
         }
     }
 }

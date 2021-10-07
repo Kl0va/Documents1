@@ -14,15 +14,20 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
-        <Image x:Name="Back" VerticalAlignment="Top" HorizontalAlignment="Left" Source="Assets/free-icon-backward-318339.png" Stretch="Fill" Tapped="Back_Tapped" Height="67" Width="63"/>
         <TextBlock Text="test@gmail.com" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,0,0" FontSize="50"/>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Margin="100,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
@@ -43,6 +48,6 @@
             <CheckBox Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Height="54" Width="178" Grid.Column="1" Grid.Row="4" FontSize="60"/>
             <CheckBox Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Height="54" Width="178" FontSize="60" Grid.Column="1" Grid.Row="5"/>
         </Grid>
-            <Button Content="Сохранить" Grid.Row="2" Margin="0,0,0,0" Height="93" Width="367" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Button Content="Сохранить" Grid.Row="2" Height="93" Width="367" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0"/>
     </Grid>
 </Page>
