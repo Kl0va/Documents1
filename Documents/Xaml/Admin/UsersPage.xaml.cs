@@ -2,6 +2,7 @@
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -12,6 +13,7 @@ namespace Documents
     /// </summary>
     public sealed partial class UsersPage : Page
     {
+        Frame rootFrame;
         public UsersPage()
         {
             this.InitializeComponent();
@@ -20,7 +22,12 @@ namespace Documents
 
         private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Frame.Navigate(typeof(UserSettingsPage), new User("test", "Test"));
+            rootFrame.Navigate(typeof(UserSettingsPage), new User("test", "Test"));
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            rootFrame = e.Parameter as Frame;
         }
     }
 }

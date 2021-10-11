@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,7 +27,6 @@ namespace Documents.Xaml.Admin
         {
             this.InitializeComponent();
         }
-
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (documents.IsSelected)
@@ -41,8 +41,8 @@ namespace Documents.Xaml.Admin
             }
             else if (users.IsSelected)
             {
-                myFrame.Navigate(typeof(UsersPage));
-                pageHeader.Text = "Пользователи";
+                NavigateUsers();
+                
             }
             else if (roles.IsSelected)
             {
@@ -58,7 +58,14 @@ namespace Documents.Xaml.Admin
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            myFrame.Navigate(typeof(UsersPage));
+            NavigateUsers();
+        }
+
+        private void NavigateUsers()
+        {
+            myFrame.Navigate(typeof(UsersPage), Frame);
+            users.IsSelected = true;
+            pageHeader.Text = "Пользователи";
         }
     }
 }
