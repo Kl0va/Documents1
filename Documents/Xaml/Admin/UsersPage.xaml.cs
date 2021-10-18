@@ -17,12 +17,12 @@ namespace Documents
         public UsersPage()
         {
             this.InitializeComponent();
-            UserList.Items.Add(new User("test@gmail.com", "test"));
+            UserGrid.Items.Add(new User("test@gmail.com", "test", "Test Testovich Test"));
         }
 
         private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            rootFrame.Navigate(typeof(UserSettingsPage), new User("test", "Test"));
+            rootFrame.Navigate(typeof(UserSettingsPage), new User("test", "Test", "Test Testovich Test"));
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

@@ -12,10 +12,13 @@ namespace Documents
 
         public string Role { get; set; }
 
-        public User(string email, string role)
+        public string FullName { get; set; }
+
+        public User(string email, string role, string fullName)
         {
             Email = email;
             Role = role;
+            FullName = fullName;
         }
     }
 }

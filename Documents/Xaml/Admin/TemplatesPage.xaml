@@ -9,6 +9,21 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Grid Margin="100,0,100,100">
+            <GridView x:Name="TemplatesGrid" Grid.Row="1" HorizontalAlignment="Stretch" SelectionChanged="UserList_SelectionChanged" >
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{Binding Email}" Grid.Row="0" FontSize="32" />
+                            <TextBlock Text="{Binding Role}" Grid.Row="1" FontSize="32" />
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </Grid>
     </Grid>
 </Page>
