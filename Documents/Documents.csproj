@@ -125,6 +125,12 @@
     <Compile Include="Xaml\Admin\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Xaml\Admin\CreateRolePage.xaml.cs">
+      <DependentUpon>CreateRolePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Xaml\Admin\CreateTemplatePage.xaml.cs">
+      <DependentUpon>CreateTemplatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Xaml\Admin\DocumentsPage.xaml.cs">
       <DependentUpon>DocumentsPage.xaml</DependentUpon>
     </Compile>
@@ -175,6 +181,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Xaml\Admin\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Xaml\Admin\CreateRolePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Xaml\Admin\CreateTemplatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

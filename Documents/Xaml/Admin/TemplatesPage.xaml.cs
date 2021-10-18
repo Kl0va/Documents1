@@ -32,7 +32,7 @@ namespace Documents.Xaml.Admin
 
         private void createTemplateBtn_Click(object sender, RoutedEventArgs e)
         {
-            rootFrame.Navigate(typeof(UserSettingsPage));
+            rootFrame.Navigate(typeof(CreateTemplatePage));
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
