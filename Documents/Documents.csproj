@@ -120,7 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Template.cs" />
-    <Compile Include="Moduls\SaveWord.cs" />
+    <Compile Include="Moduls\Documents.cs" />
     <Compile Include="Xaml\Admin\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
