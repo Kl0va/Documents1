@@ -9,22 +9,29 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:DesignWidth="2601">
 
     <Grid>
-        <Grid Margin="100,0,100,100">
-            <GridView x:Name="UserGrid" Grid.Row="1" HorizontalAlignment="Stretch" SelectionChanged="UserList_SelectionChanged" >
-                <GridView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid HorizontalAlignment="Stretch">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="{Binding Email}" Grid.Row="0" FontSize="32" />
-                            <TextBlock Text="{Binding Role}" Grid.Row="1" FontSize="32" />
-                        </Grid>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
-        </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="UsersSearchField" HorizontalAlignment="Right" PlaceholderText="Поиск"/>
+        
+        <GridView x:Name="UserGrid" Grid.Row="1" HorizontalAlignment="Stretch" SelectionChanged="UserList_SelectionChanged" Margin="100,0,100,100">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding FullName}" Grid.Row="0" FontSize="32" />
+                        <TextBlock Text="{Binding Email}" Grid.Row="1" FontSize="32" />
+                        <TextBlock Text="{Binding Role}" Grid.Row="2" FontSize="32" />
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 
 </Page>

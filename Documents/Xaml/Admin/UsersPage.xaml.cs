@@ -22,7 +22,7 @@ namespace Documents
 
         private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            rootFrame.Navigate(typeof(UserSettingsPage), new User("test", "Test", "Test Testovich Test"));
+            rootFrame.Navigate(typeof(UserSettingsPage), e.AddedItems[0] as User);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

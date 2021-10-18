@@ -1,5 +1,4 @@
-﻿using Documents.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,23 +20,11 @@ namespace Documents.Xaml.Admin
     /// <summary>
     /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
     /// </summary>
-    public sealed partial class RolesPage : Page
+    public sealed partial class CreateRolePage : Page
     {
-        Frame rootFrame;
-        public RolesPage()
+        public CreateRolePage()
         {
             this.InitializeComponent();
-            RoleGrid.Items.Add(new Role("test", 0));
-        }
-
-        private void createRoleBtn_Click(object sender, RoutedEventArgs e)
-        {
-            rootFrame.Navigate(typeof(CreateRolePage));
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            rootFrame = e.Parameter as Frame;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Documents.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,21 @@ namespace Documents.Xaml.Admin
     /// </summary>
     public sealed partial class TemplatesPage : Page
     {
+        Frame rootFrame;
         public TemplatesPage()
         {
             this.InitializeComponent();
+            TemplatesGrid.Items.Add(new Template("test", 0));
+        }
+
+        private void createTemplateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            rootFrame.Navigate(typeof(CreateTemplatePage));
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            rootFrame = e.Parameter as Frame;
         }
     }
 }

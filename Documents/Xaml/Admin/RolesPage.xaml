@@ -11,8 +11,24 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
+        <Button x:Name="createRoleBtn" Content="Создать роль" HorizontalAlignment="Right" Click="createRoleBtn_Click"/>
+
+        <GridView Grid.Row="1" Margin="100,0,100,100" x:Name="RoleGrid" HorizontalAlignment="Stretch">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="32" />
+                        <TextBlock Text="{Binding Count}" Grid.Row="1" FontSize="32" />
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </Page>
