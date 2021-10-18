@@ -4,18 +4,19 @@ using Windows.Storage.Pickers;
 using Windows.Storage;
 using Windows.Storage.Streams;
 using System.IO;
+using Syncfusion.DocIO.DLS;
 
 namespace Documents.Moduls
 {
-    class SaveWord
+   static class Documents
     {
         //Сохранение файла 
-        async void Save(MemoryStream streams, string filename)
+        public static async void Save(MemoryStream streams, string filename)
         {
             streams.Position = 0;
             StorageFile stFile;
 
-            if(filename != null)
+            if (filename != null)
             {
                 FileSavePicker savePicker = new FileSavePicker();
                 savePicker.DefaultFileExtension = ".docx";
@@ -43,5 +44,14 @@ namespace Documents.Moduls
                 }
             }
         }
+
+        static  void Get(byte[] buffer, MemoryStream streams)
+        {
+            Stream stream = null;
+            buffer = streams.ToArray();
+            stream.Read(buffer, 0, buffer.Length);
+            stream.Flush();
+        }
+      
     }
 }

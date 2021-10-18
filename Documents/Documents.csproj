@@ -121,7 +121,8 @@
     </Compile>
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Template.cs" />
-    <Compile Include="Moduls\SaveWord.cs" />
+    <Compile Include="Moduls\Documents.cs" />
+    <Compile Include="Moduls\Templates.cs" />
     <Compile Include="Xaml\Admin\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
