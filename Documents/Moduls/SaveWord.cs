@@ -9,6 +9,7 @@ namespace Documents.Moduls
 {
     class SaveWord
     {
+        //Сохранение файла 
         async void Save(MemoryStream streams, string filename)
         {
             streams.Position = 0;
@@ -30,6 +31,7 @@ namespace Documents.Moduls
 
             if (stFile != null)
             {
+                //Сжатие файлы в byte и запись
                 using (IRandomAccessStream zipStream = await stFile.OpenAsync(FileAccessMode.ReadWrite))
                 {
                     using (Stream outstream = zipStream.AsStreamForWrite())
