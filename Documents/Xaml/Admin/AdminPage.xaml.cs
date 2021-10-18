@@ -31,13 +31,11 @@ namespace Documents.Xaml.Admin
         {
             if (documents.IsSelected)
             {
-                myFrame.Navigate(typeof(DocumentsPage));
-                pageHeader.Text = "Документы";
+                NavigateDocuments();
             }
             else if (templates.IsSelected)
             {
-                myFrame.Navigate(typeof(TemplatesPage));
-                pageHeader.Text = "Шаблоны документов";
+                NavigateTemplates();
             }
             else if (users.IsSelected)
             {
@@ -46,9 +44,33 @@ namespace Documents.Xaml.Admin
             }
             else if (roles.IsSelected)
             {
-                myFrame.Navigate(typeof(RolesPage));
-                pageHeader.Text = "Роли пользователей";
+                NavigateRoles();
             }
+        }
+
+        private void NavigateDocuments()
+        {
+            myFrame.Navigate(typeof(DocumentsPage), Frame);
+            pageHeader.Text = "Документы";
+        }
+
+        private void NavigateTemplates()
+        {
+            myFrame.Navigate(typeof(TemplatesPage), Frame);
+            pageHeader.Text = "Шаблоны документов";
+        }
+
+        private void NavigateUsers()
+        {
+            myFrame.Navigate(typeof(UsersPage), Frame);
+            listOfNavigation.SelectedItem = users;
+            pageHeader.Text = "Пользователи";
+        }
+
+        private void NavigateRoles()
+        {
+            myFrame.Navigate(typeof(RolesPage), Frame);
+            pageHeader.Text = "Роли пользователей";
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -59,13 +81,6 @@ namespace Documents.Xaml.Admin
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             NavigateUsers();
-        }
-
-        private void NavigateUsers()
-        {
-            myFrame.Navigate(typeof(UsersPage), Frame);
-            users.IsSelected = true;
-            pageHeader.Text = "Пользователи";
         }
     }
 }

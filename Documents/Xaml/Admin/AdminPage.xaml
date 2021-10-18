@@ -19,7 +19,7 @@
                     Content="&#xE700;" Click="HamburgerButton_Click" VerticalAlignment="Top"/>
         <SplitView Name="mySplitView" Grid.Row="1" OpenPaneLength="230" DisplayMode="CompactOverlay" CompactPaneLength="48">
             <SplitView.Pane>
-                <ListBox SelectionMode="Single" SelectionChanged="ListBox_SelectionChanged">
+                <ListBox x:Name="listOfNavigation" SelectionMode="Single" SelectionChanged="ListBox_SelectionChanged">
                     <ListBoxItem Name="documents">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontSize="28" FontFamily="Segoe MDL2 Assets" Text="&#xe9f9;" TextWrapping="Wrap" VerticalAlignment="Center"/>
