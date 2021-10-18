@@ -9,64 +9,21 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:DesignWidth="2601">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-        </Grid>
-
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-            </Grid>
-
-            <Grid Grid.Column="1" Margin="100,0,100,100">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="Times New Roman" Text="Пользователь"  FontSize="40" Grid.Column="0"/>
-                    <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="Times New Roman" Text="Роль"  FontSize="40" Grid.Column="1"/>
-                </Grid>
-
-                <ListView x:Name="UserList" Grid.Row="1" HorizontalAlignment="Stretch" SelectionChanged="UserList_SelectionChanged" >
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid HorizontalAlignment="Stretch">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding Email}" Grid.Column="0" FontSize="32" />
-                                <TextBlock Text="{Binding Role}" Grid.Column="1" FontSize="32" />
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
+        <Grid Margin="100,0,100,100">
+            <GridView x:Name="UserGrid" Grid.Row="1" HorizontalAlignment="Stretch" SelectionChanged="UserList_SelectionChanged" >
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{Binding Email}" Grid.Row="0" FontSize="32" />
+                            <TextBlock Text="{Binding Role}" Grid.Row="1" FontSize="32" />
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
         </Grid>
     </Grid>
 
