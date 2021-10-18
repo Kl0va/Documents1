@@ -9,21 +9,27 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid Margin="100,0,100,100">
-            <GridView x:Name="TemplatesGrid" Grid.Row="1" HorizontalAlignment="Stretch" SelectionChanged="UserList_SelectionChanged" >
-                <GridView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid HorizontalAlignment="Stretch">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="{Binding Email}" Grid.Row="0" FontSize="32" />
-                            <TextBlock Text="{Binding Role}" Grid.Row="1" FontSize="32" />
-                        </Grid>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
-        </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="createTemplateBtn" Content="Создать шаблон" HorizontalAlignment="Right" Click="createTemplateBtn_Click"/>
+
+        <GridView Grid.Row="1" Margin="100,0,100,100" x:Name="TemplatesGrid" HorizontalAlignment="Stretch">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="32" />
+                        <TextBlock Text="{Binding Count}" Grid.Row="1" FontSize="32" />
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
+
 </Page>

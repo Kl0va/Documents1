@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Documents.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,21 @@ namespace Documents.Xaml.Admin
     /// </summary>
     public sealed partial class RolesPage : Page
     {
+        Frame rootFrame;
         public RolesPage()
         {
             this.InitializeComponent();
+            RoleGrid.Items.Add(new Role("test", 0));
+        }
+
+        private void createRoleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            rootFrame.Navigate(typeof(UserSettingsPage));
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            rootFrame = e.Parameter as Frame;
         }
     }
 }
