@@ -17,5 +17,10 @@ namespace Documents.Models
             Name = name;
             Count = count;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

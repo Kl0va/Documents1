@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Document.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Template.cs" />
     <Compile Include="Moduls\Documents.cs" />
@@ -151,6 +152,9 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Xaml\Admin\UserSettingsPage.xaml.cs">
       <DependentUpon>UserSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Xaml\User\CreateDocument.xaml.cs">
+      <DependentUpon>CreateDocument.xaml</DependentUpon>
     </Compile>
     <Compile Include="Xaml\User\UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
@@ -211,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Xaml\Admin\UserSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Xaml\User\CreateDocument.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
