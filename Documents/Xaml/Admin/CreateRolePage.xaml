@@ -15,8 +15,30 @@
             <RowDefinition Height="0.4*"/>
             <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
-        
-        
-        
+
+        <TextBox x:Name="roleName" HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 PlaceholderText="Название роли"/>
+
+        <ComboBox x:Name="templatesCombo" 
+                  Grid.Row="1" 
+                  HorizontalAlignment="Center" 
+                  VerticalAlignment="Center" 
+                  PlaceholderText="Шаблоны"/>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <CheckBox x:Name="deleteCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Удаление документов"/>
+            <CheckBox x:Name="checkCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Просмотр документов" Grid.Row="1"/>
+            <CheckBox x:Name="changeCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Изменение документов" Grid.Row="2"/>
+        </Grid>
+
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="createRole" Content="Создать" Grid.Row="3"/>
+
     </Grid>
 </Page>

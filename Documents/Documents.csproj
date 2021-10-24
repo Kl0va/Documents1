@@ -148,9 +148,6 @@
     <Compile Include="Xaml\Admin\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Xaml\Admin\TypeOfDocumentsPage.xaml.cs">
-      <DependentUpon>TypeOfDocumentsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\User.cs" />
     <Compile Include="Xaml\Admin\UserSettingsPage.xaml.cs">
       <DependentUpon>UserSettingsPage.xaml</DependentUpon>
@@ -210,10 +207,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Xaml\Admin\UsersPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Xaml\Admin\TypeOfDocumentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
