@@ -1,4 +1,5 @@
 ﻿using Documents.Xaml.Admin;
+using Documents.Xaml.User;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -19,6 +20,11 @@ namespace Documents
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(AdminPage));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(UserPage));
         }
     }
 }
