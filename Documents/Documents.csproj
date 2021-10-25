@@ -156,6 +156,9 @@
     <Compile Include="Xaml\User\CreateDocument.xaml.cs">
       <DependentUpon>CreateDocument.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Xaml\User\DetailsDocument.xaml.cs">
+      <DependentUpon>DetailsDocument.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Xaml\User\RedactDocument.xaml.cs">
       <DependentUpon>RedactDocument.xaml</DependentUpon>
     </Compile>
@@ -222,6 +225,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Xaml\User\CreateDocument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Xaml\User\DetailsDocument.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

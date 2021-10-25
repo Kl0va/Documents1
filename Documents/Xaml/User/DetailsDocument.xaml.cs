@@ -20,21 +20,16 @@ namespace Documents.Xaml.User
     /// <summary>
     /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
     /// </summary>
-    public sealed partial class UserPage : Page
+    public sealed partial class DetailsDocument : Page
     {
-        public UserPage()
+        public DetailsDocument()
         {
             this.InitializeComponent();
         }
 
-        private void addDocument_Click(object sender, RoutedEventArgs e)
+        private void redact_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(CreateDocument));
-        }
-
-        private void abobadelete_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(DetailsDocument));
+            Frame.Navigate(typeof(RedactDocument));
         }
     }
 }
