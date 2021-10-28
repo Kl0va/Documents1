@@ -7,8 +7,110 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" x:Name="newdoc" FontSize="25" Content="Новый документ"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox Grid.Column="1" x:Name="templs" FontSize="25"   HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ComboBoxItem IsSelected="True" Content="0"/>
+                <ComboBoxItem Content="0"/>
+                <ComboBoxItem Content="0"/>
+            </ComboBox>
+            <Button Grid.Column="2" x:Name="addhat" FontSize="25" Content="Добавить шапку"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Grid.Column="3" x:Name="addsigner" FontSize="25" Content="Добавить подписанта"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Grid.Column="4" x:Name="save" FontSize="25" Content="Сохранить"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.3*" />
+                <ColumnDefinition Width="0.3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+
+                </Grid.ColumnDefinitions>
+                <Button x:Name="fat" Grid.Column="0" FontWeight="Bold" FontSize="32" Content="Ж"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                <Button x:Name="cursed" Grid.Column="1" FontStyle="Italic" FontSize="32" Content="К"   Width="40" HorizontalAlignment="Center"/>
+                <Button x:Name="underline" Grid.Column="2" FontSize="32"   Width="40" HorizontalAlignment="Center">
+                    <TextBlock TextDecorations="Underline" >
+                        Ч
+                    </TextBlock>
+                </Button>
+
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox FontSize="25" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ComboBoxItem IsSelected="True" Content="Times New Roman"/>
+                    <ComboBoxItem Content="Arial"/>
+                </ComboBox>
+                <ComboBox FontSize="25" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <ComboBoxItem  Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="10"/>
+                    <ComboBoxItem IsSelected="True" Content="14"/>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="leftAl" Grid.Column="0" FontFamily="Segoe MDL2 Assets" FontSize="32" Content="&#xe8e4;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                <Button x:Name="centAl" Grid.Column="1" FontFamily="Segoe MDL2 Assets" FontSize="32" Content="&#xe8e3;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                <Button x:Name="rightAl" Grid.Column="2" FontFamily="Segoe MDL2 Assets" FontSize="32" Content="&#xe8e2;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                <Button x:Name="widthAl" Grid.Column="3" FontFamily="Segoe MDL2 Assets"  FontSize="32" Content="&#xe700;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
+
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ComboBox FontSize="25" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <ComboBoxItem IsSelected="True" Content="0"/>
+                    <ComboBoxItem Content="0"/>
+                    <ComboBoxItem Content="0"/>
+                </ComboBox>
+                <ComboBox FontSize="25" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <ComboBoxItem IsSelected="True" Content="0"/>
+                    <ComboBoxItem Content="0"/>
+                    <ComboBoxItem Content="0"/>
+                </ComboBox>
+                <ComboBox FontSize="25" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <ComboBoxItem IsSelected="True" Content="0"/>
+                    <ComboBoxItem Content="0"/>
+                    <ComboBoxItem Content="0"/>
+                </ComboBox>
+            </Grid>
+
+        </Grid>
+        <RichEditBox Grid.Row="2"  FontSize="14"></RichEditBox>
     </Grid>
 </Page>
