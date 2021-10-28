@@ -32,10 +32,10 @@ namespace Documents.Xaml.User
         {
             Frame.Navigate(typeof(RedactDocument));
         }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            Document document = e.Parameter as Document;
-            pageHeader.Text = document.Name;
-        }
+        //protected override void OnNavigatedTo(NavigationEventArgs e)
+        //{
+        //    Document document = e.Parameter as Document;
+        //    pageHeader.Text = document.Name;
+        //}
     }
 }

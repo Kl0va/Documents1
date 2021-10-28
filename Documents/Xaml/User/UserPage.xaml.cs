@@ -40,7 +40,7 @@ namespace Documents.Xaml.User
 
         private void documentsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            rootFrame.Navigate(typeof(DetailsDocument), e.AddedItems[0] as Document);
+            Frame.Navigate(typeof(DetailsDocument));
 
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)

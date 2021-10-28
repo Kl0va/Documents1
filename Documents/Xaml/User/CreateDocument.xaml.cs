@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Documents.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,7 +25,14 @@ namespace Documents.Xaml.User
     {
         public CreateDocument()
         {
+            Template t = new Template("Шаблоныч", 1);
             this.InitializeComponent();
+            documentsGrid.Items.Add(new Document("Документыч1.docxыч", "На документычах", t));
+        }
+
+        private void redact_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(RedactDocument));
         }
     }
 }

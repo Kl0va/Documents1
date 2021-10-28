@@ -103,6 +103,6 @@
                 </ComboBox>
             </Grid>
         </Grid>
-        <RichEditBox Grid.Row="2"  FontSize="14"></RichEditBox>
+        <RichEditBox Grid.Row="2" Margin="100,0,100,0"  FontSize="14"></RichEditBox>
     </Grid>
 </Page>
