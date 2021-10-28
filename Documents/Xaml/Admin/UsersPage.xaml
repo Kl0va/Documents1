@@ -14,8 +14,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="UsersSearchField" HorizontalAlignment="Right" PlaceholderText="Поиск"/>
-        
+            <TextBox  x:Name="UsersSearchField" HorizontalAlignment="Right" PlaceholderText="Поиск" FontSize="32" Width="392"/>
+
+
         <GridView x:Name="UserGrid" Grid.Row="1" HorizontalAlignment="Stretch" SelectionChanged="UserList_SelectionChanged" Margin="100,0,100,100">
             <GridView.ItemTemplate>
                 <DataTemplate>

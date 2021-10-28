@@ -9,6 +9,41 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="1" PlaceholderText="Поиск" x:Name="search" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <Button x:Name="addDocument" Content="Добавить документ" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" />
+        </Grid>
+
+        <Grid Grid.Row="1">
+            
+            <GridView x:Name="documentsGrid"  HorizontalAlignment="Stretch" Margin="100,0,100,100">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="32" />
+                            <TextBlock Text="{Binding Description}" Grid.Row="1" FontSize="32" />
+                            <TextBlock Text="{Binding Type}" Grid.Row="2" FontSize="32" />
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </Grid>
 
     </Grid>
 </Page>

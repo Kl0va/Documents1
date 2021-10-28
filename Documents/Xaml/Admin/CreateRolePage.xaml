@@ -10,13 +10,14 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            
             <RowDefinition Height="0.2*"/>
             <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="roleName" HorizontalAlignment="Center"
+        <TextBox x:Name="roleName" HorizontalAlignment="Center" FontSize="25"
                  VerticalAlignment="Center"
                  PlaceholderText="Название роли"/>
 
@@ -24,7 +25,8 @@
                   Grid.Row="1" 
                   HorizontalAlignment="Center" 
                   VerticalAlignment="Center" 
-                  PlaceholderText="Шаблоны"/>
+                  PlaceholderText="Шаблоны"
+                  FontSize="25"/>
 
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
@@ -33,12 +35,20 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <CheckBox x:Name="deleteCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Удаление документов"/>
-            <CheckBox x:Name="checkCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Просмотр документов" Grid.Row="1"/>
-            <CheckBox x:Name="changeCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Изменение документов" Grid.Row="2"/>
+            <CheckBox FontSize="25" x:Name="deleteCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Удаление документов"/>
+            <CheckBox FontSize="25" x:Name="checkCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Просмотр документов" Grid.Row="1"/>
+            <CheckBox FontSize="25" x:Name="changeCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Изменение документов" Grid.Row="2"/>
         </Grid>
 
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="createRole" Content="Создать" Grid.Row="3"/>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="createRole" Content="Создать" Grid.Column="0"/>
+            <Button FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="saveRole" Content="Сохранить" Grid.Column="1"/>
+
+        </Grid>
 
     </Grid>
 </Page>

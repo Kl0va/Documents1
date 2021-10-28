@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Documents.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,6 +31,11 @@ namespace Documents.Xaml.User
         private void redact_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(RedactDocument));
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Document document = e.Parameter as Document;
+            pageHeader.Text = document.Name;
         }
     }
 }

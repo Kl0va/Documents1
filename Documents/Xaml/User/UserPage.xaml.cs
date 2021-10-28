@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Documents.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,12 @@ namespace Documents.Xaml.User
     /// </summary>
     public sealed partial class UserPage : Page
     {
+        Frame rootFrame;
         public UserPage()
         {
+            Template t = new Template("Шаблоныч",1);
             this.InitializeComponent();
+            documentsGrid.Items.Add(new Document ("Документыч1.docxыч", "На документычах",t));
         }
 
         private void addDocument_Click(object sender, RoutedEventArgs e)
@@ -32,9 +36,16 @@ namespace Documents.Xaml.User
             Frame.Navigate(typeof(CreateDocument));
         }
 
-        private void abobadelete_Click(object sender, RoutedEventArgs e)
+
+
+        private void documentsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Frame.Navigate(typeof(DetailsDocument));
+            rootFrame.Navigate(typeof(DetailsDocument), e.AddedItems[0] as Document);
+
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            rootFrame = e.Parameter as Frame;
         }
     }
 }

@@ -20,7 +20,6 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="abobadetail" Content="переход на окно подробной информации (удалить потом)" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Click="abobadelete_Click"/>
 
             <TextBox Grid.Column="1" PlaceholderText="Поиск" x:Name="search" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
             <Button x:Name="addDocument" Content="Добавить документ" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Click="addDocument_Click"/>
@@ -46,10 +45,10 @@
                 <HyperlinkButton Content="На ознакомление" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3"/>
             </Grid>
 
-            <GridView x:Name="documentsGrid" Grid.Column="1" HorizontalAlignment="Stretch" Margin="100,0,100,100">
+            <GridView x:Name="documentsGrid" Grid.Column="1" HorizontalAlignment="Stretch" Margin="100,0,100,100" SelectionChanged="documentsGrid_SelectionChanged">
                 <GridView.ItemTemplate>
                     <DataTemplate>
-                        <Grid HorizontalAlignment="Stretch">
+                        <Grid HorizontalAlignment="Stretch" >
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
