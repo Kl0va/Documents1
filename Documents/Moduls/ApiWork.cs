@@ -12,7 +12,7 @@ namespace Documents.Moduls
 {
      static class ApiWork
      {
-        private static string baseUrl = "http:/";
+        private static string baseUrl = "https:/";
 
 
         public static async Task<List<Document>> GetAllDocuments(int personId)

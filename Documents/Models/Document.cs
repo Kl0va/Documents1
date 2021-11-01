@@ -9,18 +9,20 @@ namespace Documents.Models
     class Document
     {
         public string Name { get; set; }
-
         public string Description { get; set; }
-
+        public User User { get; set; }
         public Template Type { get; set; }
-
+        public DocumentForReconcile DocumentRec { get; set; }
         public byte File { get; set; }
        
-        public Document(string name, string description, Template type)
+        public Document(string name, string description, Template type, User user, DocumentForReconcile documentRec, byte file)
         {
             Name = name;
             Description = description;
             Type = type;
+            User = user;
+            DocumentRec = documentRec;
+            File = file;
         }
     }
 }

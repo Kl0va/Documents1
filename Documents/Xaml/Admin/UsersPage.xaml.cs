@@ -17,7 +17,7 @@ namespace Documents
         public UsersPage()
         {
             this.InitializeComponent();
-            UserGrid.Items.Add(new User("test@gmail.com", "test", "Test Testovich Test"));
+            //UserGrid.Items.Add(new User("test@gmail.com", "test", "Test Testovich Test"));
         }
 
         private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)

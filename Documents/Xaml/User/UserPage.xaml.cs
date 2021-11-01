@@ -26,9 +26,9 @@ namespace Documents.Xaml.User
         Frame rootFrame;
         public UserPage()
         {
-            Template t = new Template("Шаблоныч",1);
+           // Template t = new Template("Шаблоныч",1);
             this.InitializeComponent();
-            documentsGrid.Items.Add(new Document ("Документыч1.docxыч", "На документычах",t));
+           // documentsGrid.Items.Add(new Document ("Документыч1.docxыч", "На документычах",t));
         }
 
         private void addDocument_Click(object sender, RoutedEventArgs e)

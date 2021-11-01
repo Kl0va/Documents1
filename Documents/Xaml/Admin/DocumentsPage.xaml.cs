@@ -26,9 +26,9 @@ namespace Documents.Xaml.Admin
         public DocumentsPage()
         {
             this.InitializeComponent();
-            Template t = new Template("Шаблоныч", 1);
+           // Template t = new Template("Шаблоныч", 1);
             this.InitializeComponent();
-            documentsGrid.Items.Add(new Document("Документыч1.docxыч", "На документычах", t));
+           // documentsGrid.Items.Add(new Document("Документыч1.docxыч", "На документычах", t));
         }
     }
 }

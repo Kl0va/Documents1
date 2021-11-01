@@ -9,13 +9,12 @@ namespace Documents.Models
     class Template
     {
         public string Name { get; set; }
-        
-        public int Count { get; set; }
+        public byte SampleBytea { get; set; }
 
-        public Template(string name, int count)
+        public Template(string name,byte sampleBytea)
         {
             Name = name;
-            Count = count;
+            SampleBytea = sampleBytea;
         }
 
         public override string ToString()

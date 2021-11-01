@@ -120,7 +120,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\DocumentForFamiliarize.cs" />
+    <Compile Include="Models\DocumentForReconcile.cs" />
+    <Compile Include="Models\Restriction.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Rule.cs" />
     <Compile Include="Models\Template.cs" />
     <Compile Include="Moduls\ApiWork.cs" />
     <Compile Include="Moduls\Documents.cs" />

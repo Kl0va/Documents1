@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Documents.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,21 @@ namespace Documents
     {
         public string Email { get; set;}
 
-        public string Role { get; set; }
+        public Role Role { get; set; }
+        public Rule Rule { get; set; }
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        public string MiddleName { get; set; }
 
-        public string FullName { get; set; }
 
-        public User(string email, string role, string fullName)
+        public User(string email, Role role, Rule rule, string firstName,string secondName,string middleName)
         {
             Email = email;
             Role = role;
-            FullName = fullName;
+            Rule = rule;
+            FirstName = firstName;
+            SecondName = secondName;
+            MiddleName = middleName;
         }
     }
 }

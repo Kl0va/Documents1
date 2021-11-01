@@ -27,7 +27,7 @@ namespace Documents.Xaml.Admin
         public TemplatesPage()
         {
             this.InitializeComponent();
-            TemplatesGrid.Items.Add(new Template("test", 0));
+            //TemplatesGrid.Items.Add(new Template("test", 0));
         }
 
         private void createTemplateBtn_Click(object sender, RoutedEventArgs e)
