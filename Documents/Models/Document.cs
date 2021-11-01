@@ -16,12 +16,11 @@ namespace Documents.Models
 
         public byte File { get; set; }
        
-        public Document(string name, string description, Template type,byte file)
+        public Document(string name, string description, Template type)
         {
             Name = name;
             Description = description;
             Type = type;
-            File = file;
         }
     }
 }

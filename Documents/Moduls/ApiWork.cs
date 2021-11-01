@@ -51,39 +51,33 @@ namespace Documents.Moduls
             return documents;
         }
 
-        public async void UpdateUser(string newEmail,string newFullName, string newRole) 
+        public async void UpdateUser(User user) 
         {
-            var user = new User(newEmail,newFullName,newRole);
             var response = await $"{baseUrl}".AppendPathSegment("/update_user").PutJsonAsync(user);
         }
 
-        public async void UpdateDocument(string newName,string newDescription, Template newTemplate, byte newFile)
+        public async void UpdateDocument(Document document)
         {
-            var document = new Document(newName, newDescription, newTemplate, newFile);
             var response = await $"{baseUrl}".AppendPathSegment("/update_document").PutJsonAsync(document);
         }
 
-        public async void UpdateRole(string name, int count)
+        public async void UpdateRole(Role role)
         {
-            var role = new Role(name, count);
             var response = await $"{baseUrl}".AppendPathSegment("/update_role").PutJsonAsync(role);
         }
 
-        public async void CreateRole(string name,int count)
+        public async void CreateRole(Role role)
         {
-            var role = new Role(name, count);
             var response = await $"{baseUrl}".AppendPathSegment("/create_role").PostJsonAsync(role);
         }
 
-        public async void CreateDocument(string name, string description, Template template, byte file)
+        public async void CreateDocument(Document document)
         {
-            var document = new Document(name, description, template, file);
             var response = await $"{baseUrl}".AppendPathSegment("/create_document").PutJsonAsync(document);
         }
 
-        public async void CreateTemplate(string name, int count)
+        public async void CreateTemplate(Template template)
         {
-            var template = new Template(name, count);
             var response = await $"{baseUrl}".AppendPathSegment("/create_template").PutJsonAsync(template);
         }
      }
