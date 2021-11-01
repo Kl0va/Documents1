@@ -53,5 +53,31 @@ namespace Documents.Xaml.User
             //    documentsGrid.Items.Add(document);
             //}
         }
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (mydocuments.IsSelected)
+            {
+                /////
+            }
+            else if (alldocuments.IsSelected)
+            {
+                //////////
+            }
+            else if (waiting.IsSelected)
+            {
+                ////////////
+
+            }
+            else if (needforsee.IsSelected)
+            {
+                /////////////////
+            }
+        }
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            mySplitView.IsPaneOpen = !mySplitView.IsPaneOpen;
+            
+        }
     }
 }

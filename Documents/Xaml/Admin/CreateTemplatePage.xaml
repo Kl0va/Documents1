@@ -10,8 +10,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
-            <RowDefinition Height="0.1*"/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -19,118 +18,71 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" CornerRadius="10" x:Name="newdoc" FontSize="20"   HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel>
-                    <TextBlock HorizontalAlignment="Center" Text="&#xE710;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
-                    <TextBlock>Новый документ</TextBlock>
-                </StackPanel>
-            </Button>
-            <ComboBox CornerRadius="10" Grid.Column="1" x:Name="templs" FontSize="25"   HorizontalAlignment="Center" VerticalAlignment="Center">
-                <ComboBoxItem IsSelected="True" Content="0"/>
-                <ComboBoxItem Content="0"/>
-                <ComboBoxItem Content="0"/>
-            </ComboBox>
-            <Button CornerRadius="10" Grid.Column="2" x:Name="addhat" FontSize="20"   HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel>
-                    <TextBlock HorizontalAlignment="Center" Text="&#xED0E;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
-                    <TextBlock>Добавить шапку</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button CornerRadius="10" Grid.Column="3" x:Name="addsigner" FontSize="20"  HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel>
-                    <TextBlock HorizontalAlignment="Center" Text="&#xE8FA;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
-                    <TextBlock>Добавить подписанта</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button CornerRadius="10" Grid.Column="4" x:Name="save" FontSize="20"   HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox CornerRadius="10" Grid.Column="1" HorizontalAlignment="Center" Name="pageHeader" PlaceholderText="Название шаблона" VerticalAlignment="Center" FontSize="34" />
+            <Button CornerRadius="10" Grid.Column="2" x:Name="save" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Center" Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                     <TextBlock>Сохранить</TextBlock>
                 </StackPanel>
             </Button>
+            
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.4*"/>
+            </Grid.ColumnDefinitions>
+            
+            <RichEditBox Grid.Row="0"  FontSize="14" Margin="100,0,100,0"></RichEditBox>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.05*"/>
+                </Grid.RowDefinitions>
+                <RichEditBox Grid.Row="0" PlaceholderText="Содержание шапки" FontSize="20" Margin="0,0,20,0"></RichEditBox>
+
+                <Button CornerRadius="10" Grid.Row="1" x:Name="addhat" FontSize="20" Margin="20"  HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center" Text="&#xED0E;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                        <TextBlock>Добавить шапку</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button CornerRadius="10" Grid.Row="2"  x:Name="addsigner" FontSize="20"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel>
+                        
+                        <TextBlock HorizontalAlignment="Center" Text="&#xE710;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                        <TextBlock>Добавить подписанта</TextBlock>
+
+                    </StackPanel>
+                </Button>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0.3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="25" VerticalAlignment="Center" HorizontalTextAlignment="Center">Количество подписантов:</TextBlock>
+                    <TextBox CornerRadius="10" Grid.Column="1" HorizontalAlignment="Center" Name="podcount" Text="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" />
+
+                </Grid>
+
+                <Button CornerRadius="10" Grid.Row="4" x:Name="remsigner" FontSize="20"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center" Text="&#xE738;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                        <TextBlock>Убрать подписанта</TextBlock>
+
+                    </StackPanel>
+                </Button>
+
+
+            </Grid>
 
         </Grid>
         
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.25*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.3*" />
-                <ColumnDefinition Width="0.3*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+        
 
-                </Grid.ColumnDefinitions>
-                <Button CornerRadius="10" x:Name="fat" Grid.Column="0" FontWeight="Bold" FontSize="32" Content="Ж"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                <Button CornerRadius="10" x:Name="cursed" Grid.Column="1" FontStyle="Italic" FontSize="32" Content="К"   Width="40" HorizontalAlignment="Center"/>
-                <Button CornerRadius="10" x:Name="underline" Grid.Column="2" FontSize="32"   Width="40" HorizontalAlignment="Center">
-                    <TextBlock TextDecorations="Underline" >
-                        Ч
-                    </TextBlock>
-                </Button>
-
-            </Grid>
-            <Grid Grid.Column="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="0.4*"/>
-                </Grid.ColumnDefinitions>
-                <ComboBox CornerRadius="10" FontSize="25" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <ComboBoxItem IsSelected="True" Content="Times New Roman"/>
-                    <ComboBoxItem Content="Arial"/>
-                </ComboBox>
-                <ComboBox CornerRadius="10" FontSize="25" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <ComboBoxItem  Content="1"/>
-                    <ComboBoxItem Content="2"/>
-                    <ComboBoxItem Content="10"/>
-                    <ComboBoxItem IsSelected="True" Content="14"/>
-                </ComboBox>
-            </Grid>
-            <Grid Grid.Column="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Button CornerRadius="10" x:Name="leftAl" Grid.Column="0" FontFamily="Segoe MDL2 Assets" FontSize="32" Content="&#xe8e4;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                <Button CornerRadius="10" x:Name="centAl" Grid.Column="1" FontFamily="Segoe MDL2 Assets" FontSize="32" Content="&#xe8e3;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                <Button CornerRadius="10" x:Name="rightAl" Grid.Column="2" FontFamily="Segoe MDL2 Assets" FontSize="32" Content="&#xe8e2;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                <Button CornerRadius="10" x:Name="widthAl" Grid.Column="3" FontFamily="Segoe MDL2 Assets"  FontSize="32" Content="&#xe700;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
-
-            </Grid>
-
-            <Grid Grid.Column="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <ComboBox CornerRadius="10" FontSize="25" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <ComboBoxItem IsSelected="True" Content="0"/>
-                    <ComboBoxItem Content="0"/>
-                    <ComboBoxItem Content="0"/>
-                </ComboBox>
-                <ComboBox CornerRadius="10" FontSize="25" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <ComboBoxItem IsSelected="True" Content="0"/>
-                    <ComboBoxItem Content="0"/>
-                    <ComboBoxItem Content="0"/>
-                </ComboBox>
-                <ComboBox CornerRadius="10" FontSize="25" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <ComboBoxItem IsSelected="True" Content="0"/>
-                    <ComboBoxItem Content="0"/>
-                    <ComboBoxItem Content="0"/>
-                </ComboBox>
-            </Grid>
-
-        </Grid>
-        <RichEditBox Grid.Row="2"  FontSize="14" Margin="100,0,100,0"></RichEditBox>
     </Grid>
 </Page>
