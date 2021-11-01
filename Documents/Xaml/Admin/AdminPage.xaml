@@ -14,8 +14,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Center" Name="pageHeader" Text="Пользователи" VerticalAlignment="Center" FontSize="34" FontFamily="Times New Roman"/>
-        
-            <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" FontSize="28"
+
+        <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" FontSize="28"
                     Content="&#xE700;" Click="HamburgerButton_Click" VerticalAlignment="Top"/>
         <SplitView Name="mySplitView" Grid.Row="1" OpenPaneLength="230" DisplayMode="CompactOverlay" CompactPaneLength="48">
             <SplitView.Pane>

@@ -30,17 +30,17 @@
                 <ColumnDefinition/>
 
             </Grid.ColumnDefinitions>
-            <TextBlock HorizontalAlignment="Center"  Text="Суть документа:" VerticalAlignment="Center" FontSize="34" FontFamily="Times New Roman"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Row="1" Text="Загрузил:" VerticalAlignment="Center" FontSize="34" FontFamily="Times New Roman"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Row="2" Text="Вид документа:" VerticalAlignment="Center" FontSize="34" FontFamily="Times New Roman"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Row="3" Text="Дата регистрации:" VerticalAlignment="Center" FontSize="34" FontFamily="Times New Roman"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Row="4" Text="Примечание:" VerticalAlignment="Center" FontSize="34" FontFamily="Times New Roman"/>
+            <TextBlock HorizontalAlignment="Center"  Text="Суть документа:" VerticalAlignment="Center" FontSize="34" />
+            <TextBlock HorizontalAlignment="Center" Grid.Row="1" Text="Загрузил:" VerticalAlignment="Center" FontSize="34" />
+            <TextBlock HorizontalAlignment="Center" Grid.Row="2" Text="Вид документа:" VerticalAlignment="Center" FontSize="34"/>
+            <TextBlock HorizontalAlignment="Center" Grid.Row="3" Text="Дата регистрации:" VerticalAlignment="Center" FontSize="34"/>
+            <TextBlock HorizontalAlignment="Center" Grid.Row="4" Text="Примечание:" VerticalAlignment="Center" FontSize="34"/>
 
-            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="-" VerticalAlignment="Center" FontSize="34" FontFamily="Times New Roman"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Text="-" VerticalAlignment="Center" FontSize="34" FontFamily="Times New Roman"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Text="-" VerticalAlignment="Center" FontSize="34" FontFamily="Times New Roman"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Grid.Row="3" Text="-" VerticalAlignment="Center" FontSize="34" FontFamily="Times New Roman"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Grid.Row="4" Text="-" VerticalAlignment="Center" FontSize="34" FontFamily="Times New Roman"/>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="-" VerticalAlignment="Center" FontSize="34"/>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Text="-" VerticalAlignment="Center" FontSize="34"/>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Text="-" VerticalAlignment="Center" FontSize="34" />
+            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Grid.Row="3" Text="-" VerticalAlignment="Center" FontSize="34" />
+            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Grid.Row="4" Text="-" VerticalAlignment="Center" FontSize="34" />
 
 
         </Grid>
@@ -52,10 +52,30 @@
                 <ColumnDefinition/>
 
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" x:Name="download" FontSize="30" Content="Скачать файл"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button Grid.Column="1" x:Name="redact" FontSize="30" Content="Редактировать документ"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="redact_Click"/>
-            <Button Grid.Column="2" x:Name="print" FontSize="30" Content="Печать"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button Grid.Column="3" x:Name="delete" FontSize="30" Content="Удалить"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button CornerRadius="10" Grid.Column="0" x:Name="download" FontSize="30"   HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="&#xE896;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                    <TextBlock>Скачать файл</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button CornerRadius="10" Grid.Column="1" x:Name="redact" FontSize="30"   HorizontalAlignment="Center" VerticalAlignment="Center" Click="redact_Click">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="&#xE70F;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                    <TextBlock>Редактировать документ</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button CornerRadius="10" Grid.Column="2" x:Name="print" FontSize="30"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="&#xE749;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                    <TextBlock>Печать</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button CornerRadius="10" Grid.Column="3" x:Name="delete" FontSize="30"   HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="&#xE74D;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                    <TextBlock>Удалить</TextBlock>
+                </StackPanel>
+            </Button>
 
 
         </Grid>
@@ -66,9 +86,19 @@
                 <ColumnDefinition Width="0.4*"/>
 
             </Grid.ColumnDefinitions>
-            <RichEditBox Grid.Column="0"  FontSize="30" PlaceholderText="Комментарий"></RichEditBox>
-            <Button Grid.Column="1" x:Name="revision" FontSize="30" Content="Отправить на доработку"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button Grid.Column="2" x:Name="approve" FontSize="30" Content="Согласовать"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <RichEditBox CornerRadius="10" Margin="20" Grid.Column="0"  FontSize="30" PlaceholderText="Комментарий"></RichEditBox>
+            <Button CornerRadius="10" Grid.Column="1" x:Name="revision" FontSize="30"   HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="&#xE724;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                    <TextBlock>Отправить на доработку</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button CornerRadius="10" Grid.Column="2" x:Name="approve" FontSize="30"   HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="&#xE73E;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                    <TextBlock>Согласовать</TextBlock>
+                </StackPanel>
+            </Button>
 
         </Grid>
     </Grid>

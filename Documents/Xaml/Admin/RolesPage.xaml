@@ -13,8 +13,29 @@
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox CornerRadius="10" Grid.Column="0" PlaceholderText="Поиск" x:Name="search" VerticalAlignment="Center" />
+                <Button CornerRadius="10" Grid.Column="1"  FontFamily="Segoe MDL2 Assets" FontSize="20" Content="&#xf78b;"  />
 
-        <Button x:Name="createRoleBtn" Content="Создать роль" HorizontalAlignment="Right" Click="createRoleBtn_Click"/>
+            </Grid>
+            <Button Grid.Column="2" CornerRadius="10" Margin="10" x:Name="createRoleBtn"  HorizontalAlignment="Right" Click="createRoleBtn_Click">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="&#xE710;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                    <TextBlock>Создать роль</TextBlock>
+                </StackPanel>
+            </Button>
+
+        </Grid>
 
         <GridView Grid.Row="1" Margin="100,0,100,100" x:Name="RoleGrid" HorizontalAlignment="Stretch">
             <GridView.ItemTemplate>

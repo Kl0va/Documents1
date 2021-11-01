@@ -20,9 +20,22 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox  CornerRadius="10" Grid.Column="0" PlaceholderText="Поиск" x:Name="search" VerticalAlignment="Center" />
+                <Button CornerRadius="10" Grid.Column="1"  FontFamily="Segoe MDL2 Assets" FontSize="20" Content="&#xf78b;"  />
 
-            <TextBox Grid.Column="1" PlaceholderText="Поиск" x:Name="search" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-            <Button x:Name="addDocument" Content="Добавить документ" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Click="addDocument_Click"/>
+            </Grid>
+
+            <Button CornerRadius="10" x:Name="addDocument"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Click="addDocument_Click">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="&#xE710;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                    <TextBlock>Добавить документ</TextBlock>
+                </StackPanel>
+            </Button>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -48,7 +61,7 @@
             <GridView x:Name="documentsGrid" Grid.Column="1" HorizontalAlignment="Stretch" Margin="100,0,100,100" SelectionChanged="documentsGrid_SelectionChanged">
                 <GridView.ItemTemplate>
                     <DataTemplate>
-                        <Grid HorizontalAlignment="Stretch" >
+                        <Grid HorizontalAlignment="Stretch" CornerRadius="10" >
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
@@ -62,6 +75,6 @@
                 </GridView.ItemTemplate>
             </GridView>
         </Grid>
-        
+
     </Grid>
 </Page>
