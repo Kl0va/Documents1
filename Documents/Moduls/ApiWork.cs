@@ -15,7 +15,7 @@ namespace Documents.Moduls
         private static string baseUrl = "http:/";
 
 
-        public static Task<List<Document>> GetAllDocuments(int personId)
+        public static async Task<List<Document>> GetAllDocuments(int personId)
         {
             var response = await $@"{baseUrl}".AppendPathSegment("/documents").GetStringAsync();
             
@@ -24,7 +24,7 @@ namespace Documents.Moduls
             return documents;
         }
 
-        public static Task<List<User>> GetAllUsers()
+        public static async Task<List<User>> GetAllUsers()
         {
             var response = await $@"{baseUrl}".AppendPathSegment("/users").GetStringAsync();
 
@@ -33,7 +33,7 @@ namespace Documents.Moduls
             return documents;
         }
         
-        public static Task<List<Template>> GetAllTemplates()
+        public static async Task<List<Template>> GetAllTemplates()
         {
             var response = await $@"{baseUrl}".AppendPathSegment("/templates").GetStringAsync();
 
@@ -42,7 +42,7 @@ namespace Documents.Moduls
             return documents;
         }
 
-        public static Task<List<Role>> GetAllRoles()
+        public static async Task<List<Role>> GetAllRoles()
         {
             var response = await $@"{baseUrl}".AppendPathSegment("/roles").GetStringAsync();
 
@@ -51,32 +51,32 @@ namespace Documents.Moduls
             return documents;
         }
 
-        public async void UpdateUser(string newEmail,string newFullName, string newRole) 
+        public static async void UpdateUser(User user) 
         {
             var response = await $"{baseUrl}".AppendPathSegment("/update_user").PutJsonAsync(user);
         }
 
-        public async void UpdateDocument(string newName,string newDescription, Template newTemplate, byte newFile)
+        public static async void UpdateDocument(Document document)
         {
             var response = await $"{baseUrl}".AppendPathSegment("/update_document").PutJsonAsync(document);
         }
 
-        public async void UpdateRole(string name, int count)
+        public static async void UpdateRole(Role role)
         {
             var response = await $"{baseUrl}".AppendPathSegment("/update_role").PutJsonAsync(role);
         }
 
-        public async void CreateRole(string name,int count)
+        public static async void CreateRole(Role role)
         {
             var response = await $"{baseUrl}".AppendPathSegment("/create_role").PostJsonAsync(role);
         }
 
-        public async void CreateDocument(string name, string description, Template template, byte file)
+        public static async void CreateDocument(Document document)
         {
             var response = await $"{baseUrl}".AppendPathSegment("/create_document").PutJsonAsync(document);
         }
 
-        public async void CreateTemplate(string name, int count)
+        public static async void CreateTemplate(Template template)
         {
             var response = await $"{baseUrl}".AppendPathSegment("/create_template").PutJsonAsync(template);
         }
