@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.1*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -20,11 +20,14 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" FontSize="25"
+                    Content="&#xE700;" Click="HamburgerButton_Click" VerticalAlignment="Bottom"/>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="0.1*"/>
                 </Grid.ColumnDefinitions>
+
                 <TextBox  CornerRadius="10" Grid.Column="0" PlaceholderText="Поиск" x:Name="search" VerticalAlignment="Center" />
                 <Button CornerRadius="10" Grid.Column="1"  FontFamily="Segoe MDL2 Assets" FontSize="20" Content="&#xf78b;"  />
 
@@ -40,25 +43,46 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.3*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="152*"/>
+                <ColumnDefinition Width="577*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <HyperlinkButton Content="Мои документы" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <HyperlinkButton Content="Все документы" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
-                <HyperlinkButton Content="На согласование" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
-                <HyperlinkButton Content="На ознакомление" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3"/>
-            </Grid>
 
-            <GridView x:Name="documentsGrid" Grid.Column="1" HorizontalAlignment="Stretch" Margin="100,0,100,100" SelectionChanged="documentsGrid_SelectionChanged">
+            <SplitView Name="mySplitView" OpenPaneLength="340" DisplayMode="CompactOverlay" CompactPaneLength="45" Grid.ColumnSpan="4" Margin="0,0,1154,0">
+                <SplitView.Pane>
+                    <ListBox x:Name="listOfNavigation" SelectionMode="Single" SelectionChanged="ListBox_SelectionChanged">
+                        <ListBoxItem Name="mydocuments">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="22" FontFamily="Segoe MDL2 Assets" Text="&#xE8A6;" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                <TextBlock FontSize="22" Text="Мои документы" TextWrapping="Wrap" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="alldocuments">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="22" FontFamily="Segoe MDL2 Assets" Text="&#xE8A5;" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                <TextBlock FontSize="22" Text="Все документы" TextWrapping="Wrap" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="waiting">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="22" FontFamily="Segoe MDL2 Assets" Text="&#xED5A;" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                <TextBlock FontSize="22" Text="Ожидают согласования" TextWrapping="Wrap" Margin="10,0,0,0" HorizontalAlignment="Stretch"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="needforsee">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="22" FontFamily="Segoe MDL2 Assets" Text="&#xE7B3;" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                <TextBlock FontSize="22" Text="Необходимо ознакомиться" TextWrapping="Wrap" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </SplitView.Pane>
+
+            </SplitView>
+
+            <GridView x:Name="documentsGrid" Grid.Column="3" Margin="100,0,100,100" SelectionChanged="documentsGrid_SelectionChanged">
                 <GridView.ItemTemplate>
                     <DataTemplate>
                         <Grid HorizontalAlignment="Stretch" CornerRadius="10" >
