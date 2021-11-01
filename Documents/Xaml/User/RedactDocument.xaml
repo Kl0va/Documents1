@@ -24,8 +24,13 @@
                 <ColumnDefinition/>
 
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="1" HorizontalAlignment="Center" Name="pageHeader" PlaceholderText="Название документа" VerticalAlignment="Center" FontSize="34" FontFamily="Times New Roman"/>
-            <Button Grid.Column="2" x:Name="save" FontSize="25" Content="Сохранить"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox CornerRadius="10" Grid.Column="1" HorizontalAlignment="Center" Name="pageHeader" PlaceholderText="Название документа" VerticalAlignment="Center" FontSize="34" />
+            <Button CornerRadius="10" Grid.Column="2" x:Name="save" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                    <TextBlock>Сохранить</TextBlock>
+                </StackPanel>
+            </Button>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -41,9 +46,9 @@
                     <ColumnDefinition />
 
                 </Grid.ColumnDefinitions>
-                <Button x:Name="fat" Grid.Column="0" FontWeight="Bold" FontSize="32" Content="Ж"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                <Button x:Name="cursed" Grid.Column="1" FontStyle="Italic" FontSize="32" Content="К"   Width="40" HorizontalAlignment="Center"/>
-                <Button x:Name="underline" Grid.Column="2" FontSize="32"   Width="40" HorizontalAlignment="Center">
+                <Button CornerRadius="10" x:Name="fat" Grid.Column="0" FontWeight="Bold" FontSize="32" Content="Ж"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                <Button CornerRadius="10" x:Name="cursed" Grid.Column="1" FontStyle="Italic" FontSize="32" Content="К"   Width="40" HorizontalAlignment="Center"/>
+                <Button CornerRadius="10" x:Name="underline" Grid.Column="2" FontSize="32"   Width="40" HorizontalAlignment="Center">
                     <TextBlock TextDecorations="Underline" >
                         Ч
                     </TextBlock>
@@ -55,11 +60,11 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="0.4*"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox FontSize="25" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ComboBox CornerRadius="10" FontSize="25" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <ComboBoxItem IsSelected="True" Content="Times New Roman"/>
                     <ComboBoxItem Content="Arial"/>
                 </ComboBox>
-                <ComboBox FontSize="25" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <ComboBox CornerRadius="10" FontSize="25" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
                     <ComboBoxItem  Content="1"/>
                     <ComboBoxItem Content="2"/>
                     <ComboBoxItem Content="10"/>
@@ -73,10 +78,10 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Button x:Name="leftAl" Grid.Column="0" FontFamily="Segoe MDL2 Assets" FontSize="32" Content="&#xe8e4;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                <Button x:Name="centAl" Grid.Column="1" FontFamily="Segoe MDL2 Assets" FontSize="32" Content="&#xe8e3;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                <Button x:Name="rightAl" Grid.Column="2" FontFamily="Segoe MDL2 Assets" FontSize="32" Content="&#xe8e2;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                <Button x:Name="widthAl" Grid.Column="3" FontFamily="Segoe MDL2 Assets"  FontSize="32" Content="&#xe700;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                <Button CornerRadius="10" x:Name="leftAl" Grid.Column="0" FontFamily="Segoe MDL2 Assets" FontSize="32" Content="&#xe8e4;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                <Button CornerRadius="10" x:Name="centAl" Grid.Column="1" FontFamily="Segoe MDL2 Assets" FontSize="32" Content="&#xe8e3;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                <Button CornerRadius="10" x:Name="rightAl" Grid.Column="2" FontFamily="Segoe MDL2 Assets" FontSize="32" Content="&#xe8e2;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                <Button CornerRadius="10" x:Name="widthAl" Grid.Column="3" FontFamily="Segoe MDL2 Assets"  FontSize="32" Content="&#xe700;"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
 
             </Grid>
             
@@ -86,17 +91,17 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <ComboBox FontSize="25" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <ComboBox CornerRadius="10" FontSize="25" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
                     <ComboBoxItem IsSelected="True" Content="0"/>
                     <ComboBoxItem Content="0"/>
                     <ComboBoxItem Content="0"/>
                 </ComboBox>
-                <ComboBox FontSize="25" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <ComboBox CornerRadius="10" FontSize="25" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
                     <ComboBoxItem IsSelected="True" Content="0"/>
                     <ComboBoxItem Content="0"/>
                     <ComboBoxItem Content="0"/>
                 </ComboBox>
-                <ComboBox FontSize="25" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <ComboBox CornerRadius="10" FontSize="25" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
                     <ComboBoxItem IsSelected="True" Content="0"/>
                     <ComboBoxItem Content="0"/>
                     <ComboBoxItem Content="0"/>

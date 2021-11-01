@@ -10,26 +10,31 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.2*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.4*"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="docName" HorizontalAlignment="Center" VerticalAlignment="Center" PlaceholderText="Название документа" FontSize="32"/>
-        <RichEditBox Grid.Row="1" x:Name="docDescription" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="20" Margin="100,0,100,0" PlaceholderText="Суть документа"/>
-        <ComboBox Grid.Row="2" x:Name="docTypeCombo" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Center" FontSize="20" PlaceholderText="Тип документа"/>
-        <ComboBox Grid.Row="3" x:Name="forReconciliationCombo" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Center" FontSize="20" PlaceholderText="Кому на согласование"/>
-        <DatePicker Grid.Row="4" x:Name="dateReconciliation" HorizontalAlignment="Left" Margin="100,0,0,0" FontSize="20" VerticalAlignment="Center"/>
-        <Button Grid.Row="5" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Center" FontSize="20" Content="Добавить сотрудника на ознакомление"/>
+        <TextBox CornerRadius="10" x:Name="docName" HorizontalAlignment="Center" VerticalAlignment="Center" PlaceholderText="Название документа" FontSize="32"/>
+        <TextBox CornerRadius="10" Grid.Row="1" x:Name="docDescription" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="20" Margin="100,0,100,0" PlaceholderText="Суть документа"/>
+        <ComboBox CornerRadius="10" Grid.Row="2" x:Name="docTypeCombo" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Center" FontSize="20" PlaceholderText="Тип документа"/>
+        <ComboBox CornerRadius="10" Grid.Row="3" x:Name="forReconciliationCombo" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Center" FontSize="20" PlaceholderText="Кому на согласование"/>
+        <DatePicker CornerRadius="10" Grid.Row="4" x:Name="dateReconciliation" HorizontalAlignment="Left" Margin="100,0,0,0" FontSize="20" VerticalAlignment="Center"/>
+        <Button CornerRadius="10" Grid.Row="5" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Center" FontSize="20" >
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center" Text="&#xE710;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                <TextBlock>Добавить сотрудника на ознакомление</TextBlock>
+            </StackPanel>
+        </Button>
 
-        <GridView x:Name="documentsGrid" Grid.Row="6" HorizontalAlignment="Stretch" Margin="100,0,100,0" >
+        <GridView x:Name="documentsGrid" Grid.Row="6" HorizontalAlignment="Stretch" Margin="100,20,100,20" >
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Grid HorizontalAlignment="Stretch" >
+                    <Grid HorizontalAlignment="Stretch" CornerRadius="10">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -48,9 +53,24 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" x:Name="load" FontSize="25" Content="Загрузить документ"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button Grid.Column="1" x:Name="redact" FontSize="25" Content="Редактировать документ"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="redact_Click"/>
-            <Button Grid.Column="2" x:Name="send" FontSize="25" Content="Отправить документ"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button CornerRadius="10" x:Name="load" FontSize="20"   HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="&#xE896;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                    <TextBlock>Загрузить документ</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button CornerRadius="10" Grid.Column="1" x:Name="redact" FontSize="20"   HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="redact_Click" Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="&#xE70F;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                    <TextBlock>Редактировать документ</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button CornerRadius="10" Grid.Column="2" x:Name="send" FontSize="20"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="&#xE724;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
+                    <TextBlock>Отправить документ</TextBlock>
+                </StackPanel>
+            </Button>
 
         </Grid>
         <!--<GridView x:Name="usersGrid" Grid.Row="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="100,0,100,100">
