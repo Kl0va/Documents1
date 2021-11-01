@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Documents.Moduls
 {
-    class Templates
+    static class Templates
     {
         static  void Create(WordDocument document, WSection section)
         {
