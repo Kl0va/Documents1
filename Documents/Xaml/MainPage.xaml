@@ -11,8 +11,8 @@
     <Grid>
         <Grid>
             <Button Content="ВОЙТИ" Margin="0,290,0,0" VerticalAlignment="Center" CornerRadius="30" HorizontalAlignment="Center" Height="50" Width="355" FontSize="25" FontFamily="Times New Roman" Click="Button_Click_1"/>
-            <TextBox  HorizontalAlignment="Center" VerticalAlignment="Center"  CornerRadius="15" Text=""  HorizontalContentAlignment="Center" Height="59" Width="355" InputScope="Default" Header="Почта" Margin="0,0,0,0" Background="DarkGray"/>
-            <TextBox  HorizontalAlignment="Center" VerticalAlignment="Center"  CornerRadius="15" Text=""  HorizontalContentAlignment="Center" Height="60" Width="355" Header="Пароль" Margin="0,140,0,0" Background="DarkGray"/>
+            <TextBox  HorizontalAlignment="Center" VerticalAlignment="Center"  CornerRadius="15" Text=""  HorizontalContentAlignment="Center" Height="59" Width="355" InputScope="Default" Header="Почта" Margin="0,0,0,0" Background="DarkGray" Name="Email"/>
+            <TextBox  HorizontalAlignment="Center" VerticalAlignment="Center"  CornerRadius="15" Text=""  HorizontalContentAlignment="Center" Height="60" Width="355" Header="Пароль" Margin="0,140,0,0" Background="DarkGray" Name="Password"/>
             <Button Content="Суперпользователь" VerticalAlignment="Bottom" HorizontalAlignment="Right"  Margin="0,0,0,0" Height="40" Width="239" FontSize="25" FontFamily="Times New Roman" Click="Button_Click" Padding="0,0,0,0" />
         </Grid>
 
