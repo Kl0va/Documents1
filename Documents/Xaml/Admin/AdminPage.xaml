@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Center" Name="pageHeader" Text="Пользователи" VerticalAlignment="Center" FontSize="34" FontFamily="Times New Roman"/>
+        <TextBlock HorizontalAlignment="Center" Name="pageHeader" Text="Пользователи" VerticalAlignment="Center" FontSize="34" />
 
         <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" FontSize="28"
                     Content="&#xE700;" Click="HamburgerButton_Click" VerticalAlignment="Top"/>

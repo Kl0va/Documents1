@@ -42,7 +42,7 @@
             <CheckBox VerticalAlignment="Center" HorizontalAlignment="Left" Height="54" Width="178" Grid.Column="1" Grid.Row="4" FontSize="60"/>
             <CheckBox VerticalAlignment="Center" HorizontalAlignment="Left" Height="54" Width="178" FontSize="60" Grid.Column="1" Grid.Row="5"/>
         </Grid>
-        <Button CornerRadius="10" Grid.Row="2"  FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0">
+        <Button CornerRadius="10" Grid.Row="2"  FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0">
             <StackPanel>
                 <TextBlock HorizontalAlignment="Center" Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                 <TextBlock>Сохранить</TextBlock>
