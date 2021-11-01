@@ -1,4 +1,7 @@
-﻿using Documents.Xaml.Admin;
+﻿using Documents.Moduls;
+using Documents.Xaml.Admin;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -28,6 +31,12 @@ namespace Documents
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             rootFrame = e.Parameter as Frame;
+            Task<List<User>> getUsers = ApiWork.GetAllUsers();
+            //getUsers.Start();
+            //foreach(User user in getUsers.Result)
+            //{
+            //    UserGrid.Items.Add(user);
+            //}
         }
     }
 }

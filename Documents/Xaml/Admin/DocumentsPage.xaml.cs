@@ -1,9 +1,11 @@
 ﻿using Documents.Models;
+using Documents.Moduls;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -23,12 +25,22 @@ namespace Documents.Xaml.Admin
     /// </summary>
     public sealed partial class DocumentsPage : Page
     {
+        Frame rootFrame;
         public DocumentsPage()
         {
             this.InitializeComponent();
-           // Template t = new Template("Шаблоныч", 1);
-            this.InitializeComponent();
            // documentsGrid.Items.Add(new Document("Документыч1.docxыч", "На документычах", t));
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            rootFrame = e.Parameter as Frame;
+            Task<List<Document>> getDocuments = ApiWork.GetAllDocuments(1);
+            getDocuments.Start();
+            foreach(Document document in getDocuments.Result)
+            {
+                documentsGrid.Items.Add(document);
+            }
         }
     }
 }

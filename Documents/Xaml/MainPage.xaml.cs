@@ -28,17 +28,18 @@ namespace Documents
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Task<List<User>> user = ApiWork.GetAllUsers();
-            user.Start();
-            List<User> user1 = user.Result;
-            foreach (User user2 in user1)
-            {
-                if (Email.Text == user2.Email)
-                {
-                    
-                    Frame.Navigate(typeof(UserPage));
-                }
-            }
+            //Task<List<User>> user = ApiWork.GetAllUsers();
+            //user.Start();
+            //List<User> user1 = user.Result;
+            //foreach (User user2 in user1)
+            //{
+            //    if (Email.Text == user2.Email)
+            //    {
+
+            //        Frame.Navigate(typeof(UserPage));
+            //    }
+            //}
+            Frame.Navigate(typeof(UserPage));
         }
     }
 }

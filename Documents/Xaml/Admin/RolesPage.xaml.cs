@@ -1,9 +1,11 @@
 ﻿using Documents.Models;
+using Documents.Moduls;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -27,7 +29,7 @@ namespace Documents.Xaml.Admin
         public RolesPage()
         {
             this.InitializeComponent();
-            RoleGrid.Items.Add(new Role("test", 0));
+            //RoleGrid.Items.Add(new Role("test", 0));
         }
 
         private void createRoleBtn_Click(object sender, RoutedEventArgs e)
@@ -38,6 +40,12 @@ namespace Documents.Xaml.Admin
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             rootFrame = e.Parameter as Frame;
+            Task<List<Role>> getRoles = ApiWork.GetAllRoles();
+            getRoles.Start();
+            foreach(Role role in getRoles.Result)
+            {
+                RoleGrid.Items.Add(role);
+            }
         }
     }
 }
