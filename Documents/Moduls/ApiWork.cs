@@ -12,7 +12,7 @@ namespace Documents.Moduls
 {
      static class ApiWork
      {
-        private static string baseUrl = "https:/";
+        private static string baseUrl = "https://documents-school.herokuapp.com";
 
 
         public static async Task<List<Document>> GetAllDocuments(int personId)

@@ -35,16 +35,19 @@ namespace Documents.Xaml.Admin
         {
             rootFrame.Navigate(typeof(CreateTemplatePage));
         }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private static Template templateAdd;
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             rootFrame = e.Parameter as Frame;
             Task<List<Template>> getTemplates = ApiWork.GetAllTemplates();
-            getTemplates.Start();
-            foreach(Template template in getTemplates.Result)
+            await getTemplates.ContinueWith(t =>
             {
-                TemplatesGrid.Items.Add(template);
-            }
+                foreach (Template template in getTemplates.Result)
+                {
+                    templateAdd = template;
+                }
+            });
+            TemplatesGrid.Items.Add(templateAdd);
         }
     }
 }

@@ -22,21 +22,25 @@ namespace Documents
             this.InitializeComponent();
             //UserGrid.Items.Add(new User("test@gmail.com", "test", "Test Testovich Test"));
         }
+        private static User users;
 
         private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             rootFrame.Navigate(typeof(UserSettingsPage), e.AddedItems[0] as User);
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             rootFrame = e.Parameter as Frame;
             Task<List<User>> getUsers = ApiWork.GetAllUsers();
-            getUsers.Start();
-            foreach(User user in getUsers.Result)
+            await getUsers.ContinueWith(t =>
             {
-                UserGrid.Items.Add(user);
-            }
+                foreach (User user in getUsers.Result)
+                {
+                    users = user;
+                }
+            });
+            UserGrid.Items.Add(users);
         }
     }
 }

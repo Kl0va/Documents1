@@ -31,16 +31,19 @@ namespace Documents.Xaml.Admin
             this.InitializeComponent();
            // documentsGrid.Items.Add(new Document("Документыч1.docxыч", "На документычах", t));
         }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private static Document documentAdd;
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             rootFrame = e.Parameter as Frame;
             Task<List<Document>> getDocuments = ApiWork.GetAllDocuments(1);
-            getDocuments.Start();
-            foreach(Document document in getDocuments.Result)
+            await getDocuments.ContinueWith(t =>
             {
-                documentsGrid.Items.Add(document);
-            }
+                foreach (Document document in getDocuments.Result)
+                {
+                    documentAdd = document;
+                }
+            });
+            documentsGrid.Items.Add(documentAdd);
         }
     }
 }

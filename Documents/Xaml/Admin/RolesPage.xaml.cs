@@ -36,16 +36,19 @@ namespace Documents.Xaml.Admin
         {
             rootFrame.Navigate(typeof(CreateRolePage));
         }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private static Role roleAdd;
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             rootFrame = e.Parameter as Frame;
             Task<List<Role>> getRoles = ApiWork.GetAllRoles();
-            getRoles.Start();
-            foreach(Role role in getRoles.Result)
+            await getRoles.ContinueWith(t =>
             {
-                RoleGrid.Items.Add(role);
-            }
+                foreach (Role role in getRoles.Result)
+                {
+                    roleAdd = role;
+                }
+            });
+            RoleGrid.Items.Add(roleAdd);
         }
     }
 }
