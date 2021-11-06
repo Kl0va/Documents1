@@ -12,12 +12,12 @@ namespace Documents.Moduls
 {
      static class ApiWork
      {
-        private static string baseUrl = "https://documents-school.herokuapp.com";
+        private static string baseUrl = "http://0.0.0.0:8080";
 
 
         public static async Task<List<Document>> GetAllDocuments(int personId)
         {
-            var response = await $@"{baseUrl}".AppendPathSegment("/documents").GetStringAsync();
+            var response = await $@"{baseUrl}".AppendPathSegment("/documents/all").GetStringAsync();
             
             List<Document> documents = JsonConvert.DeserializeObject<List<Document>>(response);
 
@@ -66,19 +66,19 @@ namespace Documents.Moduls
             var response = await $"{baseUrl}".AppendPathSegment("/update_role").PutJsonAsync(role);
         }
 
-        public static async void CreateRole(Role role)
+        public static async void AddRole(Role role)
         {
             var response = await $"{baseUrl}".AppendPathSegment("/create_role").PostJsonAsync(role);
         }
 
-        public static async void CreateDocument(Document document)
+        public static async void AddDocument(Document document)
         {
-            var response = await $"{baseUrl}".AppendPathSegment("/create_document").PutJsonAsync(document);
+            var response = await $"{baseUrl}".AppendPathSegment("/create_document").PostJsonAsync(document);
         }
 
-        public static async void CreateTemplate(Template template)
+        public static async void AddTemplate(Template template)
         {
-            var response = await $"{baseUrl}".AppendPathSegment("/create_template").PutJsonAsync(template);
+            var response = await $"{baseUrl}".AppendPathSegment("/create_template").PostJsonAsync(template);
         }
      }
 }
