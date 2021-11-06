@@ -32,11 +32,11 @@ namespace Documents
         {
             rootFrame = e.Parameter as Frame;
             Task<List<User>> getUsers = ApiWork.GetAllUsers();
-            //getUsers.Start();
-            //foreach(User user in getUsers.Result)
-            //{
-            //    UserGrid.Items.Add(user);
-            //}
+            getUsers.Start();
+            foreach(User user in getUsers.Result)
+            {
+                UserGrid.Items.Add(user);
+            }
         }
     }
 }
