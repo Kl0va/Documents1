@@ -34,15 +34,15 @@
         <GridView x:Name="UserGrid" Grid.Row="1" HorizontalAlignment="Stretch" SelectionChanged="UserList_SelectionChanged" Margin="100,0,100,100">
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Grid HorizontalAlignment="Stretch">
+                    <Grid HorizontalAlignment="Stretch" Margin="10">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="{Binding FullName}" Grid.Row="0" FontSize="32" />
-                        <TextBlock Text="{Binding Email}" Grid.Row="1" FontSize="32" />
-                        <TextBlock Text="{Binding Role}" Grid.Row="2" FontSize="32" />
+                        <TextBlock Text="{Binding FirstName}" Grid.Row="0" FontSize="32" />
+                        <TextBlock Text="{Binding SecondName}" Grid.Row="1" FontSize="32" />
+                        <TextBlock Text="{Binding Email}" Grid.Row="2" FontSize="32" />
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
