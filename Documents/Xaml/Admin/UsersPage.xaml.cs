@@ -16,14 +16,13 @@ namespace Documents
     /// </summary>
     public sealed partial class UsersPage : Page
     {
+        private static readonly List<User> users = new List<User>();
         Frame rootFrame;
         public UsersPage()
         {
             this.InitializeComponent();
             //UserGrid.Items.Add(new User("test@gmail.com", "test", "Test Testovich Test"));
         }
-        private static User users;
-
         private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             rootFrame.Navigate(typeof(UserSettingsPage), e.AddedItems[0] as User);
@@ -35,12 +34,13 @@ namespace Documents
             Task<List<User>> getUsers = ApiWork.GetAllUsers();
             await getUsers.ContinueWith(t =>
             {
+                users.Clear();
                 foreach (User user in getUsers.Result)
                 {
-                    users = user;
+                    users.Add(user);
                 }
             });
-            UserGrid.Items.Add(users);
+            UserGrid.ItemsSource = users;
         }
     }
 }

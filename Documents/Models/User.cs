@@ -11,18 +11,18 @@ namespace Documents
     {
         public string Email { get; set;}
 
-        public Role Role { get; set; }
-        public Rule Rule { get; set; }
+        //public Role Role { get; set; }
+        //public Rule Rule { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string MiddleName { get; set; }
 
 
-        public User(string email, Role role, Rule rule, string firstName,string secondName,string middleName)
+        public User(string email, string firstName,string secondName,string middleName)
         {
             Email = email;
-            Role = role;
-            Rule = rule;
+            //Role = role;
+            //Rule = rule;
             FirstName = firstName;
             SecondName = secondName;
             MiddleName = middleName;

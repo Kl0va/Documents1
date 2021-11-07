@@ -25,10 +25,12 @@ namespace Documents.Xaml.Admin
     /// </summary>
     public sealed partial class RolesPage : Page
     {
+        private static readonly List<Role> roles = new List<Role>();
         Frame rootFrame;
         public RolesPage()
         {
             this.InitializeComponent();
+            RoleGrid.ItemsSource = roles;
             //RoleGrid.Items.Add(new Role("test", 0));
         }
 
@@ -36,19 +38,18 @@ namespace Documents.Xaml.Admin
         {
             rootFrame.Navigate(typeof(CreateRolePage));
         }
-        private static Role roleAdd;
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             rootFrame = e.Parameter as Frame;
             Task<List<Role>> getRoles = ApiWork.GetAllRoles();
             await getRoles.ContinueWith(t =>
             {
+                roles.Clear();
                 foreach (Role role in getRoles.Result)
                 {
-                    roleAdd = role;
+                    roles.Add(role);
                 }
             });
-            RoleGrid.Items.Add(roleAdd);
         }
     }
 }

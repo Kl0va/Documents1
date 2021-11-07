@@ -12,12 +12,12 @@ namespace Documents.Moduls
 {
      static class ApiWork
      {
-        private static string baseUrl = "http://0.0.0.0:8080";
+        private static string baseUrl = "http://127.0.0.1:8080";
 
 
         public static async Task<List<Document>> GetAllDocuments(int personId)
         {
-            var response = await $@"{baseUrl}".AppendPathSegment("/documents/all").GetStringAsync();
+            var response = await $@"{baseUrl}".AppendPathSegment("/documents").GetStringAsync();
             
             List<Document> documents = JsonConvert.DeserializeObject<List<Document>>(response);
 

@@ -25,29 +25,30 @@ namespace Documents.Xaml.Admin
     /// </summary>
     public sealed partial class TemplatesPage : Page
     {
+        private static readonly List<Template> templates = new List<Template>();
         Frame rootFrame;
         public TemplatesPage()
         {
             this.InitializeComponent();
+            TemplatesGrid.ItemsSource = templates;
         }
 
         private void createTemplateBtn_Click(object sender, RoutedEventArgs e)
         {
             rootFrame.Navigate(typeof(CreateTemplatePage));
         }
-        private static Template templateAdd;
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             rootFrame = e.Parameter as Frame;
             Task<List<Template>> getTemplates = ApiWork.GetAllTemplates();
             await getTemplates.ContinueWith(t =>
             {
+                templates.Clear();
                 foreach (Template template in getTemplates.Result)
                 {
-                    templateAdd = template;
+                    templates.Add(template);
                 }
             });
-            TemplatesGrid.Items.Add(templateAdd);
         }
     }
 }
