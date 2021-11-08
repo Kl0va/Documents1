@@ -11,7 +11,7 @@
     <AssemblyName>Documents</AssemblyName>
     <DefaultLanguage>ru-RU</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -159,16 +159,16 @@
     <Compile Include="Xaml\Admin\UserSettingsPage.xaml.cs">
       <DependentUpon>UserSettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Xaml\User\CreateDocument.xaml.cs">
+    <Compile Include="Xaml\UserPages\CreateDocument.xaml.cs">
       <DependentUpon>CreateDocument.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Xaml\User\DetailsDocument.xaml.cs">
+    <Compile Include="Xaml\UserPages\DetailsDocument.xaml.cs">
       <DependentUpon>DetailsDocument.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Xaml\User\RedactDocument.xaml.cs">
+    <Compile Include="Xaml\UserPages\RedactDocument.xaml.cs">
       <DependentUpon>RedactDocument.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Xaml\User\UserPage.xaml.cs">
+    <Compile Include="Xaml\UserPages\UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -230,19 +230,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Xaml\User\CreateDocument.xaml">
+    <Page Include="Xaml\UserPages\CreateDocument.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Xaml\User\DetailsDocument.xaml">
+    <Page Include="Xaml\UserPages\DetailsDocument.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Xaml\User\RedactDocument.xaml">
+    <Page Include="Xaml\UserPages\RedactDocument.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Xaml\User\UserPage.xaml">
+    <Page Include="Xaml\UserPages\UserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

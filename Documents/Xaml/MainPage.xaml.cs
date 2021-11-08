@@ -1,5 +1,5 @@
 ﻿using Documents.Xaml.Admin;
-using Documents.Xaml.User;
+using Documents.Xaml.UserPage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Documents.Moduls;

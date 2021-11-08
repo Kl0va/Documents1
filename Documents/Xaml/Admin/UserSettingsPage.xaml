@@ -30,7 +30,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <TextBlock Text="Роль пользователя" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="30" FontFamily="Times New Roman"/>
-            <ComboBox CornerRadius="10" Width="654" Grid.Column="1" HorizontalAlignment="Left" Height="50" VerticalAlignment="Center"/>
+            <ComboBox x:Name="RoleName" CornerRadius="10" Width="654" Grid.Column="1" HorizontalAlignment="Left" Height="50" VerticalAlignment="Center"/>
             <TextBlock Text="Возможность добавлять документы" TextWrapping="Wrap" Grid.Row="1" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Times New Roman"/>
             <CheckBox  VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="54" Width="178" FontSize="60"/>
             <TextBlock Text="Возможность просмотра всех документов" TextWrapping="Wrap" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30" FontFamily="Times New Roman"/>

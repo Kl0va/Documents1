@@ -1,5 +1,4 @@
-﻿using Documents.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,23 +15,16 @@ using Windows.UI.Xaml.Navigation;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Documents.Xaml.User
+namespace Documents.Xaml.UserPage
 {
     /// <summary>
     /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
     /// </summary>
-    public sealed partial class CreateDocument : Page
+    public sealed partial class RedactDocument : Page
     {
-        public CreateDocument()
+        public RedactDocument()
         {
-            //Template t = new Template("Шаблоныч", 1);
             this.InitializeComponent();
-            //documentsGrid.Items.Add(new Document("Документыч1.docxыч", "На документычах", t));
-        }
-
-        private void redact_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(RedactDocument));
         }
     }
 }

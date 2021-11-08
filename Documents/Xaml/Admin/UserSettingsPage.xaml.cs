@@ -13,6 +13,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Core;
+using System.Threading.Tasks;
+using Documents.Models;
+using Documents.Moduls;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,6 +26,7 @@ namespace Documents
     /// </summary>
     public sealed partial class UserSettingsPage : Page
     {
+        private static readonly List<Role> roleAdd;
         public UserSettingsPage()
         {
             this.InitializeComponent();
@@ -32,6 +36,20 @@ namespace Documents
         {
             User user = e.Parameter as User;
             headerEmail.Text = user.Email;
+            Task<List<Role>> roles = ApiWork.GetAllRoles();
+            roles.ContinueWith(t =>
+            {
+                roleAdd.Clear();
+                foreach(Role role in roles.Result)
+                {
+                    roleAdd.Add(role);
+                }
+            }
+            );
+            foreach(Role roleCheck in roleAdd)
+            {
+                RoleName.Items.Add(roleCheck.Name);
+            }
         }
     }
 }
