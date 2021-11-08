@@ -9,12 +9,10 @@ namespace Documents.Models
     class Role
     {
         public string Name { get; set; }
-        public int Count { get; set; }
         
-        public Role(string name, int count)
+        public Role(string name)
         {
             Name = name;
-            Count = count;
         }
     }
 }

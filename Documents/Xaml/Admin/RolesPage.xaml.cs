@@ -30,7 +30,6 @@ namespace Documents.Xaml.Admin
         public RolesPage()
         {
             this.InitializeComponent();
-            RoleGrid.ItemsSource = roles;
             //RoleGrid.Items.Add(new Role("test", 0));
         }
 
@@ -50,6 +49,7 @@ namespace Documents.Xaml.Admin
                     roles.Add(role);
                 }
             });
+            RoleGrid.ItemsSource = roles;
         }
     }
 }

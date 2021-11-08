@@ -30,7 +30,6 @@ namespace Documents.Xaml.Admin
         public TemplatesPage()
         {
             this.InitializeComponent();
-            TemplatesGrid.ItemsSource = templates;
         }
 
         private void createTemplateBtn_Click(object sender, RoutedEventArgs e)
@@ -49,6 +48,7 @@ namespace Documents.Xaml.Admin
                     templates.Add(template);
                 }
             });
+            TemplatesGrid.ItemsSource = templates;
         }
     }
 }

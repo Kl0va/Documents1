@@ -41,13 +41,8 @@
         <GridView Grid.Row="1" Margin="100,0,100,100" x:Name="TemplatesGrid" HorizontalAlignment="Stretch">
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Grid HorizontalAlignment="Stretch">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="32" />
-                        <TextBlock Text="{Binding Count}" Grid.Row="1" FontSize="32" />
+                    <Grid HorizontalAlignment="Stretch" Margin="10">
+                        <TextBlock Text="{Binding Name}" FontSize="30" />
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>

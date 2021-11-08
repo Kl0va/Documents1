@@ -31,7 +31,6 @@ namespace Documents.Xaml.Admin
         {
             this.InitializeComponent();
             // documentsGrid.Items.Add(new Document("Документыч1.docxыч", "На документычах", t));
-            documentsGrid.ItemsSource = documents;
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -45,6 +44,7 @@ namespace Documents.Xaml.Admin
                     documents.Add(document);
                 }
             });
+            documentsGrid.ItemsSource = documents;
         }
     }
 }
