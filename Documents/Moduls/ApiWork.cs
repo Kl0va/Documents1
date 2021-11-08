@@ -13,7 +13,12 @@ namespace Documents.Moduls
      static class ApiWork
      {
         private static string baseUrl = "http://127.0.0.1:8080";
+        private static User currentUser;
 
+        public static void ChangeUserEmail()
+        {
+
+        }
 
         public static async Task<List<Document>> GetAllDocuments(int personId)
         {
@@ -71,7 +76,11 @@ namespace Documents.Moduls
             var response = await $"{baseUrl}".AppendPathSegment("/create_role").PostJsonAsync(role);
         }
 
-        public static async void AddDocument(Document document)
+
+        public static void AddDocument(string name, string desc, string template, int documentRec, byte file) => 
+            AddDocument(new Document(name,desc,template,currentUser.Email,documentRec,file));
+        
+        private static async void AddDocument(Document document)
         {
             var response = await $"{baseUrl}".AppendPathSegment("/create_document").PostJsonAsync(document);
         }

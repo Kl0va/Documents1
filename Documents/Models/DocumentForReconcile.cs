@@ -8,6 +8,7 @@ namespace Documents.Models
 {
     class DocumentForReconcile
     {
+        public int ID { get; set; }
         public User User { get; set; }
         public DateTime TimeOfAgreement { get; set; }
         public bool Agreed { get; set; }

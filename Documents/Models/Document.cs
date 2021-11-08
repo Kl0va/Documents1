@@ -10,12 +10,12 @@ namespace Documents.Models
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public User User { get; set; }
-        public Template Type { get; set; }
-        public DocumentForReconcile DocumentRec { get; set; }
+        public string User { get; set; }
+        public string Type { get; set; }
+        public int DocumentRec { get; set; }
         public byte File { get; set; }
        
-        public Document(string name, string description, Template type, User user, DocumentForReconcile documentRec, byte file)
+        public Document(string name, string description, string type, string user, int documentRec, byte file)
         {
             Name = name;
             Description = description;

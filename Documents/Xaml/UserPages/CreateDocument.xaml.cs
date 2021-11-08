@@ -52,7 +52,7 @@ namespace Documents.Xaml.UserPage
                 }
             });
             foreach (Template template in templates) {
-                docTypeCombo.Items.Add(template.Name);
+                docTypeCombo.Items.Add(template);
             }
 
             await getUsers.ContinueWith(t =>
@@ -67,7 +67,13 @@ namespace Documents.Xaml.UserPage
             {
                 forReconciliationCombo.Items.Add(user1.Email);
             }
+             (docTypeCombo.SelectedItem as Template).Name;
+             ApiWork.AddDocument(docName.Text,docDescription.Text,docTypeCombo.SelectedItem.ToString(),(forReconciliationCombo.SelectedItem as DocumentForReconcile).ID,);
         }
 
+        private void load_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
