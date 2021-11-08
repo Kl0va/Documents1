@@ -19,7 +19,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox CornerRadius="10" Grid.Column="1" HorizontalAlignment="Center" Name="pageHeader" PlaceholderText="Название шаблона" VerticalAlignment="Center" FontSize="34" />
+            <TextBox CornerRadius="10" Grid.Column="1" HorizontalAlignment="Center" Name="pageHeader" PlaceholderText="Название шаблона" VerticalAlignment="Center" FontSize="25" />
             <Button CornerRadius="10" Grid.Column="2" x:Name="save" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Center" Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" ></TextBlock>

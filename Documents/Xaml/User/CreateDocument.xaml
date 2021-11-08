@@ -34,7 +34,7 @@
         <GridView x:Name="documentsGrid" Grid.Row="6" HorizontalAlignment="Stretch" Margin="100,20,100,20" >
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Grid HorizontalAlignment="Stretch" CornerRadius="10">
+                    <Grid HorizontalAlignment="Stretch" CornerRadius="10" Background="DarkGray">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>

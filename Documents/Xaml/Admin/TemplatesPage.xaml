@@ -39,10 +39,10 @@
         </Grid>
 
         <GridView Grid.Row="1" Margin="100,0,100,100" x:Name="TemplatesGrid" HorizontalAlignment="Stretch">
-            <GridView.ItemTemplate>
+            <GridView.ItemTemplate >
                 <DataTemplate>
-                    <Grid HorizontalAlignment="Stretch" Margin="10">
-                        <TextBlock Text="{Binding Name}" FontSize="30" />
+                    <Grid HorizontalAlignment="Stretch" Margin="10" Width="250"  BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
+                        <TextBlock Text="{Binding Name}" FontSize="25" />
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>

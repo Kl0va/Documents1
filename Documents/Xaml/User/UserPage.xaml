@@ -85,15 +85,15 @@
             <GridView x:Name="documentsGrid" Grid.Column="3" Margin="100,0,100,100" SelectionChanged="documentsGrid_SelectionChanged">
                 <GridView.ItemTemplate>
                     <DataTemplate>
-                        <Grid HorizontalAlignment="Stretch" CornerRadius="10" >
+                        <Grid HorizontalAlignment="Stretch"  Width="250"  BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="32" />
-                            <TextBlock Text="{Binding Description}" Grid.Row="1" FontSize="32" />
-                            <TextBlock Text="{Binding Type}" Grid.Row="2" FontSize="32" />
+                            <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="25" />
+                            <TextBlock Text="{Binding Description}" Grid.Row="1" FontSize="25" />
+                            <TextBlock Text="{Binding Type}" Grid.Row="2" FontSize="25" />
                         </Grid>
                     </DataTemplate>
                 </GridView.ItemTemplate>

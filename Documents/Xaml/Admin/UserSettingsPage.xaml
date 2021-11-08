@@ -16,10 +16,7 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="headerEmail" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>
         <Grid Grid.Row="1" Margin="100,0,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -29,20 +26,14 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock Text="Роль пользователя" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="30" FontFamily="Times New Roman"/>
-            <ComboBox CornerRadius="10" Width="654" Grid.Column="1" HorizontalAlignment="Left" Height="50" VerticalAlignment="Center"/>
-            <TextBlock Text="Возможность добавлять документы" TextWrapping="Wrap" Grid.Row="1" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Times New Roman"/>
-            <CheckBox  VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="54" Width="178" FontSize="60"/>
-            <TextBlock Text="Возможность просмотра всех документов" TextWrapping="Wrap" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30" FontFamily="Times New Roman"/>
-            <CheckBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Height="54" Width="178" FontSize="60"/>
-            <TextBlock Text="Возможность отправки документов на согласование" TextWrapping="Wrap" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30"/>
-            <CheckBox VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3" Height="54" Width="178" FontSize="60"/>
-            <TextBlock Text="Отправка документов для ознакомления" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30" FontFamily="Times New Roman"/>
-            <TextBlock Text="Возможность получать документы на согласование" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30" FontFamily="Times New Roman"/>
-            <CheckBox VerticalAlignment="Center" HorizontalAlignment="Left" Height="54" Width="178" Grid.Column="1" Grid.Row="4" FontSize="60"/>
-            <CheckBox VerticalAlignment="Center" HorizontalAlignment="Left" Height="54" Width="178" FontSize="60" Grid.Column="1" Grid.Row="5"/>
+            <ComboBox PlaceholderText="Роль пользователя" CornerRadius="10" Width="654" Grid.Column="1" FontSize="25" HorizontalAlignment="Left" Height="50" VerticalAlignment="Center"/>
+            <CheckBox  VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"  FontSize="25" Content="Возможность добавлять документы"/>
+            <CheckBox VerticalAlignment="Center" Content="Возможность просмотра всех документов" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left"  FontSize="25"/>
+            <CheckBox Content="Возможность отправки документов на согласование" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3"  FontSize="25"/>
+            <CheckBox Content="Отправка документов для ознакомления" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="4" FontSize="25"/>
+            <CheckBox Content="Возможность получать документы на согласование" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="25" Grid.Column="1" Grid.Row="5"/>
         </Grid>
-        <Button CornerRadius="10" Grid.Row="2"  FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0">
+        <Button CornerRadius="10" Grid.Row="2"  FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0">
             <StackPanel>
                 <TextBlock HorizontalAlignment="Center" Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                 <TextBlock>Сохранить</TextBlock>
