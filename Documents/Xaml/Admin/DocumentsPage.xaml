@@ -42,14 +42,14 @@
             <GridView x:Name="documentsGrid"  HorizontalAlignment="Stretch" Margin="100,0,100,100">
                 <GridView.ItemTemplate>
                     <DataTemplate>
-                        <Grid HorizontalAlignment="Stretch" Margin="10">
+                        <Grid HorizontalAlignment="Stretch" Margin="10" Width="250"  BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <!--<RowDefinition/>-->
                             </Grid.RowDefinitions>
-                            <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="30" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding Description}" Grid.Row="1" FontSize="30" HorizontalAlignment="Right"/>
+                            <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="25" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Description}" Grid.Row="1" FontSize="25" HorizontalAlignment="Right"/>
                             <!--<TextBlock Text="{Binding Type}" Grid.Row="2" FontSize="32" />-->
                         </Grid>
                     </DataTemplate>

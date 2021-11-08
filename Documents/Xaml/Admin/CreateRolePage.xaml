@@ -17,28 +17,30 @@
             <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
 
-        <TextBox CornerRadius="10" x:Name="roleName" FontSize="35"
+        <TextBox CornerRadius="10" x:Name="roleName" FontSize="25"
                  VerticalAlignment="Center"
                  TextAlignment="Center"
                  PlaceholderText="Название роли" Margin="200,0,200,0"/>
 
-        <ComboBox CornerRadius="10" x:Name="templatesCombo" 
+        <ComboBox Margin="200,0,0,0" CornerRadius="10" x:Name="templatesCombo" 
                   Grid.Row="1" 
-                  HorizontalAlignment="Center" 
+                  HorizontalAlignment="Left" 
                   VerticalAlignment="Center" 
                   PlaceholderText="Шаблоны"
-                  FontSize="35"/>
+                  FontSize="25"/>
 
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+
             </Grid.RowDefinitions>
 
-            <CheckBox FontSize="35" x:Name="deleteCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Удаление документов"/>
-            <CheckBox FontSize="35" x:Name="checkCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Просмотр документов" Grid.Row="1"/>
-            <CheckBox FontSize="35" x:Name="changeCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Изменение документов" Grid.Row="2"/>
+            <CheckBox FontSize="25" Margin="200,0,0,0" x:Name="deleteCheck" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Удаление документов"/>
+            <CheckBox FontSize="25" Margin="200,0,0,0" x:Name="checkCheck" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Просмотр документов" Grid.Row="1"/>
+            <CheckBox FontSize="25" Margin="200,0,0,0" x:Name="changeCheck" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Изменение документов" Grid.Row="2"/>
         </Grid>
 
         <Grid Grid.Row="3">
@@ -46,13 +48,13 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button CornerRadius="10" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="createRole"  Grid.Column="0">
+            <Button CornerRadius="10" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="createRole"  Grid.Column="0">
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Center" Text="&#xE710;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                     <TextBlock>Создать</TextBlock>
                 </StackPanel>
             </Button>
-            <Button CornerRadius="10" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="saveRole"  Grid.Column="1">
+            <Button CornerRadius="10" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="saveRole"  Grid.Column="1">
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Center" Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                     <TextBlock>Сохранить</TextBlock>
