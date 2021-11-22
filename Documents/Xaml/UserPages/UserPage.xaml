@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" FontSize="25"
+            <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" FontSize="24"
                     Content="&#xE700;" Click="HamburgerButton_Click" VerticalAlignment="Bottom"/>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>

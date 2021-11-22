@@ -26,7 +26,7 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <ComboBox PlaceholderText="Роль пользователя" CornerRadius="10" Width="654" Grid.Column="1" FontSize="25" HorizontalAlignment="Left" Height="50" VerticalAlignment="Center"/>
+            <ComboBox PlaceholderText="Роль пользователя" x:Name="RoleName" CornerRadius="10" Width="654" Grid.Column="1" FontSize="25" HorizontalAlignment="Left" Height="50" VerticalAlignment="Center"/>
             <CheckBox  VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"  FontSize="25" Content="Возможность добавлять документы"/>
             <CheckBox VerticalAlignment="Center" Content="Возможность просмотра всех документов" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left"  FontSize="25"/>
             <CheckBox Content="Возможность отправки документов на согласование" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3"  FontSize="25"/>
