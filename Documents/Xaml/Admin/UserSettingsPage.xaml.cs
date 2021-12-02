@@ -26,7 +26,7 @@ namespace Documents
     /// </summary>
     public sealed partial class UserSettingsPage : Page
     {
-        private List<Role> roles = new List<Role>();
+        private readonly List<Role> roles = new List<Role>();
         public UserSettingsPage()
         {
             this.InitializeComponent();
@@ -36,20 +36,17 @@ namespace Documents
         {
             User user = e.Parameter as User;
             headerEmail.Text = user.Email;
-            Task<List<Role>> roles = ApiWork.GetAllRoles();
-            roles.ContinueWith(t =>
+            Task<List<Role>> rolesTask = ApiWork.GetAllRoles();
+            rolesTask.ContinueWith(task =>
             {
-                roleAdd.Clear();
-                foreach(Role role in roles.Result)
+                roles.Clear();
+                foreach(Role role in task.Result)
                 {
-                    roleAdd.Add(role);
+                    roles.Add(role);
                 }
             }
             );
-            foreach(Role roleCheck in roleAdd)
-            {
-                RoleName.Items.Add(roleCheck.Name);
-            }
+            RoleName.ItemsSource = roles;
         }
     }
 }

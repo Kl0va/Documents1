@@ -14,5 +14,7 @@ namespace Documents.Models
         {
             Name = name;
         }
+
+        public override string ToString() => Name;
     }
 }
