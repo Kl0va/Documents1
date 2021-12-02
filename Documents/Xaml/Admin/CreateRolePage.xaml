@@ -48,13 +48,13 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button CornerRadius="10" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="createRole"  Grid.Column="0">
+            <Button CornerRadius="10" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="createRole"  Grid.Column="0" Click="createRole_Click">
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Center" Text="&#xE710;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                     <TextBlock>Создать</TextBlock>
                 </StackPanel>
             </Button>
-            <Button CornerRadius="10" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="saveRole"  Grid.Column="1">
+            <Button CornerRadius="10" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="saveRole"  Grid.Column="1" Click="saveRole_Click">
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Center" Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                     <TextBlock>Сохранить</TextBlock>

@@ -49,7 +49,7 @@ namespace Documents.Moduls
 
         public static async Task<List<Role>> GetAllRoles()
         {
-            var response = await $@"{baseUrl}".AppendPathSegment("/roles").GetStringAsync();
+            var response = await $@"{baseUrl}".AppendPathSegment("/role").GetStringAsync();
 
             List<Role> documents = JsonConvert.DeserializeObject<List<Role>>(response);
 
@@ -58,22 +58,22 @@ namespace Documents.Moduls
 
         public static async void UpdateUser(User user) 
         {
-            var response = await $"{baseUrl}".AppendPathSegment("/update_user").PutJsonAsync(user);
+            var response = await $"{baseUrl}".AppendPathSegment("/user").PutJsonAsync(user).ReceiveString();
         }
 
         public static async void UpdateDocument(Document document)
         {
-            var response = await $"{baseUrl}".AppendPathSegment("/update_document").PutJsonAsync(document);
+            var response = await $"{baseUrl}".AppendPathSegment("/document").PutJsonAsync(document).ReceiveString();
         }
 
         public static async void UpdateRole(Role role)
         {
-            var response = await $"{baseUrl}".AppendPathSegment("/update_role").PutJsonAsync(role);
+            var response = await $"{baseUrl}".AppendPathSegment("/role").PutJsonAsync(role).ReceiveString();
         }
 
         public static async void AddRole(Role role)
         {
-            var response = await $"{baseUrl}".AppendPathSegment("/create_role").PostJsonAsync(role);
+            var response = await $"{baseUrl}".AppendPathSegment("/role").PostJsonAsync(role).ReceiveString();
         }
 
 
@@ -82,12 +82,12 @@ namespace Documents.Moduls
         
         private static async void AddDocument(Document document)
         {
-            var response = await $"{baseUrl}".AppendPathSegment("/create_document").PostJsonAsync(document);
+            var response = await $"{baseUrl}".AppendPathSegment("/create_document").PostJsonAsync(document).ReceiveString();
         }
 
         public static async void AddTemplate(Template template)
         {
-            var response = await $"{baseUrl}".AppendPathSegment("/create_template").PostJsonAsync(template);
+            var response = await $"{baseUrl}".AppendPathSegment("/create_template").PostJsonAsync(template).ReceiveString();
         }
      }
 }
