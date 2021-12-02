@@ -40,11 +40,7 @@ namespace Documents
                     users.Add(user);
                 }
             });
-            foreach(User user1 in users)
-            {
-                UserGrid.Items.Add(user1);
-            }
-            //UserGrid.ItemsSource = users;
+            UserGrid.ItemsSource = users;
         }
     }
 }

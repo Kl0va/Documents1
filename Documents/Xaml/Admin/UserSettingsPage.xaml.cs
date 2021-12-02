@@ -26,7 +26,7 @@ namespace Documents
     /// </summary>
     public sealed partial class UserSettingsPage : Page
     {
-        private static readonly List<Role> roleAdd;
+        private List<Role> roles = new List<Role>();
         public UserSettingsPage()
         {
             this.InitializeComponent();

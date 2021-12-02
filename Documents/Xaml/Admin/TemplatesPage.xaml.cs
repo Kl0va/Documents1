@@ -36,6 +36,7 @@ namespace Documents.Xaml.Admin
         {
             rootFrame.Navigate(typeof(CreateTemplatePage));
         }
+
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             rootFrame = e.Parameter as Frame;

@@ -51,5 +51,10 @@ namespace Documents.Xaml.Admin
             });
             RoleGrid.ItemsSource = roles;
         }
+
+        private void RoleGrid_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            rootFrame.Navigate(typeof(CreateRolePage), e.ClickedItem as Role);
+        }
     }
 }

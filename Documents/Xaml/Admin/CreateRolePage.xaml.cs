@@ -29,50 +29,67 @@ namespace Documents.Xaml.Admin
         public CreateRolePage()
         {
             this.InitializeComponent();
-            templatesCombo.IsEnabled = false;
-            deleteCheck.IsEnabled = false;
-            checkCheck.IsEnabled = false;
-            changeCheck.IsEnabled = false;
-            saveRole.IsEnabled = false;
+        }
+
+
+
+        private bool UIEnabled
+        {
+            set
+            {
+                templatesCombo.IsEnabled = value;
+                deleteCheck.IsEnabled = value;
+                checkCheck.IsEnabled = value;
+                changeCheck.IsEnabled = value;
+                saveRole.IsEnabled = value;
+            }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter.GetType() == typeof(Role))
+            {
+                Role role = e.Parameter as Role;
+                roleName.Text = role.Name;
+                createRole.IsEnabled = false;
+                Task<List<Template>> templatesTask = ApiWork.GetAllTemplates();
+                templatesTask.ContinueWith(task =>
+                {
+                    
+                });
+            }
+            else
+            {
+                UIEnabled = false;
+            }
+
         }
 
         private async void createRole_Click(object sender, RoutedEventArgs e)
         {
-            bool check = true;
-            var role = new Role(roleName.Text);
             Task<List<Role>> getRoles = ApiWork.GetAllRoles();
-            await getRoles.ContinueWith(t =>
+            await getRoles.ContinueWith(task =>
             {
-                foreach(Role roles in getRoles.Result)
+                string name = roleName.Text;
+                if (task.Result.Any(r => r.Name == name))
                 {
-                    if(roleName.Text == roles.Name)
+                    ContentDialog alreadyExistDialog = new ContentDialog()
                     {
-                        ContentDialog deleteFileDialog = new ContentDialog()
-                        {
-                            Title = "Ошибка",
-                            Content = "Роль с таким названием уже существует",
-                            PrimaryButtonText = "ОК"
-                        };
-                        check = false;
-                    }
+                        Title = "Ошибка",
+                        Content = "Роль с таким названием уже существует",
+                        PrimaryButtonText = "ОК"
+                    };
+                }
+                else
+                {
+                    ApiWork.AddRole(new Role(name));
                 }
             });
-            Thread.Sleep(100);
-            if (check) 
-            { 
-                ApiWork.AddRole(role);
-                templatesCombo.IsEnabled = true;
-                deleteCheck.IsEnabled = true;
-                checkCheck.IsEnabled = true;
-                changeCheck.IsEnabled = true;
-                saveRole.IsEnabled = true;
-                createRole.IsEnabled = false;
-            }
         }
 
         private void saveRole_Click(object sender, RoutedEventArgs e)
         {
-                
+
         }
     }
 }

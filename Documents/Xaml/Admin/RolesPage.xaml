@@ -37,7 +37,7 @@
 
         </Grid>
 
-        <GridView Grid.Row="1" Margin="100,0,100,100" x:Name="RoleGrid" HorizontalAlignment="Stretch">
+        <GridView Grid.Row="1" Margin="100,0,100,100" x:Name="RoleGrid" HorizontalAlignment="Stretch" ItemClick="RoleGrid_ItemClick">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Grid HorizontalAlignment="Stretch" Margin="10" Width="250"  BorderThickness="2" BorderBrush="Gray" CornerRadius="10">

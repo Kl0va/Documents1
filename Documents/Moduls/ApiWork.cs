@@ -22,7 +22,7 @@ namespace Documents.Moduls
 
         public static async Task<List<Document>> GetAllDocuments(int personId)
         {
-            var response = await $@"{baseUrl}".AppendPathSegment("/documents").GetStringAsync();
+            var response = await $@"{baseUrl}".AppendPathSegment("/document").GetStringAsync();
             
             List<Document> documents = JsonConvert.DeserializeObject<List<Document>>(response);
 
@@ -31,7 +31,7 @@ namespace Documents.Moduls
 
         public static async Task<List<User>> GetAllUsers()
         {
-            var response = await $@"{baseUrl}".AppendPathSegment("/users").GetStringAsync();
+            var response = await $@"{baseUrl}".AppendPathSegment("/user").GetStringAsync();
 
             List<User> documents = JsonConvert.DeserializeObject<List<User>>(response);
 
@@ -40,7 +40,7 @@ namespace Documents.Moduls
         
         public static async Task<List<Template>> GetAllTemplates()
         {
-            var response = await $@"{baseUrl}".AppendPathSegment("/templates").GetStringAsync();
+            var response = await $@"{baseUrl}".AppendPathSegment("/template").GetStringAsync();
 
             List<Template> documents = JsonConvert.DeserializeObject<List<Template>>(response);
 
@@ -82,12 +82,12 @@ namespace Documents.Moduls
         
         private static async void AddDocument(Document document)
         {
-            var response = await $"{baseUrl}".AppendPathSegment("/create_document").PostJsonAsync(document).ReceiveString();
+            var response = await $"{baseUrl}".AppendPathSegment("/document").PostJsonAsync(document).ReceiveString();
         }
 
         public static async void AddTemplate(Template template)
         {
-            var response = await $"{baseUrl}".AppendPathSegment("/create_template").PostJsonAsync(template).ReceiveString();
+            var response = await $"{baseUrl}".AppendPathSegment("/template").PostJsonAsync(template).ReceiveString();
         }
      }
 }
