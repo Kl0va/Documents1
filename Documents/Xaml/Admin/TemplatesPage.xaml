@@ -29,7 +29,7 @@
                 <Button CornerRadius="10" Grid.Column="1"  FontFamily="Segoe MDL2 Assets" FontSize="20" Content="&#xf78b;"  />
 
             </Grid>
-            <Button Grid.Column="2" CornerRadius="10" Margin="10" x:Name="createTemplateBtn"  HorizontalAlignment="Right" Click="createTemplateBtn_Click">
+            <Button Grid.Column="2" CornerRadius="10" Margin="10" x:Name="createTemplateBtn"  HorizontalAlignment="Center" Click="createTemplateBtn_Click">
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Center" Text="&#xE710;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                     <TextBlock>Создать шаблон</TextBlock>

@@ -28,7 +28,7 @@
                 <Button CornerRadius="10" Grid.Column="1"  FontFamily="Segoe MDL2 Assets" FontSize="20" Content="&#xf78b;"  />
 
             </Grid>
-            <Button Grid.Column="2" CornerRadius="10" Margin="10" x:Name="createRoleBtn"  HorizontalAlignment="Right" Click="createRoleBtn_Click">
+            <Button Grid.Column="2" CornerRadius="10" Margin="0,0,10,0" x:Name="createRoleBtn" Click="createRoleBtn_Click" Width="106" HorizontalAlignment="Center">
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Center" Text="&#xE710;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                     <TextBlock>Создать роль</TextBlock>
