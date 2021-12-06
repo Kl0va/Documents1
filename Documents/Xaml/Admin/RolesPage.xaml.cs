@@ -30,7 +30,6 @@ namespace Documents.Xaml.Admin
         public RolesPage()
         {
             this.InitializeComponent();
-            //RoleGrid.Items.Add(new Role("test", 0));
         }
 
         private void createRoleBtn_Click(object sender, RoutedEventArgs e)

@@ -267,6 +267,9 @@
     <PackageReference Include="Syncfusion.DocIO.UWP">
       <Version>19.3.0.45</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Pdf.UWP">
+      <Version>19.3.0.56</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
