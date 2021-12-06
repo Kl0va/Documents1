@@ -48,5 +48,24 @@ namespace Documents
             );
             RoleName.ItemsSource = roles;
         }
+
+        private static string ID;
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Task<List<Role>> roleTask = ApiWork.GetAllRoles();
+            roleTask.ContinueWith(task =>
+            {
+                if(task.Result.Any(r => r.Name == RoleName.Text))
+                {
+                    foreach(Role role in task.Result)
+                    {
+                        ID = role.Name;
+                    }
+                }
+            });
+            Rule ruleAdd = new Rule(CheckAdd.IsChecked.Value, CheckShow.IsChecked.Value, CheckSend.IsChecked.Value, CheckReconcile.IsChecked.Value, CheckEdit.IsChecked.Value, CheckFamiliarize.IsChecked.Value);
+            ApiWork.UpdateRule(ruleAdd);
+            ApiWork.UpdateUser(new User(ID));
+        }
     }
 }

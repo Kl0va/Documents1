@@ -60,6 +60,10 @@ namespace Documents.Moduls
         {
             var response = await $"{baseUrl}".AppendPathSegment("/user").PutJsonAsync(user).ReceiveString();
         }
+        public static async void UpdateRule(Rule rule)
+        {
+            var response = await $"{baseUrl}".AppendPathSegment("/rule").PostJsonAsync(rule).ReceiveString();
+        }
 
         public static async void UpdateDocument(Document document)
         {
