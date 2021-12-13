@@ -30,7 +30,6 @@ namespace Documents.Xaml.Admin
         public DocumentsPage()
         {
             this.InitializeComponent();
-            // documentsGrid.Items.Add(new Document("Документыч1.docxыч", "На документычах", t));
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {

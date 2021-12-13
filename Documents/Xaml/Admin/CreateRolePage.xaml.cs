@@ -26,6 +26,7 @@ namespace Documents.Xaml.Admin
     /// </summary>
     public sealed partial class CreateRolePage : Page
     {
+        //private List<>
         public CreateRolePage()
         {
             this.InitializeComponent();
