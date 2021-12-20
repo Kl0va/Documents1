@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Documents.Moduls;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,11 @@ namespace Documents.Xaml.Admin
         public CreateTemplatePage()
         {
             this.InitializeComponent();
+        }
+
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+            Moduls.Documents.CreatePDF(DocumentText.TextDocument.ToString());
         }
     }
 }

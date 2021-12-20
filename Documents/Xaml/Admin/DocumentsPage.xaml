@@ -29,7 +29,7 @@
                 <Button CornerRadius="10" Grid.Column="1"  FontFamily="Segoe MDL2 Assets" FontSize="20" Content="&#xf78b;"  />
 
             </Grid>
-            <Button CornerRadius="10" x:Name="addDocument"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2">
+            <Button CornerRadius="10" x:Name="addDocument"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Click="addDocument_Click">
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Center" Text="&#xE710;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                     <TextBlock>Добавить документ</TextBlock>

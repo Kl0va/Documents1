@@ -34,7 +34,7 @@ namespace Documents.Xaml.Admin
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             rootFrame = e.Parameter as Frame;
-            Task<List<Document>> getDocuments = ApiWork.GetAllDocuments(1);
+            Task<List<Document>> getDocuments = ApiWork.GetAllAdminDocuments();
             await getDocuments.ContinueWith(t =>
             {
                 documents.Clear();
@@ -44,6 +44,11 @@ namespace Documents.Xaml.Admin
                 }
             });
             documentsGrid.ItemsSource = documents;
+        }
+
+        private void addDocument_Click(object sender, RoutedEventArgs e)
+        {
+            rootFrame.Navigate(typeof(CreateTemplatePage));
         }
     }
 }

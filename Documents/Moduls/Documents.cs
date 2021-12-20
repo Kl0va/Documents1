@@ -16,7 +16,6 @@ namespace Documents.Moduls
         public static void CreatePDF(string text)
         {
             PdfDocument document = new PdfDocument();
-
             PdfPage page = document.Pages.Add();
             PdfGraphics graphics = page.Graphics;
             PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 20);
