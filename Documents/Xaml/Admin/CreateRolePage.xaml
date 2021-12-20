@@ -27,7 +27,7 @@
                   HorizontalAlignment="Left" 
                   VerticalAlignment="Center" 
                   PlaceholderText="Шаблоны"
-                  FontSize="25" Text="{Binding Path=name}"/>
+                  FontSize="25" Text="{Binding Path=name}" SelectionChanged="templatesCombo_SelectionChanged"/>
 
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>

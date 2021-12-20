@@ -8,13 +8,13 @@ namespace Documents.Models
 {
     class Restriction
     {
-        public Template typeName { get; set; }
+        public string typeName { get; set; }
         public bool delete { get; set; }
         public bool check { get; set; }
         public bool change { get; set; }
-        public Role role { get; set; }
+        public string role { get; set; }
 
-        public Restriction(Template template, bool Delete,bool Check,bool Change,Role Role)
+        public Restriction(string template, bool Delete,bool Check,bool Change,string Role)
         {
             typeName = template;
             delete = Delete;

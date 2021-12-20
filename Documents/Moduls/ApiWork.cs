@@ -64,6 +64,14 @@ namespace Documents.Moduls
             List<Role> documents = JsonConvert.DeserializeObject<List<Role>>(response);
 
             return documents;
+        } 
+        public static async Task<List<Restriction>> GetAllRestrictions()
+        {
+            var response = await $@"{baseUrl}".AppendPathSegment("/restriction").GetStringAsync();
+
+            List<Restriction> documents = JsonConvert.DeserializeObject<List<Restriction>>(response);
+
+            return documents;
         }
 
         public static async void UpdateUser(User user) => await $"{baseUrl}".AppendPathSegment("/user").PutJsonAsync(user).ReceiveString();
@@ -76,6 +84,8 @@ namespace Documents.Moduls
 
         public static async void UpdateRole(Role role) => await $"{baseUrl}".AppendPathSegment("/role").PutJsonAsync(role).ReceiveString();
 
+        public static async void UpdateRestriction(Restriction restriction) => await $"{baseUrl}".AppendPathSegment("/restriction").PutJsonAsync(restriction).ReceiveString();
+
         public static async void AddRole(Role role) => await $"{baseUrl}".AppendPathSegment("/role").PostJsonAsync(role).ReceiveString();
         
 
@@ -87,6 +97,8 @@ namespace Documents.Moduls
         
 
         public static async void AddTemplate(Template template) => await $"{baseUrl}".AppendPathSegment("/template").PostJsonAsync(template).ReceiveString();
-        
-     }
+
+        public static async void AddRestriction(Restriction restriction) => await $"{baseUrl}".AppendPathSegment("/restriction").PostJsonAsync(restriction).ReceiveString();
+
+    }
 }
