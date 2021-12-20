@@ -55,11 +55,11 @@ namespace Documents
             Task<List<Role>> roleTask = ApiWork.GetAllRoles();
             roleTask.ContinueWith(task =>
             {
-                if(task.Result.Any(r => r.Name == RoleName.Text))
+                if(task.Result.Any(r => r.name == RoleName.Text))
                 {
                     foreach(Role role in task.Result)
                     {
-                        ID = role.Name;
+                        ID = role.name;
                     }
                 }
             });

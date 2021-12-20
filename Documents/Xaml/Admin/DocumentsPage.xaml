@@ -48,8 +48,8 @@
                                 <RowDefinition/>
                                 <!--<RowDefinition/>-->
                             </Grid.RowDefinitions>
-                            <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="25" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding Description}" Grid.Row="1" FontSize="25" HorizontalAlignment="Right"/>
+                            <TextBlock Text="{Binding name}" Grid.Row="0" FontSize="25" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding sampleByte}" Grid.Row="1" FontSize="25" HorizontalAlignment="Right"/>
                             <!--<TextBlock Text="{Binding Type}" Grid.Row="2" FontSize="32" />-->
                         </Grid>
                     </DataTemplate>

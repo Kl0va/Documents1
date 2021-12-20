@@ -8,19 +8,19 @@ namespace Documents.Models
 {
     class Restriction
     {
-        public Template Template { get; set; }
-        public bool Delete { get; set; }
-        public bool Check { get; set; }
-        public bool Change { get; set; }
-        public Role Role { get; set; }
+        public Template typeName { get; set; }
+        public bool delete { get; set; }
+        public bool check { get; set; }
+        public bool change { get; set; }
+        public Role role { get; set; }
 
-        public Restriction(Template template, bool delete,bool check,bool change,Role role)
+        public Restriction(Template template, bool Delete,bool Check,bool Change,Role Role)
         {
-            Template = template;
-            Delete = delete;
-            Check = check;
-            Change = change;
-            Role = role;
+            typeName = template;
+            delete = Delete;
+            check = Check;
+            change = Change;
+            role = Role;
         }
     }
 }

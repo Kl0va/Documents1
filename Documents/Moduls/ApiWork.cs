@@ -29,6 +29,7 @@ namespace Documents.Moduls
             return documents;
         }
 
+
         public static async Task<List<Document>> GetAllDocuments()
         {
             var response = await $@"{baseUrl}".AppendPathSegment("/admin").AppendPathSegment("/document").GetStringAsync();

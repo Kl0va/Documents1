@@ -8,13 +8,13 @@ namespace Documents.Models
 {
     class Role
     {
-        public string Name { get; set; }
+        public string name { get; set; }
         
-        public Role(string name)
+        public Role(string Name)
         {
-            Name = name;
+            name = Name;
         }
 
-        public override string ToString() => Name;
+        public override string ToString() => name;
     }
 }

@@ -43,9 +43,9 @@
                     <RowDefinition Height="0.05*"/>
                     <RowDefinition Height="0.05*"/>
                 </Grid.RowDefinitions>
-                <RichEditBox Grid.Row="0" PlaceholderText="Содержание шапки" FontSize="20" Margin="0,0,20,0"></RichEditBox>
+                <RichEditBox x:Name="Header" Grid.Row="0" PlaceholderText="Содержание шапки" FontSize="20" Margin="0,0,20,0"></RichEditBox>
 
-                <Button CornerRadius="10" Grid.Row="1" x:Name="addhat" FontSize="20" Margin="20"  HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button CornerRadius="10" Grid.Row="1" x:Name="addhat" FontSize="20" Margin="20"  HorizontalAlignment="Center" VerticalAlignment="Top" Click="addhat_Click">
                     <StackPanel>
                         <TextBlock HorizontalAlignment="Center" Text="&#xED0E;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                         <TextBlock>Добавить шапку</TextBlock>
