@@ -8,18 +8,18 @@ namespace Documents.Models
 {
     class Template
     {
-        public string Name { get; set; }
-        public byte SampleBytea { get; set; }
+        public string name { get; set; }
+        public string sampleByte { get; set; }
 
-        public Template(string name,byte sampleBytea)
+        public Template(string Name,string SampleBytea)
         {
-            Name = name;
-            SampleBytea = sampleBytea;
+            name = Name;
+            sampleByte = SampleBytea;
         }
 
         public override string ToString()
         {
-            return Name;
+            return name;
         }
     }
 }

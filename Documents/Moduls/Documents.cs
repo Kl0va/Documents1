@@ -13,10 +13,9 @@ namespace Documents.Moduls
 {
    static class Documents
     {
-        public static void CreatePDF(string text)
+        public static void CreatePDF(string text,string name)
         {
             PdfDocument document = new PdfDocument();
-
             PdfPage page = document.Pages.Add();
             PdfGraphics graphics = page.Graphics;
             PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 20);
@@ -24,7 +23,9 @@ namespace Documents.Moduls
             MemoryStream ms = new MemoryStream();
             document.Save(ms);
             document.Close(true);
-            Save(ms, "");
+            Models.Template template = new Models.Template(name,text);
+            ApiWork.AddTemplate(template);
+            Save(ms, name);
         }
 
         public static async void Save(Stream stream, string filename)

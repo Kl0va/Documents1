@@ -27,13 +27,14 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <ComboBox PlaceholderText="Роль пользователя" x:Name="RoleName" CornerRadius="10" Width="654" Grid.Column="1" FontSize="25" HorizontalAlignment="Left" Height="50" VerticalAlignment="Center"/>
-            <CheckBox  VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"  FontSize="25" Content="Возможность добавлять документы"/>
-            <CheckBox VerticalAlignment="Center" Content="Возможность просмотра всех документов" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left"  FontSize="25"/>
-            <CheckBox Content="Возможность отправки документов на согласование" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3"  FontSize="25"/>
-            <CheckBox Content="Отправка документов для ознакомления" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="4" FontSize="25"/>
-            <CheckBox Content="Возможность получать документы на согласование" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="25" Grid.Column="1" Grid.Row="5"/>
+            <CheckBox x:Name="CheckAdd"  VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"  FontSize="25" Content="Возможность добавлять документы"/>
+            <CheckBox x:Name="CheckShow" VerticalAlignment="Center" Content="Возможность просмотра всех документов" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left"  FontSize="25"/>
+            <CheckBox x:Name="CheckReconcile" Content="Возможность отправки документов на согласование" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3"  FontSize="25"/>
+            <CheckBox x:Name="CheckFamiliarize" Content="Отправка документов для ознакомления" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="4" FontSize="25"/>
+            <CheckBox x:Name="CheckEdit" Content="Возможность изменять документы" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="25" Grid.Column="1" Grid.Row="5"/>
+            <CheckBox x:Name="CheckSend" Content="Возможность отпарвлять документы" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="25" Grid.Column="1" Grid.Row="6"/>
         </Grid>
-        <Button CornerRadius="10" Grid.Row="2"  FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0">
+        <Button x:Name="SaveUserSettings" CornerRadius="10" Grid.Row="2"  FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0" Click="Button_Click">
             <StackPanel>
                 <TextBlock HorizontalAlignment="Center" Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                 <TextBlock>Сохранить</TextBlock>

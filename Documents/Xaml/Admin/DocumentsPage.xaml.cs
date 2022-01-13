@@ -25,26 +25,30 @@ namespace Documents.Xaml.Admin
     /// </summary>
     public sealed partial class DocumentsPage : Page
     {
-        private static readonly List<Document> documents = new List<Document>();
+        private static readonly List<Template> documents = new List<Template>();
         Frame rootFrame;
         public DocumentsPage()
         {
             this.InitializeComponent();
-            // documentsGrid.Items.Add(new Document("Документыч1.docxыч", "На документычах", t));
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             rootFrame = e.Parameter as Frame;
-            Task<List<Document>> getDocuments = ApiWork.GetAllDocuments(1);
+            Task<List<Template>> getDocuments = ApiWork.GetAllTemplates();
             await getDocuments.ContinueWith(t =>
             {
                 documents.Clear();
-                foreach (Document document in getDocuments.Result)
+                foreach (Template document in getDocuments.Result)
                 {
                     documents.Add(document);
                 }
             });
             documentsGrid.ItemsSource = documents;
+        }
+
+        private void addDocument_Click(object sender, RoutedEventArgs e)
+        {
+            rootFrame.Navigate(typeof(CreateTemplatePage));
         }
     }
 }

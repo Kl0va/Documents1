@@ -20,9 +20,19 @@ namespace Documents.Moduls
 
         }
 
-        public static async Task<List<Document>> GetAllDocuments(int personId)
+        public static async Task<List<Document>> GetAllAdminDocuments()
         {
-            var response = await $@"{baseUrl}".AppendPathSegment("/document").GetStringAsync();
+            var response = await $@"{baseUrl}".AppendPathSegment("/admin").AppendPathSegment("/document").GetStringAsync();
+
+            List<Document> documents = JsonConvert.DeserializeObject<List<Document>>(response);
+
+            return documents;
+        }
+
+
+        public static async Task<List<Document>> GetAllDocuments()
+        {
+            var response = await $@"{baseUrl}".AppendPathSegment("/admin").AppendPathSegment("/document").GetStringAsync();
             
             List<Document> documents = JsonConvert.DeserializeObject<List<Document>>(response);
 
@@ -54,40 +64,41 @@ namespace Documents.Moduls
             List<Role> documents = JsonConvert.DeserializeObject<List<Role>>(response);
 
             return documents;
+        } 
+        public static async Task<List<Restriction>> GetAllRestrictions()
+        {
+            var response = await $@"{baseUrl}".AppendPathSegment("/restriction").GetStringAsync();
+
+            List<Restriction> documents = JsonConvert.DeserializeObject<List<Restriction>>(response);
+
+            return documents;
         }
 
-        public static async void UpdateUser(User user) 
-        {
-            var response = await $"{baseUrl}".AppendPathSegment("/user").PutJsonAsync(user).ReceiveString();
-        }
+        public static async void UpdateUser(User user) => await $"{baseUrl}".AppendPathSegment("/user").PutJsonAsync(user).ReceiveString();
+        
+        public static async void UpdateRule(Rule rule) => await $"{baseUrl}".AppendPathSegment("/rule").PutJsonAsync(rule).ReceiveString();
+        
 
-        public static async void UpdateDocument(Document document)
-        {
-            var response = await $"{baseUrl}".AppendPathSegment("/document").PutJsonAsync(document).ReceiveString();
-        }
+        public static async void UpdateDocument(Document document) => await $"{baseUrl}".AppendPathSegment("/document").PutJsonAsync(document).ReceiveString();
+        
 
-        public static async void UpdateRole(Role role)
-        {
-            var response = await $"{baseUrl}".AppendPathSegment("/role").PutJsonAsync(role).ReceiveString();
-        }
+        public static async void UpdateRole(Role role) => await $"{baseUrl}".AppendPathSegment("/role").PutJsonAsync(role).ReceiveString();
 
-        public static async void AddRole(Role role)
-        {
-            var response = await $"{baseUrl}".AppendPathSegment("/role").PostJsonAsync(role).ReceiveString();
-        }
+        public static async void UpdateRestriction(Restriction restriction) => await $"{baseUrl}".AppendPathSegment("/restriction").PutJsonAsync(restriction).ReceiveString();
+
+        public static async void AddRole(Role role) => await $"{baseUrl}".AppendPathSegment("/role").PostJsonAsync(role).ReceiveString();
+        
 
 
         public static void AddDocument(string name, string desc, string template, int documentRec, byte file) => 
             AddDocument(new Document(name,desc,template,currentUser.Email,documentRec,file));
         
-        private static async void AddDocument(Document document)
-        {
-            var response = await $"{baseUrl}".AppendPathSegment("/document").PostJsonAsync(document).ReceiveString();
-        }
+        private static async void AddDocument(Document document) => await $"{baseUrl}".AppendPathSegment("/document").PostJsonAsync(document).ReceiveString();
+        
 
-        public static async void AddTemplate(Template template)
-        {
-            var response = await $"{baseUrl}".AppendPathSegment("/template").PostJsonAsync(template).ReceiveString();
-        }
-     }
+        public static async void AddTemplate(Template template) => await $"{baseUrl}".AppendPathSegment("/template").PostJsonAsync(template).ReceiveString();
+
+        public static async void AddRestriction(Restriction restriction) => await $"{baseUrl}".AppendPathSegment("/restriction").PostJsonAsync(restriction).ReceiveString();
+
+    }
 }

@@ -51,9 +51,9 @@ namespace Documents.Xaml.Admin
             RoleGrid.ItemsSource = roles;
         }
 
-        private void RoleGrid_ItemClick(object sender, ItemClickEventArgs e)
+        private void RoleGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            rootFrame.Navigate(typeof(CreateRolePage), e.ClickedItem as Role);
+            rootFrame.Navigate(typeof(CreateRolePage), (Role)RoleGrid.SelectedItem);
         }
     }
 }

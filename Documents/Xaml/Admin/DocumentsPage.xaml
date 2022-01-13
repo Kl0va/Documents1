@@ -29,7 +29,7 @@
                 <Button CornerRadius="10" Grid.Column="1"  FontFamily="Segoe MDL2 Assets" FontSize="20" Content="&#xf78b;"  />
 
             </Grid>
-            <Button CornerRadius="10" x:Name="addDocument"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2">
+            <Button CornerRadius="10" x:Name="addDocument"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Click="addDocument_Click">
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Center" Text="&#xE710;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                     <TextBlock>Добавить документ</TextBlock>
@@ -48,8 +48,8 @@
                                 <RowDefinition/>
                                 <!--<RowDefinition/>-->
                             </Grid.RowDefinitions>
-                            <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="25" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding Description}" Grid.Row="1" FontSize="25" HorizontalAlignment="Right"/>
+                            <TextBlock Text="{Binding name}" Grid.Row="0" FontSize="25" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding sampleByte}" Grid.Row="1" FontSize="25" HorizontalAlignment="Right"/>
                             <!--<TextBlock Text="{Binding Type}" Grid.Row="2" FontSize="32" />-->
                         </Grid>
                     </DataTemplate>
