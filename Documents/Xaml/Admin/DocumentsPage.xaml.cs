@@ -25,7 +25,7 @@ namespace Documents.Xaml.Admin
     /// </summary>
     public sealed partial class DocumentsPage : Page
     {
-        private static readonly List<Template> documents = new List<Template>();
+        private static readonly List<Document> documents = new List<Document>();
         Frame rootFrame;
         public DocumentsPage()
         {
@@ -33,12 +33,13 @@ namespace Documents.Xaml.Admin
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            documents.Clear();
             rootFrame = e.Parameter as Frame;
-            Task<List<Template>> getDocuments = ApiWork.GetAllTemplates();
+            Task<List<Document>> getDocuments = ApiWork.GetAllDocuments();
             await getDocuments.ContinueWith(t =>
             {
                 documents.Clear();
-                foreach (Template document in getDocuments.Result)
+                foreach (Document document in getDocuments.Result)
                 {
                     documents.Add(document);
                 }

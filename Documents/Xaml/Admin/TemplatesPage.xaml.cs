@@ -39,6 +39,7 @@ namespace Documents.Xaml.Admin
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            templates.Clear();
             rootFrame = e.Parameter as Frame;
             Task<List<Template>> getTemplates = ApiWork.GetAllTemplates();
             await getTemplates.ContinueWith(t =>
@@ -50,6 +51,11 @@ namespace Documents.Xaml.Admin
                 }
             });
             TemplatesGrid.ItemsSource = templates;
+        }
+
+        private void TemplatesGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            rootFrame.Navigate(typeof(CreateTemplatePage), (Template)TemplatesGrid.SelectedItem);
         }
     }
 }
