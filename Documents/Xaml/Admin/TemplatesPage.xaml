@@ -38,11 +38,11 @@
 
         </Grid>
 
-        <GridView Grid.Row="1" Margin="100,0,100,100" x:Name="TemplatesGrid" HorizontalAlignment="Stretch">
+        <GridView Grid.Row="1" Margin="100,0,100,100" x:Name="TemplatesGrid" HorizontalAlignment="Stretch" SelectionChanged="TemplatesGrid_SelectionChanged">
             <GridView.ItemTemplate >
                 <DataTemplate>
                     <Grid HorizontalAlignment="Stretch" Margin="10" Width="250"  BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                        <TextBlock Text="{Binding Name}" FontSize="25" />
+                        <TextBlock Text="{Binding name}" FontSize="25" />
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>

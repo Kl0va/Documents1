@@ -118,7 +118,18 @@ namespace Documents.Xaml.Admin
                     checkCheck.IsChecked = restriction.check;
                     changeCheck.IsChecked = restriction.change;
                 }
+                else
+                {
+                    disableUI();
+                }
             }
+        }
+
+        private void disableUI()
+        {
+            deleteCheck.IsChecked = false;
+            checkCheck.IsChecked = false;
+            changeCheck.IsChecked = false;
         }
     }
 }
