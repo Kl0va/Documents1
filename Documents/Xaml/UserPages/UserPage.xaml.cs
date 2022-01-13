@@ -25,6 +25,8 @@ namespace Documents.Xaml.UserPage
     /// </summary>
     public sealed partial class UserPage : Page
     {
+        private static readonly List<Document> documents = new List<Document>();
+
         Frame rootFrame;
         public UserPage()
         {
@@ -43,7 +45,7 @@ namespace Documents.Xaml.UserPage
             Frame.Navigate(typeof(DetailsDocument));
 
         }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             rootFrame = e.Parameter as Frame;
             //Task<List<Document>> getDocuments = ApiWork.GetAllDocuments(1);
@@ -52,25 +54,76 @@ namespace Documents.Xaml.UserPage
             //{
             //    documentsGrid.Items.Add(document);
             //}
-        }
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+
+
+            Task<List<Document>> getDocuments = ApiWork.GetAllDocuments();
+            await getDocuments.ContinueWith(t =>
+            {
+                documents.Clear();
+                foreach (Document document in getDocuments.Result)
+                {
+                    documents.Add(document);
+                }
+            });
+            documentsGrid.ItemsSource = documents;
+        
+
+    }
+        private async void  ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (mydocuments.IsSelected)
             {
-                /////
+                Task<List<Document>> getDocuments = ApiWork.GetAllDocuments();
+                await getDocuments.ContinueWith(t =>
+                {
+                    documents.Clear();
+                    foreach (Document document in getDocuments.Result)
+                    {
+                        documents.Add(document);
+                    }
+                });
+                documentsGrid.ItemsSource = documents;
             }
             else if (alldocuments.IsSelected)
             {
-                //////////
+                Task<List<Document>> getDocuments = ApiWork.GetAllDocuments();
+                await getDocuments.ContinueWith(t =>
+                {
+                    documents.Clear();
+                    foreach (Document document in getDocuments.Result)
+                    {
+                        documents.Add(document);
+                    }
+                });
+                documentsGrid.ItemsSource = documents;
             }
             else if (waiting.IsSelected)
             {
-                ////////////
+                Task<List<Document>> getDocuments = ApiWork.GetAllDocumentsForReconcile();
+                await getDocuments.ContinueWith(t =>
+                {
+                    documents.Clear();
+                    foreach (Document document in getDocuments.Result)
+                    {
+                        documents.Add(document);
+                    }
+                });
+                documentsGrid.ItemsSource = documents;
 
             }
             else if (needforsee.IsSelected)
             {
-                /////////////////
+                Task<List<Document>> getDocuments = ApiWork.GetAllDocumentsForFamiliarize();
+                await getDocuments.ContinueWith(t =>
+                {
+                    documents.Clear();
+                    foreach (Document document in getDocuments.Result)
+                    {
+                        documents.Add(document);
+                    }
+                });
+                documentsGrid.ItemsSource = documents;
             }
         }
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)

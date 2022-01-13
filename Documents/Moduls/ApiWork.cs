@@ -39,6 +39,24 @@ namespace Documents.Moduls
             return documents;
         }
 
+        public static async Task<List<Document>> GetAllDocumentsForFamiliarize()
+        {
+            var response = await $@"{baseUrl}".AppendPathSegment("/admin").AppendPathSegment("/documentforfamiliarize").GetStringAsync();
+
+            List<Document> documents = JsonConvert.DeserializeObject<List<Document>>(response);
+
+            return documents;
+        }
+
+        public static async Task<List<Document>> GetAllDocumentsForReconcile()
+        {
+            var response = await $@"{baseUrl}".AppendPathSegment("/admin").AppendPathSegment("/documentforreconcile").GetStringAsync();
+
+            List<Document> documents = JsonConvert.DeserializeObject<List<Document>>(response);
+
+            return documents;
+        }
+
         public static async Task<List<User>> GetAllUsers()
         {
             var response = await $@"{baseUrl}".AppendPathSegment("/user").GetStringAsync();
