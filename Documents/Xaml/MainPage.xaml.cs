@@ -6,6 +6,9 @@ using Documents.Moduls;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Isam.Esent;
+using Windows.UI.Xaml.Media.Imaging;
+using System;
+using Windows.UI.Xaml.Navigation;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x419
 
@@ -40,6 +43,18 @@ namespace Documents
             //    }
             //}
             Frame.Navigate(typeof(UserPage));
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var isDark = Application.Current.RequestedTheme == ApplicationTheme.Dark;
+            if (isDark == true)
+            {
+                logo.Source = new BitmapImage(new Uri("ms-appx:///Assets/white.png"));
+            }
+            else
+            {
+                logo.Source = new BitmapImage(new Uri("ms-appx:///Assets/Wide310x150Logo.scale-200.png"));
+            }
         }
     }
 }
