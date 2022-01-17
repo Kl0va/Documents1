@@ -42,7 +42,7 @@
             <GridView.ItemTemplate >
                 <DataTemplate>
                     <Grid HorizontalAlignment="Stretch" Margin="10" Width="250"  BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                        <TextBlock Text="{Binding name}" FontSize="25" />
+                        <TextBlock Text="{Binding name}" FontSize="25" HorizontalAlignment="Center" />
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
