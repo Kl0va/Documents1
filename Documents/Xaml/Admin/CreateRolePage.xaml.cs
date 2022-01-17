@@ -59,7 +59,7 @@ namespace Documents.Xaml.Admin
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-                if (e.Parameter.GetType() == typeof(Role))
+                if (e.Parameter.GetType() != null)
                 {
                     Role role = e.Parameter as Role;
                     roleName.Text = role.name;

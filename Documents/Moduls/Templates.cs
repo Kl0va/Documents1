@@ -11,17 +11,17 @@ namespace Documents.Moduls
 {
     static class Templates
     {
-        static  void Create(WordDocument document, WSection section)
+        public static  void Create(WordDocument document, WSection section)
         {
             //Создание новго документа 
-             document = new WordDocument();
+            document = new WordDocument();
             //Добавление нового раздела
-             section = document.AddSection() as WSection;
+            section = document.AddSection() as WSection;
             //Размер страниы 
             section.PageSetup.PageSize = new SizeF(612, 792);
         }
 
-        static void Paragraph(WordDocument document, WSection section)
+        public static void Paragraph(WordDocument document, WSection section)
         {
             //Параграф
             WParagraphStyle style = document.AddParagraphStyle("Normal") as WParagraphStyle;
@@ -44,7 +44,7 @@ namespace Documents.Moduls
             IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
         }
 
-        static void Table(WSection section)
+        public static void Table(WSection section)
         {
             IWTable table = section.AddTable();
             table.ResetCells(3, 2);
@@ -52,7 +52,7 @@ namespace Documents.Moduls
             table.TableFormat.IsAutoResized = true;
         }
 
-        static async void SaveDoc(WordDocument document)
+        public static async void SaveDoc(WordDocument document)
         {
             MemoryStream stream = new MemoryStream();
             await document.SaveAsync(stream, FormatType.Docx);
