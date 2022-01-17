@@ -108,7 +108,7 @@ namespace Documents
         /// <param name="e">Сведения о сбое навигации</param>
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
-            throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+            //throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
         /// <summary>
