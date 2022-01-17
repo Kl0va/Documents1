@@ -38,6 +38,7 @@ namespace Documents.Xaml.Admin
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            progress.Visibility = Visibility.Visible;
             rootFrame = e.Parameter as Frame;
             Task<List<Role>> getRoles = ApiWork.GetAllRoles();
             await getRoles.ContinueWith(t =>
@@ -49,6 +50,7 @@ namespace Documents.Xaml.Admin
                 }
             });
             RoleGrid.ItemsSource = roles;
+            progress.Visibility = Visibility.Collapsed;
         }
 
         private void RoleGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

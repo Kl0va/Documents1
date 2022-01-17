@@ -38,7 +38,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            
+
             <GridView x:Name="documentsGrid"  HorizontalAlignment="Stretch" Margin="100,0,100,100">
                 <GridView.ItemTemplate>
                     <DataTemplate>
@@ -47,13 +47,15 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <TextBlock Text="{Binding name}" Grid.Row="0" FontSize="25" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="25" HorizontalAlignment="Center"/>
                             <TextBlock Text="{Binding sampleByte}" Grid.Row="1" FontSize="25" HorizontalAlignment="Center"/>
                         </Grid>
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
         </Grid>
-
+        <ProgressBar x:Name="progress" Grid.Row="1" IsIndeterminate="True" Width="600" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
+
+
 </Page>

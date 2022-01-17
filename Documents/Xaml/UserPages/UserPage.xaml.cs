@@ -47,6 +47,7 @@ namespace Documents.Xaml.UserPage
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            progress.Visibility = Visibility.Visible;
             rootFrame = e.Parameter as Frame;
             //Task<List<Document>> getDocuments = ApiWork.GetAllDocuments(1);
             //getDocuments.Start();
@@ -67,11 +68,12 @@ namespace Documents.Xaml.UserPage
                 }
             });
             documentsGrid.ItemsSource = documents;
-        
+            progress.Visibility = Visibility.Collapsed;
 
     }
         private async void  ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            progress.Visibility = Visibility.Visible;
             if (mydocuments.IsSelected)
             {
                 Task<List<Document>> getDocuments = ApiWork.GetAllDocuments();
@@ -125,6 +127,7 @@ namespace Documents.Xaml.UserPage
                 });
                 documentsGrid.ItemsSource = documents;
             }
+            progress.Visibility = Visibility.Collapsed;
         }
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {

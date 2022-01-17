@@ -33,6 +33,7 @@ namespace Documents.Xaml.Admin
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            progress.Visibility = Visibility.Visible;
             documents.Clear();
             rootFrame = e.Parameter as Frame;
             Task<List<Document>> getDocuments = ApiWork.GetAllDocuments();
@@ -44,7 +45,10 @@ namespace Documents.Xaml.Admin
                     documents.Add(document);
                 }
             });
+
             documentsGrid.ItemsSource = documents;
+            progress.Visibility = Visibility.Collapsed;
+
         }
 
         private void addDocument_Click(object sender, RoutedEventArgs e)

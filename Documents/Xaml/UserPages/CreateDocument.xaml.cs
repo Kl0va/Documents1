@@ -41,6 +41,7 @@ namespace Documents.Xaml.UserPage
         }
         public async void Load()
         {
+            progress.Visibility = Visibility.Visible;
             Task<List<User>> getUsers = ApiWork.GetAllUsers();
             Task<List<Template>> getTamplates = ApiWork.GetAllTemplates();
             await getTamplates.ContinueWith(t =>
@@ -67,8 +68,9 @@ namespace Documents.Xaml.UserPage
             {
                 forReconciliationCombo.Items.Add(user1.Email);
             }
-             //(docTypeCombo.SelectedItem as Template).Name;
-             //ApiWork.AddDocument(docName.Text,docDescription.Text,docTypeCombo.SelectedItem.ToString(),(forReconciliationCombo.SelectedItem as DocumentForReconcile).ID,);
+            //(docTypeCombo.SelectedItem as Template).Name;
+            //ApiWork.AddDocument(docName.Text,docDescription.Text,docTypeCombo.SelectedItem.ToString(),(forReconciliationCombo.SelectedItem as DocumentForReconcile).ID,);
+            progress.Visibility = Visibility.Collapsed;
         }
 
         private void load_Click(object sender, RoutedEventArgs e)

@@ -108,6 +108,7 @@
                 </ComboBox>
             </Grid>
         </Grid>
-        <RichEditBox Grid.Row="2" Margin="100,0,100,0"  FontSize="14"></RichEditBox>
+        
+        <RichEditBox Grid.Row="2" Margin="100,0,100,0"   FontSize="14" FontFamily="Times New Roman" Background="White" TextAlignment="Justify" FocusVisualPrimaryBrush="White" FocusVisualSecondaryBrush="White" Foreground="Black"/>
     </Grid>
 </Page>

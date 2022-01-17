@@ -30,6 +30,7 @@ namespace Documents
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            progress.Visibility = Visibility.Visible;
             rootFrame = e.Parameter as Frame;
             Task<List<User>> getUsers = ApiWork.GetAllUsers();
             await getUsers.ContinueWith(t =>
@@ -41,6 +42,7 @@ namespace Documents
                 }
             });
             UserGrid.ItemsSource = users;
+            progress.Visibility = Visibility.Collapsed;
         }
     }
 }

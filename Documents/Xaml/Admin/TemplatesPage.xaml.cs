@@ -39,6 +39,7 @@ namespace Documents.Xaml.Admin
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            progress.Visibility = Visibility.Visible;
             templates.Clear();
             rootFrame = e.Parameter as Frame;
             Task<List<Template>> getTemplates = ApiWork.GetAllTemplates();
@@ -51,6 +52,7 @@ namespace Documents.Xaml.Admin
                 }
             });
             TemplatesGrid.ItemsSource = templates;
+            progress.Visibility = Visibility.Collapsed;
         }
 
         private void TemplatesGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

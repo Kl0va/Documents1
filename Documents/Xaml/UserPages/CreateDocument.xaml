@@ -32,6 +32,7 @@
         </Button>
 
         <GridView x:Name="documentsGrid" Grid.Row="6" HorizontalAlignment="Stretch" Margin="100,20,100,20" >
+
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Grid HorizontalAlignment="Stretch" CornerRadius="10" Background="DarkGray">
@@ -42,10 +43,14 @@
                         </Grid.RowDefinitions>
                         <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="25" />
                         <TextBlock Text="{Binding Description}" Grid.Row="1" FontSize="25" />
+
                         <TextBlock Text="{Binding Type}" Grid.Row="2" FontSize="25" />
                     </Grid>
+
                 </DataTemplate>
+
             </GridView.ItemTemplate>
+
         </GridView>
         <Grid Grid.Row="7">
             <Grid.ColumnDefinitions>
@@ -59,7 +64,10 @@
                     <TextBlock>Загрузить документ</TextBlock>
                 </StackPanel>
             </Button>
+            <ProgressBar x:Name="progress" Grid.Column="1" IsIndeterminate="True" Width="400" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
             <Button CornerRadius="10" Grid.Column="1" x:Name="redact" FontSize="20"   HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="redact_Click" Margin="0,0,0,20">
+                
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Center" Text="&#xE70F;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
                     <TextBlock>Редактировать документ</TextBlock>
