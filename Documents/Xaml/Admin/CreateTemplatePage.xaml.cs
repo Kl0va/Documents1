@@ -51,51 +51,77 @@ namespace Documents.Xaml.Admin
             }
         }
 
-        private void save_Click(object sender, RoutedEventArgs e)
+        private async void save_Click(object sender, RoutedEventArgs e)
         {
-            string text = "";
+            //Creating a new document
+            WordDocument document = new WordDocument();
+            //Adding a new section to the document
+            WSection section = document.AddSection() as WSection;
+            //Set Margin of the section
+            section.PageSetup.Margins.All = 72;
+            //Set page size of the section
+            section.PageSetup.PageSize = new SizeF(612, 792);
 
-            using (PdfDocument document = new PdfDocument())
-            {
-                //Create a new PDF document.
-                PdfDocument doc = new PdfDocument();
-                //Add a page to the document.
-                PdfPage page = doc.Pages.Add();
-                //Create PDF graphics for the page
-                PdfGraphics graphics = page.Graphics;
-                //Load the image as stream
-                Stream imageStream = typeof(MainPage).GetTypeInfo().Assembly.GetManifestResourceStream("Documents.Assets.Header.png");
-                //Load the image from the disk.
-                PdfBitmap image = new PdfBitmap(imageStream);
-                //Draw the image
-                graphics.DrawImage(image, 0, 0);
-                //Create memory stream
-                MemoryStream ms = new MemoryStream();
-                //Open the document in browser after saving it
-                doc.Save(ms);
-                //Close the document
-                doc.Close(true);
-                Save(ms, "Sample.pdf");
-            }
+            //Create Paragraph styles
+            WParagraphStyle style = document.AddParagraphStyle("Normal") as WParagraphStyle;
+            style.CharacterFormat.FontName = "Calibri";
+            style.CharacterFormat.FontSize = 11f;
+            style.ParagraphFormat.BeforeSpacing = 0;
+            style.ParagraphFormat.AfterSpacing = 8;
+            style.ParagraphFormat.LineSpacing = 13.8f;
+
+            style = document.AddParagraphStyle("Heading 1") as WParagraphStyle;
+            style.ApplyBaseStyle("Normal");
+            style.CharacterFormat.FontName = "Calibri Light";
+            style.CharacterFormat.FontSize = 16f;
+            style.CharacterFormat.TextColor = Color.FromArgb(46, 116, 181);
+            style.ParagraphFormat.BeforeSpacing = 12;
+            style.ParagraphFormat.AfterSpacing = 0;
+            style.ParagraphFormat.Keep = true;
+            style.ParagraphFormat.KeepFollow = true;
+            style.ParagraphFormat.OutlineLevel = OutlineLevel.Level1;
+            IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
+            paragraph.ApplyStyle("Normal");
+            paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left;
+            paragraph = section.AddParagraph();
+            //Gets the image stream
+            Stream imageStream = this.GetType().Assembly.GetManifestResourceStream("Documents.Assets.Header.png");
+            IWPicture picture = paragraph.AppendPicture(imageStream);
+            picture.TextWrappingStyle = TextWrappingStyle.InFrontOfText;
+            picture.VerticalOrigin = VerticalOrigin.Margin;
+            picture.VerticalPosition = -45;
+            picture.HorizontalOrigin = HorizontalOrigin.Column;
+            picture.HorizontalPosition = 0f;
+            picture.WidthScale = 30;
+            picture.HeightScale = 27;
+            paragraph = section.AddParagraph();
+
+
+            MemoryStream stream = new MemoryStream();
+
+            //Saves the Word document to MemoryStream
+            await document.SaveAsync(stream, FormatType.Docx);
+
+            //Saves the stream as Word document file in local machine
+            Save(stream, "Sample.docx");
 
 
 
-            DocumentText.Document.GetText(Windows.UI.Text.TextGetOptions.None, out text);
+            //string text = "";
+            //DocumentText.Document.GetText(Windows.UI.Text.TextGetOptions.None, out text);
         }
 
 
-        #region Helper Methods
-        public async void Save(Stream stream, string filename)
+        async void Save(MemoryStream streams, string filename)
         {
-            stream.Position = 0;
-
+            streams.Position = 0;
             StorageFile stFile;
             if (!(Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons")))
             {
                 FileSavePicker savePicker = new FileSavePicker();
-                savePicker.DefaultFileExtension = ".pdf";
-                savePicker.SuggestedFileName = "Sample";
-                savePicker.FileTypeChoices.Add("Adobe PDF Document", new List<string>() { ".pdf" });
+                savePicker.DefaultFileExtension = ".docx";
+                savePicker.SuggestedFileName = filename;
+                savePicker.FileTypeChoices.Add("Word Documents", new List<string>() { ".docx" });
                 stFile = await savePicker.PickSaveFileAsync();
             }
             else
@@ -105,27 +131,20 @@ namespace Documents.Xaml.Admin
             }
             if (stFile != null)
             {
-                Windows.Storage.Streams.IRandomAccessStream fileStream = await stFile.OpenAsync(FileAccessMode.ReadWrite);
-                Stream st = fileStream.AsStreamForWrite();
-                st.SetLength(0);
-                st.Write((stream as MemoryStream).ToArray(), 0, (int)stream.Length);
-                st.Flush();
-                st.Dispose();
-                fileStream.Dispose();
-                MessageDialog msgDialog = new MessageDialog("Do you want to view the Document?", "File created.");
-                UICommand yesCmd = new UICommand("Yes");
-                msgDialog.Commands.Add(yesCmd);
-                UICommand noCmd = new UICommand("No");
-                msgDialog.Commands.Add(noCmd);
-                IUICommand cmd = await msgDialog.ShowAsync();
-                if (cmd == yesCmd)
+                using (IRandomAccessStream zipStream = await stFile.OpenAsync(FileAccessMode.ReadWrite))
                 {
-                    // Launch the retrieved file 
-                    bool success = await Windows.System.Launcher.LaunchFileAsync(stFile);
+                    //Write compressed data from memory to file
+                    using (Stream outstream = zipStream.AsStreamForWrite())
+                    {
+                        byte[] buffer = streams.ToArray();
+                        outstream.Write(buffer, 0, buffer.Length);
+                        outstream.Flush();
+                    }
                 }
             }
+            //Launch the saved Word file
+            await Windows.System.Launcher.LaunchFileAsync(stFile);
         }
-        #endregion
 
 
 
@@ -170,6 +189,5 @@ namespace Documents.Xaml.Admin
             }
         }
 
-        
-    }
+    }   
 }
