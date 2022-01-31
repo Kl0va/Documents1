@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -37,81 +38,143 @@ namespace Documents.Xaml.Admin
     /// </summary>
     public sealed partial class CreateTemplatePage : Page
     {
+        private static List<User> users = new List<User>();
         public CreateTemplatePage()
         {
             this.InitializeComponent();
+            Load();
         }
 
+        /// <summary>
+        /// Подгрузка пользователей в комбобокс и добавление главного подписанта
+        /// </summary>
+        public async void Load()
+        {
+            string mainSignatory = "\nДиректор ГБОУ Школа № 654 имени А.Д. Фридмана                                    С.Л. Видякин";
+            DocumentText.Document.SetText(TextSetOptions.FormatRtf, mainSignatory);
+            Task<List<User>> userTask = ApiWork.GetAllUsers();
+            await userTask.ContinueWith(task =>
+            {
+                users.Clear();
+                foreach (User user in userTask.Result)
+                {
+                    users.Add(user);
+                }
+            });
+            List<string> FIO = new List<string>();
+            foreach (User user1 in users)
+            {
+                FIO.Add(user1.FirstName + " " + user1.SecondName + " " + user1.MiddleName);
+            }
+            foreach (string fio in FIO)
+            {
+                Signatory.Items.Add(fio);
+            }
+        }
+
+        /// <summary>
+        /// Заполнение данных, если перешли по шаблону
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter != null)
             {
                 Models.Template template = e.Parameter as Models.Template;
                 DocumentText.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, template.sampleByte);
+                pageHeader.Text = template.name;
             }
         }
 
+        public static WordDocument document = new WordDocument();
+        public static WSection section = document.AddSection() as WSection;
+
+        /// <summary>
+        /// Сохранение документа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void save_Click(object sender, RoutedEventArgs e)
         {
-            //Creating a new document
-            WordDocument document = new WordDocument();
-            //Adding a new section to the document
-            WSection section = document.AddSection() as WSection;
-            //Set Margin of the section
-            section.PageSetup.Margins.All = 72;
-            //Set page size of the section
-            section.PageSetup.PageSize = new SizeF(612, 792);
+            try
+            {
+                //Отступы
+                section.PageSetup.Margins.All = 72;
+                //Размер окна документа
+                section.PageSetup.PageSize = new SizeF(612, 792);
 
-            //Create Paragraph styles
-            WParagraphStyle style = document.AddParagraphStyle("Normal") as WParagraphStyle;
-            style.CharacterFormat.FontName = "Calibri";
-            style.CharacterFormat.FontSize = 11f;
-            style.ParagraphFormat.BeforeSpacing = 0;
-            style.ParagraphFormat.AfterSpacing = 8;
-            style.ParagraphFormat.LineSpacing = 13.8f;
-
-            style = document.AddParagraphStyle("Heading 1") as WParagraphStyle;
-            style.ApplyBaseStyle("Normal");
-            style.CharacterFormat.FontName = "Calibri Light";
-            style.CharacterFormat.FontSize = 16f;
-            style.CharacterFormat.TextColor = Color.FromArgb(46, 116, 181);
-            style.ParagraphFormat.BeforeSpacing = 12;
-            style.ParagraphFormat.AfterSpacing = 0;
-            style.ParagraphFormat.Keep = true;
-            style.ParagraphFormat.KeepFollow = true;
-            style.ParagraphFormat.OutlineLevel = OutlineLevel.Level1;
-            IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
-            paragraph.ApplyStyle("Normal");
-            paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left;
-            paragraph = section.AddParagraph();
-            //Gets the image stream
-            Stream imageStream = this.GetType().Assembly.GetManifestResourceStream("Documents.Assets.Header.png");
-            IWPicture picture = paragraph.AppendPicture(imageStream);
-            picture.TextWrappingStyle = TextWrappingStyle.InFrontOfText;
-            picture.VerticalOrigin = VerticalOrigin.Margin;
-            picture.VerticalPosition = -45;
-            picture.HorizontalOrigin = HorizontalOrigin.Column;
-            picture.HorizontalPosition = 0f;
-            picture.WidthScale = 30;
-            picture.HeightScale = 27;
-            paragraph = section.AddParagraph();
-
-
-            MemoryStream stream = new MemoryStream();
-
-            //Saves the Word document to MemoryStream
-            await document.SaveAsync(stream, FormatType.Docx);
-
-            //Saves the stream as Word document file in local machine
-            Save(stream, "Sample.docx");
-
+                //Создание стиля
+                WParagraphStyle style = document.AddParagraphStyle("Normal") as WParagraphStyle;
+                style.CharacterFormat.FontName = "Times New Roman";
+                style.CharacterFormat.FontSize = 12f;
+                style.ParagraphFormat.BeforeSpacing = 0;
+                style.ParagraphFormat.LineSpacing = 13.8f;
+                //Создание стиля 
+                style = document.AddParagraphStyle("Heading 1") as WParagraphStyle;
+                style.ApplyBaseStyle("Normal");
+                style.CharacterFormat.FontName = "Calibri Light";
+                style.CharacterFormat.FontSize = 16f;
+                style.CharacterFormat.TextColor = Color.FromArgb(46, 116, 181);
+                style.ParagraphFormat.BeforeSpacing = 12;
+                style.ParagraphFormat.AfterSpacing = 0;
+                style.ParagraphFormat.Keep = true;
+                style.ParagraphFormat.KeepFollow = true;
+                style.ParagraphFormat.OutlineLevel = OutlineLevel.Level1;
+                //Создание параграфа
+                IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
+                paragraph.ApplyStyle("Normal");
+                paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left;
+                paragraph = section.AddParagraph();
+                //Добавление картинки
+                Stream imageStream = this.GetType().Assembly.GetManifestResourceStream("Documents.Assets.Header.png");
+                IWPicture picture = paragraph.AppendPicture(imageStream);
+                picture.TextWrappingStyle = TextWrappingStyle.InFrontOfText;
+                picture.VerticalOrigin = VerticalOrigin.Margin;
+                picture.VerticalPosition = -45;
+                picture.HorizontalOrigin = HorizontalOrigin.Column;
+                picture.HorizontalPosition = 0f;
+                picture.WidthScale = 30;
+                picture.HeightScale = 27;
+                paragraph = section.AddParagraph();
+                string text = "";
+                //Добавление текста
+                DocumentText.Document.GetText(Windows.UI.Text.TextGetOptions.None, out text);
+                string typeName = pageHeader.Text;
+                DateTime nowDate = DateTime.Now;
+                string inputText = "от " + nowDate.ToShortDateString() + "\n" + typeName + "\n" + text;
+                DocumentText.Document.SetText(TextSetOptions.FormatRtf, inputText);
+                WTextRange textRange = new WTextRange(document);
+                textRange = paragraph.AppendText("\n\n" + inputText) as WTextRange;
+                textRange.CharacterFormat.FontSize = 12f;
 
 
-            //string text = "";
-            //DocumentText.Document.GetText(Windows.UI.Text.TextGetOptions.None, out text);
+                MemoryStream stream = new MemoryStream();
+
+                //Saves the Word document to MemoryStream
+                await document.SaveAsync(stream, FormatType.Docx);
+
+                //Saves the stream as Word document file in local machine
+                Save(stream, "Sample.docx");
+                Models.Template template = new Models.Template(pageHeader.Text, text);
+                ApiWork.AddTemplate(template);
+            }
+            catch
+            {
+                ContentDialog errorDialog = new ContentDialog()
+                {
+                    Title = "Ошибка",
+                    Content = "Измените название шаблона"
+                };
+
+                ContentDialogResult result = await errorDialog.ShowAsync();
+            }
         }
 
-
+        /// <summary>
+        /// Метод для сохранения файла
+        /// </summary>
+        /// <param name="streams"></param>
+        /// <param name="filename"></param>
         async void Save(MemoryStream streams, string filename)
         {
             streams.Position = 0;
@@ -133,7 +196,6 @@ namespace Documents.Xaml.Admin
             {
                 using (IRandomAccessStream zipStream = await stFile.OpenAsync(FileAccessMode.ReadWrite))
                 {
-                    //Write compressed data from memory to file
                     using (Stream outstream = zipStream.AsStreamForWrite())
                     {
                         byte[] buffer = streams.ToArray();
@@ -142,52 +204,31 @@ namespace Documents.Xaml.Admin
                     }
                 }
             }
-            //Launch the saved Word file
             await Windows.System.Launcher.LaunchFileAsync(stFile);
         }
 
+        private static bool first = true;
 
-
-
-
-
-        private void addhat_Click(object sender, RoutedEventArgs e)
-        {
-            ParagraphAlignment paragraphAlign = ParagraphAlignment.Undefined;
-            paragraphAlign = ParagraphAlignment.Center;
+        /// <summary>
+        /// Добавление подписанта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addsigner_Click(object sender, RoutedEventArgs e)
+        {   
             string text = "";
-            Header.Document.GetText(Windows.UI.Text.TextGetOptions.FormatRtf, out text);
-            DocumentText.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, text);
-        }
-
-        private async void DocumentText_KeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == Windows.System.VirtualKey.V && e.Key == Windows.System.VirtualKey.Control)
+            DocumentText.Document.GetText(Windows.UI.Text.TextGetOptions.None, out text);
+            if (first)
             {
-                var dataPackageView = Windows.ApplicationModel.DataTransfer.Clipboard.GetContent();
-                if (dataPackageView.Contains(StandardDataFormats.Bitmap))
-                {
-                    IRandomAccessStreamReference imageReceived = null;
-                    try
-                    {
-                        imageReceived = await dataPackageView.GetBitmapAsync();
-                    }
-                    catch (Exception ex)
-                    { }
-                    if (imageReceived != null)
-                    {
-                        using (var imageStream = await imageReceived.OpenReadAsync())
-                        {
-                            var bitmapImage = new BitmapImage();
-                            bitmapImage.SetSource(imageStream);
-                            DocumentText.Document.Selection.InsertImage((int)bitmapImage.PixelWidth, (int)bitmapImage.PixelHeight, 0, Windows.UI.Text.VerticalCharacterAlignment.Baseline, "Image", imageStream);
-                            e.Handled = true;
-                            Clipboard.Clear();
-                        }
-                    }
-                }
+                text += "\nС приказом ознакомлен(а):\n" + Signatory.SelectedValue.ToString();
+                DocumentText.Document.SetText(TextSetOptions.FormatRtf, text);
+                first = false;
+            }
+            else
+            {
+                text += "\n" + Signatory.SelectedValue.ToString();
+                DocumentText.Document.SetText(TextSetOptions.FormatRtf, text);
             }
         }
-
     }   
 }

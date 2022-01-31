@@ -55,12 +55,9 @@ namespace Documents
             Task<List<Role>> roleTask = ApiWork.GetAllRoles();
             roleTask.ContinueWith(task =>
             {
-                if(task.Result.Any(r => r.name == RoleName.Text))
+                foreach (Role role in task.Result)
                 {
-                    foreach(Role role in task.Result)
-                    {
-                        ID = role.name;
-                    }
+                    ID = role.name;
                 }
             });
             Rule ruleAdd = new Rule(CheckAdd.IsChecked.Value, CheckShow.IsChecked.Value, CheckSend.IsChecked.Value, CheckReconcile.IsChecked.Value, CheckEdit.IsChecked.Value, CheckFamiliarize.IsChecked.Value);

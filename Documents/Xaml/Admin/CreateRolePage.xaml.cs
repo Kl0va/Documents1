@@ -31,8 +31,13 @@ namespace Documents.Xaml.Admin
         public CreateRolePage()
         {
             this.InitializeComponent();
+            Load();
+        }
+
+        public async void  Load()
+        {
             Task<List<Template>> templatesTask = ApiWork.GetAllTemplates();
-            templatesTask.ContinueWith(task =>
+             await templatesTask.ContinueWith(task =>
             {
                 templates.Clear();
                 foreach (Models.Template template in templatesTask.Result)
@@ -42,8 +47,6 @@ namespace Documents.Xaml.Admin
             });
             templatesCombo.ItemsSource = templates;
         }
-
-
 
         private bool UIEnabled
         {
@@ -57,7 +60,7 @@ namespace Documents.Xaml.Admin
             }
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+       protected  override void OnNavigatedTo(NavigationEventArgs e)
         {
                 if (e.Parameter.GetType() != null)
                 {
