@@ -39,6 +39,7 @@ namespace Documents.Xaml.Admin
     public sealed partial class CreateTemplatePage : Page
     {
         private static List<User> users = new List<User>();
+
         public CreateTemplatePage()
         {
             this.InitializeComponent();
@@ -48,28 +49,10 @@ namespace Documents.Xaml.Admin
         /// <summary>
         /// Подгрузка пользователей в комбобокс и добавление главного подписанта
         /// </summary>
-        public async void Load()
+        public void Load()
         {
             string mainSignatory = "\nДиректор ГБОУ Школа № 654 имени А.Д. Фридмана                                    С.Л. Видякин";
             DocumentText.Document.SetText(TextSetOptions.FormatRtf, mainSignatory);
-            Task<List<User>> userTask = ApiWork.GetAllUsers();
-            await userTask.ContinueWith(task =>
-            {
-                users.Clear();
-                foreach (User user in userTask.Result)
-                {
-                    users.Add(user);
-                }
-            });
-            List<string> FIO = new List<string>();
-            foreach (User user1 in users)
-            {
-                FIO.Add(user1.FirstName + " " + user1.SecondName + " " + user1.MiddleName);
-            }
-            foreach (string fio in FIO)
-            {
-                Signatory.Items.Add(fio);
-            }
         }
 
         /// <summary>
@@ -88,6 +71,7 @@ namespace Documents.Xaml.Admin
 
         public static WordDocument document = new WordDocument();
         public static WSection section = document.AddSection() as WSection;
+        private static readonly List<Models.Template> templates = new List<Models.Template>();
 
         /// <summary>
         /// Сохранение документа
@@ -96,11 +80,36 @@ namespace Documents.Xaml.Admin
         /// <param name="e"></param>
         private async void save_Click(object sender, RoutedEventArgs e)
         {
-            try
+            Task<List<Models.Template>> getTemplates = ApiWork.GetAllTemplates();
+            await getTemplates.ContinueWith(t =>
+            {
+                templates.Clear();
+                foreach (Models.Template template1 in getTemplates.Result)
+                {
+                    templates.Add(template1);
+                }
+            });
+            bool check = true;
+            foreach (Models.Template checkName in templates)
+            {
+                if (checkName.name == pageHeader.Text)
+                {
+                    ContentDialog errorDialog = new ContentDialog()
+                    {
+                        Title = "Ошибка",
+                        Content = "Шаблон с таким именем уже существует",
+                        PrimaryButtonText = "Ок"
+                    };
+                    ContentDialogResult result = await errorDialog.ShowAsync();
+                    check = false;
+                    break;
+                }
+            }
+            if (check)
             {
                 //Отступы
                 section.PageSetup.Margins.All = 72;
-                //Размер окна документа
+                //размер окна документа
                 section.PageSetup.PageSize = new SizeF(612, 792);
 
                 //Создание стиля
@@ -140,13 +149,12 @@ namespace Documents.Xaml.Admin
                 //Добавление текста
                 DocumentText.Document.GetText(Windows.UI.Text.TextGetOptions.None, out text);
                 string typeName = pageHeader.Text;
-                DateTime nowDate = DateTime.Now;
-                string inputText = "от " + nowDate.ToShortDateString() + "\n" + typeName + "\n" + text;
+                
+                string inputText = typeName + "\n" + text;
                 DocumentText.Document.SetText(TextSetOptions.FormatRtf, inputText);
                 WTextRange textRange = new WTextRange(document);
                 textRange = paragraph.AppendText("\n\n" + inputText) as WTextRange;
                 textRange.CharacterFormat.FontSize = 12f;
-
 
                 MemoryStream stream = new MemoryStream();
 
@@ -155,18 +163,8 @@ namespace Documents.Xaml.Admin
 
                 //Saves the stream as Word document file in local machine
                 Save(stream, "Sample.docx");
-                Models.Template template = new Models.Template(pageHeader.Text, text);
+                Models.Template template = new Models.Template(pageHeader.Text, inputText);
                 ApiWork.AddTemplate(template);
-            }
-            catch
-            {
-                ContentDialog errorDialog = new ContentDialog()
-                {
-                    Title = "Ошибка",
-                    Content = "Измените название шаблона"
-                };
-
-                ContentDialogResult result = await errorDialog.ShowAsync();
             }
         }
 
@@ -207,28 +205,5 @@ namespace Documents.Xaml.Admin
             await Windows.System.Launcher.LaunchFileAsync(stFile);
         }
 
-        private static bool first = true;
-
-        /// <summary>
-        /// Добавление подписанта
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void addsigner_Click(object sender, RoutedEventArgs e)
-        {   
-            string text = "";
-            DocumentText.Document.GetText(Windows.UI.Text.TextGetOptions.None, out text);
-            if (first)
-            {
-                text += "\nС приказом ознакомлен(а):\n" + Signatory.SelectedValue.ToString();
-                DocumentText.Document.SetText(TextSetOptions.FormatRtf, text);
-                first = false;
-            }
-            else
-            {
-                text += "\n" + Signatory.SelectedValue.ToString();
-                DocumentText.Document.SetText(TextSetOptions.FormatRtf, text);
-            }
-        }
-    }   
+    }
 }

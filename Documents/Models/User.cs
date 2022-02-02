@@ -10,8 +10,8 @@ namespace Documents
 {
     class User
     {
+        public string id { get; set; }
         public string Email { get; set;}
-
         public int Rule { get; set; }
         public string Role { get; set; }
         public string FirstName { get; set; }

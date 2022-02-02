@@ -8,13 +8,14 @@ namespace Documents.Models
 {
     class DocumentForFamiliarize
     {
-        public User User { get; set; }
-        public Document Document { get; set; }
+        public int id { get; set; }
+        public string employeeId { get; set; }
+        public int documentId { get; set; }
 
-        public DocumentForFamiliarize(User user, Document document)
+        public DocumentForFamiliarize(string user, int document)
         {
-            User = user;
-            Document = document;
+            employeeId = user;
+            documentId = document;
         }
     }
 }

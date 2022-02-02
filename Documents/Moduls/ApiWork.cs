@@ -20,39 +20,39 @@ namespace Documents.Moduls
 
         }
 
-        public static async Task<List<Document>> GetAllAdminDocuments()
+        public static async Task<List<Models.Documents>> GetAllAdminDocuments()
         {
             var response = await $@"{baseUrl}".AppendPathSegment("/admin").AppendPathSegment("/document").GetStringAsync();
 
-            List<Document> documents = JsonConvert.DeserializeObject<List<Document>>(response);
+            List<Models.Documents> documents = JsonConvert.DeserializeObject<List<Models.Documents>>(response);
 
             return documents;
         }
 
 
-        public static async Task<List<Document>> GetAllDocuments()
+        public static async Task<List<Models.Documents>> GetAllDocuments()
         {
             var response = await $@"{baseUrl}".AppendPathSegment("/admin").AppendPathSegment("/document").GetStringAsync();
             
-            List<Document> documents = JsonConvert.DeserializeObject<List<Document>>(response);
+            List<Models.Documents> documents = JsonConvert.DeserializeObject<List<Models.Documents>>(response);
 
             return documents;
         }
 
-        public static async Task<List<Document>> GetAllDocumentsForFamiliarize()
+        public static async Task<List<Models.Documents>> GetAllDocumentsForFamiliarize()
         {
             var response = await $@"{baseUrl}".AppendPathSegment("/admin").AppendPathSegment("/documentforfamiliarize").GetStringAsync();
 
-            List<Document> documents = JsonConvert.DeserializeObject<List<Document>>(response);
+            List<Models.Documents> documents = JsonConvert.DeserializeObject<List<Models.Documents>>(response);
 
             return documents;
         }
 
-        public static async Task<List<Document>> GetAllDocumentsForReconcile()
+        public static async Task<List<Models.Documents>> GetAllDocumentsForReconcile()
         {
             var response = await $@"{baseUrl}".AppendPathSegment("/admin").AppendPathSegment("/documentforreconcile").GetStringAsync();
 
-            List<Document> documents = JsonConvert.DeserializeObject<List<Document>>(response);
+            List<Models.Documents> documents = JsonConvert.DeserializeObject<List<Models.Documents>>(response);
 
             return documents;
         }
@@ -97,7 +97,7 @@ namespace Documents.Moduls
         public static async void UpdateRule(Rule rule) => await $"{baseUrl}".AppendPathSegment("/rule").PutJsonAsync(rule).ReceiveString();
         
 
-        public static async void UpdateDocument(Document document) => await $"{baseUrl}".AppendPathSegment("/document").PutJsonAsync(document).ReceiveString();
+        public static async void UpdateDocument(Models.Documents document) => await $"{baseUrl}".AppendPathSegment("/document").PutJsonAsync(document).ReceiveString();
         
 
         public static async void UpdateRole(Role role) => await $"{baseUrl}".AppendPathSegment("/role").PutJsonAsync(role).ReceiveString();
@@ -108,11 +108,12 @@ namespace Documents.Moduls
         
 
 
-        public static void AddDocument(string name, string desc, string template, int documentRec, byte file) => 
-            AddDocument(new Document(name,desc,template,currentUser.Email,documentRec,file));
+        public static void AddDocument(string name, string template,string employee_id, string file) => 
+            AddDocument(new Models.Documents(name,template,employee_id,file));
         
-        private static async void AddDocument(Document document) => await $"{baseUrl}".AppendPathSegment("/document").PostJsonAsync(document).ReceiveString();
-        
+        private static async void AddDocument(Models.Documents document) => await $"{baseUrl}".AppendPathSegment("/document").PostJsonAsync(document).ReceiveString();
+        public static async void AddFamiliarize(Models.DocumentForFamiliarize documentForFamiliarize) => await $"{baseUrl}".AppendPathSegment("/documentforfamiliarize").PostJsonAsync(documentForFamiliarize).ReceiveString();
+
 
         public static async void AddTemplate(Template template) => await $"{baseUrl}".AppendPathSegment("/template").PostJsonAsync(template).ReceiveString();
 

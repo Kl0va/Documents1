@@ -119,7 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\Documents.cs" />
     <Compile Include="Models\DocumentForFamiliarize.cs" />
     <Compile Include="Models\DocumentForReconcile.cs" />
     <Compile Include="Models\Restriction.cs" />

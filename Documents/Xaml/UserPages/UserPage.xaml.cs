@@ -25,7 +25,7 @@ namespace Documents.Xaml.UserPage
     /// </summary>
     public sealed partial class UserPage : Page
     {
-        private static readonly List<Document> documents = new List<Document>();
+        private static readonly List<Models.Documents> documents = new List<Models.Documents>();
 
         Frame rootFrame;
         public UserPage()
@@ -58,11 +58,11 @@ namespace Documents.Xaml.UserPage
 
 
 
-            Task<List<Document>> getDocuments = ApiWork.GetAllDocuments();
+            Task<List<Models.Documents>> getDocuments = ApiWork.GetAllDocuments();
             await getDocuments.ContinueWith(t =>
             {
                 documents.Clear();
-                foreach (Document document in getDocuments.Result)
+                foreach (Models.Documents document in getDocuments.Result)
                 {
                     documents.Add(document);
                 }
@@ -76,11 +76,11 @@ namespace Documents.Xaml.UserPage
             progress.Visibility = Visibility.Visible;
             if (mydocuments.IsSelected)
             {
-                Task<List<Document>> getDocuments = ApiWork.GetAllDocuments();
+                Task<List<Models.Documents>> getDocuments = ApiWork.GetAllDocuments();
                 await getDocuments.ContinueWith(t =>
                 {
                     documents.Clear();
-                    foreach (Document document in getDocuments.Result)
+                    foreach (Models.Documents document in getDocuments.Result)
                     {
                         documents.Add(document);
                     }
@@ -89,11 +89,11 @@ namespace Documents.Xaml.UserPage
             }
             else if (alldocuments.IsSelected)
             {
-                Task<List<Document>> getDocuments = ApiWork.GetAllDocuments();
+                Task<List<Models.Documents>> getDocuments = ApiWork.GetAllDocuments();
                 await getDocuments.ContinueWith(t =>
                 {
                     documents.Clear();
-                    foreach (Document document in getDocuments.Result)
+                    foreach (Models.Documents document in getDocuments.Result)
                     {
                         documents.Add(document);
                     }
@@ -102,11 +102,11 @@ namespace Documents.Xaml.UserPage
             }
             else if (waiting.IsSelected)
             {
-                Task<List<Document>> getDocuments = ApiWork.GetAllDocumentsForReconcile();
+                Task<List<Models.Documents>> getDocuments = ApiWork.GetAllDocumentsForReconcile();
                 await getDocuments.ContinueWith(t =>
                 {
                     documents.Clear();
-                    foreach (Document document in getDocuments.Result)
+                    foreach (Models.Documents document in getDocuments.Result)
                     {
                         documents.Add(document);
                     }
@@ -116,11 +116,11 @@ namespace Documents.Xaml.UserPage
             }
             else if (needforsee.IsSelected)
             {
-                Task<List<Document>> getDocuments = ApiWork.GetAllDocumentsForFamiliarize();
+                Task<List<Models.Documents>> getDocuments = ApiWork.GetAllDocumentsForFamiliarize();
                 await getDocuments.ContinueWith(t =>
                 {
                     documents.Clear();
-                    foreach (Document document in getDocuments.Result)
+                    foreach (Models.Documents document in getDocuments.Result)
                     {
                         documents.Add(document);
                     }

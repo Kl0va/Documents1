@@ -8,16 +8,15 @@ namespace Documents.Models
 {
     class DocumentForReconcile
     {
-        public int ID { get; set; }
-        public User User { get; set; }
-        public DateTime TimeOfAgreement { get; set; }
-        public bool Agreed { get; set; }
+        public string employeeId { get; set; }
+        public DateTime timeOfAgreement { get; set; }
+        public bool agreed { get; set; }
 
-        public DocumentForReconcile(User user, DateTime timeOfAgreement, bool agreed)
+        public DocumentForReconcile(string user, DateTime TimeOfAgreement, bool Agreed)
         {
-            User = user;
-            TimeOfAgreement = timeOfAgreement;
-            Agreed = agreed;
+            employeeId = user;
+            timeOfAgreement = TimeOfAgreement;
+            agreed = Agreed;
         }
     }
 }

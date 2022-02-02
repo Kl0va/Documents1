@@ -1,5 +1,6 @@
 ﻿using Documents.Models;
 using Documents.Moduls;
+using Documents.Xaml.UserPage;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,7 +26,7 @@ namespace Documents.Xaml.Admin
     /// </summary>
     public sealed partial class DocumentsPage : Page
     {
-        private static readonly List<Document> documents = new List<Document>();
+        private static readonly List<Models.Documents> documents = new List<Models.Documents>();
         Frame rootFrame;
         public DocumentsPage()
         {
@@ -36,11 +37,11 @@ namespace Documents.Xaml.Admin
             progress.Visibility = Visibility.Visible;
             documents.Clear();
             rootFrame = e.Parameter as Frame;
-            Task<List<Document>> getDocuments = ApiWork.GetAllDocuments();
+            Task<List<Models.Documents>> getDocuments = ApiWork.GetAllDocuments();
             await getDocuments.ContinueWith(t =>
             {
                 documents.Clear();
-                foreach (Document document in getDocuments.Result)
+                foreach (Models.Documents document in getDocuments.Result)
                 {
                     documents.Add(document);
                 }
@@ -53,7 +54,7 @@ namespace Documents.Xaml.Admin
 
         private void addDocument_Click(object sender, RoutedEventArgs e)
         {
-            rootFrame.Navigate(typeof(CreateTemplatePage));
+            rootFrame.Navigate(typeof(CreateDocument));
         }
     }
 }
