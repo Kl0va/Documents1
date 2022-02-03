@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -31,7 +32,10 @@ namespace Documents.Xaml.UserPage
     /// </summary>
     public sealed partial class CreateDocument : Page
     {
-       
+        private static string Header;
+        private static readonly List<User> usersFam = new List<User>();
+        private static readonly List<Models.Documents> documents = new List<Models.Documents>();
+        private static string selectedValue;
         public CreateDocument()
         {
             this.InitializeComponent();
@@ -44,8 +48,16 @@ namespace Documents.Xaml.UserPage
         {
             Frame.Navigate(typeof(RedactDocument));
         }
+        /// <summary>
+        /// Подгрузка всего нужного
+        /// </summary>
         public async void Load()
         {
+            TimeOfAgreement.IsEnabled = false;
+            addsigner.IsEnabled = false;
+            Signatory.IsEnabled = false;
+            familiarize.IsEnabled = false;
+            add_fam.IsEnabled = false;
             Task<List<User>> userTask = ApiWork.GetAllUsers();
             await userTask.ContinueWith(task =>
             {
@@ -79,12 +91,13 @@ namespace Documents.Xaml.UserPage
                 familiarize.Items.Add(fio);
             }
         }
-
-        private void load_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        private static List<string> signerList = new List<string>();
         private static bool first = true;
+        /// <summary>
+        /// Добавление подписанта в текст и лист
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addsigner_Click(object sender, RoutedEventArgs e)
         {
             string text = "";
@@ -93,16 +106,23 @@ namespace Documents.Xaml.UserPage
             {
                 text += "\n\nС приказом ознакомлен(а):\n" + Signatory.SelectedValue.ToString();
                 DocumentText.Document.SetText(TextSetOptions.FormatRtf, text);
+                signerList.Add(Signatory.SelectedValue.ToString());
                 first = false;
             }
             else
             {
                 text += "\n" + Signatory.SelectedValue.ToString();
                 DocumentText.Document.SetText(TextSetOptions.FormatRtf, text);
+                signerList.Add(Signatory.SelectedValue.ToString());
             }
         }
         public static WordDocument document = new WordDocument();
         public static WSection section = document.AddSection() as WSection;
+        /// <summary>
+        /// Сохранение дока
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void save_Click(object sender, RoutedEventArgs e)
         {
             Task<List<Models.Documents>> getTemplates = ApiWork.GetAllDocuments();
@@ -190,12 +210,68 @@ namespace Documents.Xaml.UserPage
                 Save(stream, "Sample.docx");
                 //Models.Documents documentSave = new Models.Documents(pageHeader.Text,Template.SelectedValue.ToString(),"Учитель",inputText);
                 ApiWork.AddDocument(pageHeader.Text, Template.SelectedValue.ToString(), "Учитель", inputText);
+                Thread.Sleep(500);
+                //Сохранение подписантов
+                if(signerList.Count > 0)
+                {
+                    Header = pageHeader.Text;
+                    Task<List<Models.Documents>> getDocuments = ApiWork.GetAllDocuments();
+                    await getDocuments.ContinueWith(t =>
+                    {
+                        documents.Clear();
+                        foreach (Models.Documents document in getDocuments.Result)
+                        {
+                            if (document.name == Header)
+                            {
+                                documents.Add(document);
+                            }
+                        }
+                    });
+                    Task<List<User>> userTask = ApiWork.GetAllUsers();
+                    await userTask.ContinueWith(task =>
+                    {
+                        usersFam.Clear();
+                        foreach (User user in userTask.Result)
+                        {
+                            foreach (string sigFio in signerList)
+                            {
+                                string FIO = user.FirstName + " " + user.SecondName + " " + user.MiddleName;
+                                if (FIO == sigFio)
+                                {
+                                    usersFam.Add(user);
+                                }
+                            }
+                        }
+                    });
+                    string emp_id = "";
+                    int doc_id = 0;
+                    foreach (User user1 in usersFam)
+                    {
+                        emp_id = user1.id;
+                    }
+                    foreach (Models.Documents documents1 in documents)
+                    {
+                        doc_id = documents1.id;
+                    }
+                    Models.DocumentForReconcile documentForReconcile = new DocumentForReconcile(emp_id,TimeOfAgreement.Date.DateTime,false,doc_id);
+                    ApiWork.AddDocumentForReconcile(documentForReconcile);
+                }
+                familiarize.IsEnabled = true;
+                add_fam.IsEnabled = true;
             }
         }
         private static List<Models.Template> searchTemplate = new List<Models.Template>();
         private static string header; 
+        /// <summary>
+        /// Подгрузка шаблона в текст
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Template_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            TimeOfAgreement.IsEnabled = true;
+            addsigner.IsEnabled = true;
+            Signatory.IsEnabled = true;
             header = Template.SelectedValue.ToString();
             Task<List<Models.Template>> getTemplates = ApiWork.GetAllTemplates();
             await getTemplates.ContinueWith(t =>
@@ -213,6 +289,11 @@ namespace Documents.Xaml.UserPage
                 DocumentText.Document.SetText(TextSetOptions.FormatRtf,template1.sampleByte);
             }
         }
+        /// <summary>
+        /// Метод сохранения
+        /// </summary>
+        /// <param name="streams"></param>
+        /// <param name="filename"></param>
         async void Save(MemoryStream streams, string filename)
         {
             streams.Position = 0;
@@ -244,10 +325,11 @@ namespace Documents.Xaml.UserPage
             }
             await Windows.System.Launcher.LaunchFileAsync(stFile);
         }
-        private static readonly List<User> usersFam = new List<User>();
-        private static readonly List<Models.Documents> documents = new List<Models.Documents>();
-        private static string Header;
-        private static string selectedValue;
+        /// <summary>
+        /// Сохранение человека на рассмотрение
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void add_fam_Click(object sender, RoutedEventArgs e)
         {
             Header = pageHeader.Text;

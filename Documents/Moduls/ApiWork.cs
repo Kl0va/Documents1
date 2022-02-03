@@ -118,6 +118,7 @@ namespace Documents.Moduls
         public static async void AddTemplate(Template template) => await $"{baseUrl}".AppendPathSegment("/template").PostJsonAsync(template).ReceiveString();
 
         public static async void AddRestriction(Restriction restriction) => await $"{baseUrl}".AppendPathSegment("/restriction").PostJsonAsync(restriction).ReceiveString();
+        public static async void AddDocumentForReconcile(DocumentForReconcile documentForReconcile) => await $"{baseUrl}".AppendPathSegment("/documentforreconcile").PostJsonAsync(documentForReconcile).ReceiveString();
 
     }
 }
