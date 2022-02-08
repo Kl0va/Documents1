@@ -39,6 +39,7 @@ namespace Documents.Xaml.Admin
     public sealed partial class CreateTemplatePage : Page
     {
         private static List<User> users = new List<User>();
+        private static bool saving = false;
 
         public CreateTemplatePage()
         {
@@ -66,6 +67,7 @@ namespace Documents.Xaml.Admin
                 Models.Template template = e.Parameter as Models.Template;
                 DocumentText.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, template.sampleByte);
                 pageHeader.Text = template.name;
+                saving = true;
             }
         }
 
@@ -107,6 +109,10 @@ namespace Documents.Xaml.Admin
             }
             if (check)
             {
+                if (saving)
+                {
+
+                }
                 //Отступы
                 section.PageSetup.Margins.All = 72;
                 //размер окна документа
@@ -149,7 +155,6 @@ namespace Documents.Xaml.Admin
                 //Добавление текста
                 DocumentText.Document.GetText(Windows.UI.Text.TextGetOptions.None, out text);
                 string typeName = pageHeader.Text;
-                
                 string inputText = typeName + "\n" + text;
                 DocumentText.Document.SetText(TextSetOptions.FormatRtf, inputText);
                 WTextRange textRange = new WTextRange(document);

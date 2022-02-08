@@ -9,6 +9,10 @@ using Microsoft.Isam.Esent;
 using Windows.UI.Xaml.Media.Imaging;
 using System;
 using Windows.UI.Xaml.Navigation;
+using Google.Apis.Auth.OAuth2;
+using System.Threading;
+using Google.Apis.Services;
+using System.IO;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x419
 
@@ -29,7 +33,7 @@ namespace Documents
             Frame.Navigate(typeof(AdminPage));
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
             //Task<List<User>> user = ApiWork.GetAllUsers();
             //user.Start();
