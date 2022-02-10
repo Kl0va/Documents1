@@ -162,6 +162,9 @@
     <Compile Include="Xaml\UserPages\CreateDocument.xaml.cs">
       <DependentUpon>CreateDocument.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Xaml\UserPages\FamiliarizeDoc.xaml.cs">
+      <DependentUpon>FamiliarizeDoc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Xaml\UserPages\FamiliarizeDocumentsPage.xaml.cs">
       <DependentUpon>FamiliarizeDocumentsPage.xaml</DependentUpon>
     </Compile>
@@ -230,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Xaml\UserPages\CreateDocument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Xaml\UserPages\FamiliarizeDoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

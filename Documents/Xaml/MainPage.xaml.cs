@@ -54,7 +54,7 @@ namespace Documents
             });
             foreach (User user1 in users)
             {
-                Frame.Navigate(typeof(UserPage));
+                Frame.Navigate(typeof(UserPage),user1.id);
             }
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)

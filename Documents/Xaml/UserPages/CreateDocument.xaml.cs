@@ -369,7 +369,7 @@ namespace Documents.Xaml.UserPage
             {
                 doc_id = documents1.id;
             }
-            Models.DocumentForFamiliarize documentForFamiliarize = new DocumentForFamiliarize(emp_id,doc_id);
+            Models.DocumentForFamiliarize documentForFamiliarize = new DocumentForFamiliarize(emp_id,documents[0],false);
             ApiWork.AddFamiliarize(documentForFamiliarize);
         }
     }

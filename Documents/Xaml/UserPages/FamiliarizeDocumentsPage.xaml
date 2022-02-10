@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
         </Grid>
         <Grid Grid.Row="1">
-            <GridView x:Name="documentsGrid"  HorizontalAlignment="Stretch" Margin="100,0,100,100">
+            <GridView x:Name="documentsGrid"  HorizontalAlignment="Stretch" Margin="100,0,100,100" SelectionChanged="documentsGrid_SelectionChanged">
                 <GridView.ItemTemplate>
                     <DataTemplate>
                         <Grid HorizontalAlignment="Stretch" Margin="10" Width="250"  BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
@@ -30,8 +30,8 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <TextBlock Text="{Binding name}" Grid.Row="0" FontSize="25" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding description}" Grid.Row="1" FontSize="25" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding documentId.name}" Grid.Row="0" FontSize="25" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding status}" Grid.Row="1" FontSize="25" HorizontalAlignment="Center"/>
                         </Grid>
                     </DataTemplate>
                 </GridView.ItemTemplate>

@@ -1,5 +1,6 @@
 ﻿using Documents.Models;
 using Documents.Moduls;
+using Documents.Xaml.UserPages;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +29,7 @@ namespace Documents.Xaml.UserPage
         private static readonly List<Models.Documents> documents = new List<Models.Documents>();
         private static readonly List<Models.DocumentForReconcile> documentsRec = new List<Models.DocumentForReconcile>();
         private static readonly List<Models.DocumentForFamiliarize> documentsFam = new List<Models.DocumentForFamiliarize>();
+        public static string email;
 
         Frame rootFrame;
         public UserPage()
@@ -47,6 +49,10 @@ namespace Documents.Xaml.UserPage
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             rootFrame = e.Parameter as Frame;
+            if (e.Parameter != null)
+            {
+                email = e.Parameter as String;
+            }
         }
         private void  ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -64,7 +70,8 @@ namespace Documents.Xaml.UserPage
             }
             else if (needforsee.IsSelected)
             {
-                
+                pageHeader.Text = "Документы на ознакомление";
+                myFrame.Navigate(typeof(FamiliarizeDocumentsPage), email);
             }
             
         }

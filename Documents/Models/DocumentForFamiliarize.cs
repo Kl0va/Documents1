@@ -10,10 +10,10 @@ namespace Documents.Models
     {
         public int id { get; set; }
         public string employeeId { get; set; }
-        public int documentId { get; set; }
+        public Models.Documents documentId { get; set; }
         public bool status { get; set; }
 
-        public DocumentForFamiliarize(string user, int document,bool Status)
+        public DocumentForFamiliarize(string user, Documents document,bool Status)
         {
             employeeId = user;
             documentId = document;

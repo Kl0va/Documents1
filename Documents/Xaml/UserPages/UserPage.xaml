@@ -69,6 +69,9 @@
                         </ListBoxItem>
                     </ListBox>
                 </SplitView.Pane>
+                <SplitView.Content>
+                    <Frame Name="myFrame" />
+                </SplitView.Content>
             </SplitView>
         </Grid>
     </Grid>
