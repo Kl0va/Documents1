@@ -46,7 +46,7 @@ namespace Documents.Xaml.UserPage
         private static readonly List<Models.Documents> documents1 = new List<Models.Documents>();
         private void redact_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(RedactDocument));
+            
         }
         /// <summary>
         /// Подгрузка всего нужного

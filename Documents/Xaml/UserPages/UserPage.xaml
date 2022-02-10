@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -21,24 +21,14 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" FontSize="24"
-                    Content="&#xE700;" Click="HamburgerButton_Click" VerticalAlignment="Bottom"/>
+                    Content="&#xE700;" Click="HamburgerButton_Click" VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="0"/>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="0.1*"/>
                 </Grid.ColumnDefinitions>
-
-                <TextBox  CornerRadius="10" Grid.Column="0" PlaceholderText="Поиск" x:Name="search" VerticalAlignment="Center" />
-                <Button CornerRadius="10" Grid.Column="1"  FontFamily="Segoe MDL2 Assets" FontSize="20" Content="&#xf78b;"  />
-
+                <TextBlock HorizontalAlignment="Center" Name="pageHeader" Text="Мои документы" VerticalAlignment="Center" FontSize="28" Grid.Row="0" Grid.ColumnSpan="4"/>
             </Grid>
-
-            <Button CornerRadius="10" x:Name="addDocument"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Click="addDocument_Click">
-                <StackPanel>
-                    <TextBlock HorizontalAlignment="Center" Text="&#xE710;" FontFamily="Segoe MDL2 Assets" ></TextBlock>
-                    <TextBlock>Добавить документ</TextBlock>
-                </StackPanel>
-            </Button>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -48,9 +38,9 @@
                 <ColumnDefinition Width="152*"/>
                 <ColumnDefinition Width="577*"/>
             </Grid.ColumnDefinitions>
+            
 
-
-            <SplitView Name="mySplitView" OpenPaneLength="340" DisplayMode="CompactOverlay" CompactPaneLength="45" Grid.ColumnSpan="4" Margin="0,0,1154,0">
+            <SplitView Name="mySplitView" OpenPaneLength="340" DisplayMode="CompactOverlay" CompactPaneLength="45" Grid.ColumnSpan="4" Grid.Row="0" Grid.Column="0">
                 <SplitView.Pane>
                     <ListBox x:Name="listOfNavigation" SelectionMode="Single" SelectionChanged="ListBox_SelectionChanged">
                         <ListBoxItem Name="mydocuments">
@@ -79,30 +69,7 @@
                         </ListBoxItem>
                     </ListBox>
                 </SplitView.Pane>
-
             </SplitView>
-
-            <GridView x:Name="documentsGrid" Grid.Column="3" Margin="0,0,100,100" SelectionChanged="documentsGrid_SelectionChanged" RenderTransformOrigin="0.5,0.5">
-                <GridView.RenderTransform>
-                    <CompositeTransform ScaleX="1"/>
-                </GridView.RenderTransform>
-                <GridView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid HorizontalAlignment="Stretch"  Width="250"  BorderThickness="2" BorderBrush="Gray" CornerRadius="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="{Binding Name}" Grid.Row="0" HorizontalAlignment="Center" FontSize="25" />
-                            <TextBlock Text="{Binding Description}" Grid.Row="1" HorizontalAlignment="Center" FontSize="25" />
-                            <TextBlock Text="{Binding Type}" Grid.Row="2" HorizontalAlignment="Center" FontSize="25" />
-                        </Grid>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
         </Grid>
-        <ProgressBar x:Name="progress" Grid.Row="1" IsIndeterminate="True" Width="600" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
     </Grid>
 </Page>

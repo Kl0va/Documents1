@@ -12,6 +12,7 @@ namespace Documents
     {
         public string id { get; set; }
         public string Email { get; set;}
+        public string Password { get; set; }
         public int Rule { get; set; }
         public string Role { get; set; }
         public string FirstName { get; set; }
@@ -19,7 +20,7 @@ namespace Documents
         public string MiddleName { get; set; }
 
         [JsonConstructor]
-        public User(string email, string firstName,string secondName,string middleName, int rule,string role)
+        public User(string email, string firstName,string secondName,string middleName, int rule,string role,string password)
         {
             Email = email;
             FirstName = firstName;
@@ -27,6 +28,7 @@ namespace Documents
             MiddleName = middleName;
             Rule = rule;
             Role = role;
+            Password = password;
         }
         public User(string role)
         {

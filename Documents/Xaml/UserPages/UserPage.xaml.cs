@@ -26,6 +26,8 @@ namespace Documents.Xaml.UserPage
     public sealed partial class UserPage : Page
     {
         private static readonly List<Models.Documents> documents = new List<Models.Documents>();
+        private static readonly List<Models.DocumentForReconcile> documentsRec = new List<Models.DocumentForReconcile>();
+        private static readonly List<Models.DocumentForFamiliarize> documentsFam = new List<Models.DocumentForFamiliarize>();
 
         Frame rootFrame;
         public UserPage()
@@ -38,102 +40,37 @@ namespace Documents.Xaml.UserPage
             Frame.Navigate(typeof(CreateDocument));
         }
 
-
-
         private void documentsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Frame.Navigate(typeof(DetailsDocument));
-
+            
         }
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            progress.Visibility = Visibility.Visible;
             rootFrame = e.Parameter as Frame;
-            //Task<List<Document>> getDocuments = ApiWork.GetAllDocuments(1);
-            //getDocuments.Start();
-            //foreach (Document document in getDocuments.Result)
-            //{
-            //    documentsGrid.Items.Add(document);
-            //}
-
-
-
-            Task<List<Models.Documents>> getDocuments = ApiWork.GetAllDocuments();
-            await getDocuments.ContinueWith(t =>
-            {
-                documents.Clear();
-                foreach (Models.Documents document in getDocuments.Result)
-                {
-                    documents.Add(document);
-                }
-            });
-            documentsGrid.ItemsSource = documents;
-            progress.Visibility = Visibility.Collapsed;
-
-    }
-        private async void  ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        }
+        private void  ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            progress.Visibility = Visibility.Visible;
             if (mydocuments.IsSelected)
             {
-                Task<List<Models.Documents>> getDocuments = ApiWork.GetAllDocuments();
-                await getDocuments.ContinueWith(t =>
-                {
-                    documents.Clear();
-                    foreach (Models.Documents document in getDocuments.Result)
-                    {
-                        documents.Add(document);
-                    }
-                });
-                documentsGrid.ItemsSource = documents;
+                pageHeader.Text = "Мои документы";
             }
             else if (alldocuments.IsSelected)
             {
-                Task<List<Models.Documents>> getDocuments = ApiWork.GetAllDocuments();
-                await getDocuments.ContinueWith(t =>
-                {
-                    documents.Clear();
-                    foreach (Models.Documents document in getDocuments.Result)
-                    {
-                        documents.Add(document);
-                    }
-                });
-                documentsGrid.ItemsSource = documents;
+                
             }
             else if (waiting.IsSelected)
             {
-                Task<List<Models.Documents>> getDocuments = ApiWork.GetAllDocumentsForReconcile();
-                await getDocuments.ContinueWith(t =>
-                {
-                    documents.Clear();
-                    foreach (Models.Documents document in getDocuments.Result)
-                    {
-                        documents.Add(document);
-                    }
-                });
-                documentsGrid.ItemsSource = documents;
-
+                
             }
             else if (needforsee.IsSelected)
             {
-                Task<List<Models.Documents>> getDocuments = ApiWork.GetAllDocumentsForFamiliarize();
-                await getDocuments.ContinueWith(t =>
-                {
-                    documents.Clear();
-                    foreach (Models.Documents document in getDocuments.Result)
-                    {
-                        documents.Add(document);
-                    }
-                });
-                documentsGrid.ItemsSource = documents;
+                
             }
-            progress.Visibility = Visibility.Collapsed;
+            
         }
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-
             mySplitView.IsPaneOpen = !mySplitView.IsPaneOpen;
-            
         }
     }
 }

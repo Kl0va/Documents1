@@ -11,11 +11,13 @@ namespace Documents.Models
         public int id { get; set; }
         public string employeeId { get; set; }
         public int documentId { get; set; }
+        public bool status { get; set; }
 
-        public DocumentForFamiliarize(string user, int document)
+        public DocumentForFamiliarize(string user, int document,bool Status)
         {
             employeeId = user;
             documentId = document;
+            status = Status;
         }
     }
 }

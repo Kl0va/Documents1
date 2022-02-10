@@ -39,20 +39,20 @@ namespace Documents.Moduls
             return documents;
         }
 
-        public static async Task<List<Models.Documents>> GetAllDocumentsForFamiliarize()
+        public static async Task<List<Models.DocumentForFamiliarize>> GetAllDocumentsForFamiliarize()
         {
             var response = await $@"{baseUrl}".AppendPathSegment("/admin").AppendPathSegment("/documentforfamiliarize").GetStringAsync();
 
-            List<Models.Documents> documents = JsonConvert.DeserializeObject<List<Models.Documents>>(response);
+            List<Models.DocumentForFamiliarize> documents = JsonConvert.DeserializeObject<List<Models.DocumentForFamiliarize>>(response);
 
             return documents;
         }
 
-        public static async Task<List<Models.Documents>> GetAllDocumentsForReconcile()
+        public static async Task<List<Models.DocumentForReconcile>> GetAllDocumentsForReconcile()
         {
             var response = await $@"{baseUrl}".AppendPathSegment("/admin").AppendPathSegment("/documentforreconcile").GetStringAsync();
 
-            List<Models.Documents> documents = JsonConvert.DeserializeObject<List<Models.Documents>>(response);
+            List<Models.DocumentForReconcile> documents = JsonConvert.DeserializeObject<List<Models.DocumentForReconcile>>(response);
 
             return documents;
         }

@@ -33,20 +33,29 @@ namespace Documents
             Frame.Navigate(typeof(AdminPage));
         }
 
+        private static string email;
+        private static string password;
+        private static List<User> users = new List<User>();
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //Task<List<User>> user = ApiWork.GetAllUsers();
-            //user.Start();
-            //List<User> user1 = user.Result;
-            //foreach (User user2 in user1)
-            //{
-            //    if (Email.Text == user2.Email)
-            //    {
-
-            //        Frame.Navigate(typeof(UserPage));
-            //    }
-            //}
-            Frame.Navigate(typeof(UserPage));
+            email = Email.Text;
+            password = Password.Text;
+            Task<List<User>> userTask = ApiWork.GetAllUsers();
+            await userTask.ContinueWith(task =>
+            {
+                users.Clear();
+                foreach (User user in userTask.Result)
+                {
+                    if (email == user.Email && password == user.Password)
+                    {
+                        users.Add(user);
+                    }
+                }
+            });
+            foreach (User user1 in users)
+            {
+                Frame.Navigate(typeof(UserPage));
+            }
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
